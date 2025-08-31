@@ -1,0 +1,493 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS Animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes enhanced-bounce {
+  0%, 20%, 53%, 80%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  40%, 43% {
+    transform: translate3d(0, -8px, 0);
+  }
+  70% {
+    transform: translate3d(0, -4px, 0);
+  }
+  90% {
+    transform: translate3d(0, -2px, 0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(5, 150, 105, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(5, 150, 105, 0.6);
+  }
+}
+
+/* Animation Classes */
+.animate-fade-in {
+  animation: fade-in 1s ease-out;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out;
+}
+
+.animate-enhanced-bounce {
+  animation: enhanced-bounce 2s infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced focus states */
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid #059669;
+  outline-offset: 2px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #059669;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #047857;
+}
+
+/* Enhanced button hover effects */
+.btn-enhanced {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-enhanced::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-enhanced:hover::before {
+  left: 100%;
+}
+
+/* Enhanced card hover effects */
+.card-enhanced {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-enhanced:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Enhanced loading states */
+.loading-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Enhanced focus ring for form elements */
+.form-input:focus {
+  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+  border-color: #059669;
+}
+
+/* Smooth page transitions */
+.page-transition {
+  animation: pageEnter 0.3s ease-out;
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enhanced dropdown animations */
+.dropdown-enter {
+  animation: dropdownEnter 0.2s ease-out;
+}
+
+.dropdown-exit {
+  animation: dropdownExit 0.2s ease-in;
+}
+
+@keyframes dropdownEnter {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes dropdownExit {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
+  }
+}
+
+/* Enhanced mobile menu animations */
+.mobile-menu-enter {
+  animation: mobileMenuEnter 0.3s ease-out;
+}
+
+.mobile-menu-exit {
+  animation: mobileMenuExit 0.3s ease-in;
+}
+
+@keyframes mobileMenuEnter {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes mobileMenuExit {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+/* Enhanced search bar focus effects */
+.search-bar:focus-within {
+  transform: scale(1.01);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Enhanced icon animations */
+.icon-bounce {
+  animation: enhanced-bounce 2s infinite;
+}
+
+.icon-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.icon-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Enhanced background patterns */
+.bg-pattern {
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(5, 150, 105, 0.05) 1px, transparent 0),
+    linear-gradient(45deg, transparent 40%, rgba(5, 150, 105, 0.02) 50%, transparent 60%);
+  background-size: 20px 20px, 100px 100px;
+  animation: patternMove 20s linear infinite;
+}
+
+@keyframes patternMove {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+  100% {
+    background-position: 20px 20px, 100px 100px;
+  }
+}
+
+/* Enhanced gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #059669, #10b981, #34d399);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 3s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Enhanced button states */
+.btn-primary {
+  background: linear-gradient(135deg, #059669, #10b981);
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #047857, #059669);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(5, 150, 105, 0.3);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Enhanced form focus states */
+.form-group:focus-within label {
+  color: #059669;
+  transform: translateY(-2px);
+}
+
+.form-group:focus-within .form-icon {
+  color: #059669;
+  transform: scale(1.1);
+}
+
+/* Enhanced navigation indicators */
+.nav-indicator {
+  position: relative;
+}
+
+.nav-indicator::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #059669;
+  transition: width 0.3s ease;
+}
+
+.nav-indicator:hover::after,
+.nav-indicator.active::after {
+  width: 100%;
+}
+
+/* Enhanced mobile responsiveness */
+@media (max-width: 768px) {
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out;
+  }
+  
+  .card-enhanced:hover {
+    transform: translateY(-2px) scale(1.01);
+  }
+  
+  .search-bar:focus-within {
+    transform: scale(1.005);
+  }
+}
+
+/* Performance optimizations */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
+/* Standardized listing card images - STRETCHED END TO END - Force override */
+.listing-card-image {
+  @apply w-full h-full;
+  image-rendering: auto !important;
+  image-rendering: -webkit-optimize-contrast !important;
+  image-rendering: crisp-edges !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  transition: all 0.3s ease !important;
+  object-fit: cover !important;
+  width: 100% !important;
+  height: 100% !important;
+  /* STRETCHED END TO END - NO EMPTY SPACES */
+  margin: 0 !important;
+  display: block !important;
+}
+
+/* Handle different image aspect ratios */
+.listing-card-image.portrait {
+  width: auto;
+  height: 100%;
+}
+
+.listing-card-image.landscape {
+  width: 100%;
+  height: auto;
+}
+
+.listing-card-container {
+  @apply relative h-48 w-full overflow-hidden bg-gray-100;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 12rem !important;
+  width: 100% !important;
+  overflow: hidden !important;
+  background-color: rgb(243 244 246) !important;
+  /* Smart image handling */
+  position: relative !important;
+}
+
+/* Detail page images - Full image display without cropping */
+.detail-page-image {
+  @apply w-full h-full;
+  image-rendering: auto !important;
+  image-rendering: -webkit-optimize-contrast !important;
+  image-rendering: crisp-edges !important;
+  object-fit: cover !important;
+  width: 100% !important;
+  height: 100% !important;
+  /* Full container coverage without stretching */
+  max-width: 100% !important;
+  max-height: 100% !important;
+  /* Proper image display */
+  margin: 0 !important;
+  display: block !important;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+  
+/* Additional image containment rules */
+.listing-card-container img {
+  object-fit: cover !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  min-width: 80% !important;
+  min-height: 80% !important;
+}
+
+/* Force all venue images to use STRETCHED END TO END */
+[class*="ComprehensiveVenueImage"] img {
+  object-fit: cover !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* STRETCHED END TO END - NO EMPTY SPACES */
+.smart-image-container {
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+}
+
+/* ALL images - STRETCHED END TO END */
+.smart-image-container img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  margin: 0 !important;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .animate-fade-in,
+  .animate-fade-in-up,
+  .animate-enhanced-bounce,
+  .animate-float,
+  .animate-pulse-glow {
+    animation: none;
+  }
+}

@@ -1,0 +1,586 @@
+{
+  "venues": [
+    {
+      "place_id": "ChIJW57Oe1cdGTkRVnPOWapf8D8",
+      "place_name": "جامع مسجد بہار مدینہ",
+      "s3_folder": "جامع_مسجد_بہار_مدینہ_Lahore_ChIJW57Oe1cdGTkRVnPOWapf8D8",
+      "category": "arts-culture",
+      "city": "Lahore",
+      "available_images": [
+        "جامع_مسجد_بہار_مدینہ_ChIJW57Oe1cdGTkRVnPOWapf8D8_1.jpg",
+        "جامع_مسجد_بہار_مدینہ_ChIJW57Oe1cdGTkRVnPOWapf8D8_2.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJtRURlDQbGTkRQNFQ9aCui_g",
+      "place_name": "Zee Avenue",
+      "s3_folder": "Zee_Avenue_Lahore_ChIJtRURlDQbGTkRQNFQ9aCui_g",
+      "category": "shopping",
+      "city": "Lahore",
+      "available_images": [
+        "Zee_Avenue_ChIJtRURlDQbGTkRQNFQ9aCui_g_1.jpg",
+        "Zee_Avenue_ChIJtRURlDQbGTkRQNFQ9aCui_g_2.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJheW_tRE9sz4Rjq3sq-aBcz0",
+      "place_name": "Ziggurat Art Gallery",
+      "s3_folder": "Ziggurat_Art_Gallery_Karachi_ChIJheW_tRE9sz4Rjq3sq-aBcz0",
+      "category": "arts-culture",
+      "city": "Karachi",
+      "available_images": [
+        "Ziggurat_Art_Gallery_ChIJheW_tRE9sz4Rjq3sq-aBcz0_1.jpg",
+        "Ziggurat_Art_Gallery_ChIJheW_tRE9sz4Rjq3sq-aBcz0_2.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJV1VF8fMVsz4R6FJfaSzZsRE",
+      "place_name": "Zarar Cafe",
+      "s3_folder": "Zarar_Cafe_ChIJV1VF8fMVsz4R6FJfaSzZsRE",
+      "category": "cafes",
+      "city": "Karachi",
+      "available_images": [
+        "Zarar_Cafe_ChIJV1VF8fMVsz4R6FJfaSzZsRE_1.jpg",
+        "Zarar_Cafe_ChIJV1VF8fMVsz4R6FJfaSzZsRE_2.jpg",
+        "Zarar_Cafe_ChIJV1VF8fMVsz4R6FJfaSzZsRE_3.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJOxFsg_cBGTkRxAPFFJ7xt4o",
+      "place_name": "Z Body Tech Ladies Gym",
+      "s3_folder": "Z_Body_Tech_Ladies_Gym_Lahore_ChIJOxFsg_cBGTkRxAPFFJ7xt4o",
+      "category": "health-wellness",
+      "city": "Lahore",
+      "available_images": [
+        "Z_Body_Tech_Ladies_Gym_ChIJOxFsg_cBGTkRxAPFFJ7xt4o_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJO5eWznABGTkRQpOk-bNfseA",
+      "place_name": "Zulfi's Art Gallery",
+      "s3_folder": "Zulfi's_Art_Gallery_Lahore_ChIJO5eWznABGTkRQpOk-bNfseA",
+      "category": "arts-culture",
+      "city": "Lahore",
+      "available_images": [
+        "Zulfi's_Art_Gallery_ChIJO5eWznABGTkRQpOk-bNfseA_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJaUKCxpQJGTkRihiq2lAPaoY",
+      "place_name": "Zubeer Boulevard Mall",
+      "s3_folder": "Zubeer_Boulevard_Mall_Lahore_ChIJaUKCxpQJGTkRihiq2lAPaoY",
+      "category": "shopping",
+      "city": "Lahore",
+      "available_images": [
+        "Zubeer_Boulevard_Mall_ChIJaUKCxpQJGTkRihiq2lAPaoY_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJlwBZ700FGTkRhoro3umaFHA",
+      "place_name": "ZS Fitness Gym",
+      "s3_folder": "ZS_Fitness_Gym_Lahore_ChIJlwBZ700FGTkRhoro3umaFHA",
+      "category": "sports-fitness",
+      "city": "Lahore",
+      "available_images": [
+        "ZS_Fitness_Gym_ChIJlwBZ700FGTkRhoro3umaFHA_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJ8zltJSwFGTkREpP_5fhL3Q8",
+      "place_name": "Zoro Burger",
+      "s3_folder": "Zoro_Burger_-_Gulberg_ChIJ8zltJSwFGTkREpP_5fhL3Q8",
+      "category": "restaurants",
+      "city": "Lahore",
+      "available_images": [
+        "Zoro_Burger_ChIJ8zltJSwFGTkREpP_5fhL3Q8_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJB0dvI34_sz4RsQd5DI5MWck",
+      "place_name": "Zia Muhyeddin Theater",
+      "s3_folder": "Zia_Muhyeddin_Theater_Karachi_ChIJB0dvI34_sz4RsQd5DI5MWck",
+      "category": "entertainment",
+      "city": "Karachi",
+      "available_images": [
+        "Zia_Muhyeddin_Theater_ChIJB0dvI34_sz4RsQd5DI5MWck_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJNU3MwFYEGTkR_zaQdyEO_3c",
+      "place_name": "Ziafat",
+      "s3_folder": "Ziafat_ChIJNU3MwFYEGTkR_zaQdyEO_3c",
+      "category": "restaurants",
+      "city": "Lahore",
+      "available_images": [
+        "Ziafat_ChIJNU3MwFYEGTkR_zaQdyEO_3c_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJtaHsTHMFGTkRjZy5u2cyyk0",
+      "place_name": "Ziafat BBQ",
+      "s3_folder": "Ziafat_BBQ_ChIJtaHsTHMFGTkRjZy5u2cyyk0",
+      "category": "restaurants",
+      "city": "Lahore",
+      "available_images": [
+        "Ziafat_BBQ_ChIJtaHsTHMFGTkRjZy5u2cyyk0_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJA_ehxI0_sz4RPxf8LaZmcJc",
+      "place_name": "Zeytin",
+      "s3_folder": "Zeytin_ChIJA_ehxI0_sz4RPxf8LaZmcJc",
+      "category": "restaurants",
+      "city": "Karachi",
+      "available_images": [
+        "Zeytin_ChIJA_ehxI0_sz4RPxf8LaZmcJc_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJiyYS2CTt3zgR3YWkT6QnNbQ",
+      "place_name": "ZETA 1 Mall",
+      "s3_folder": "ZETA_1_Mall_Islamabad_ChIJiyYS2CTt3zgR3YWkT6QnNbQ",
+      "category": "shopping",
+      "city": "Islamabad",
+      "available_images": [
+        "ZETA_1_Mall_ChIJiyYS2CTt3zgR3YWkT6QnNbQ_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJTw6mIwAHGTkRCjtPug3Wl_8",
+      "place_name": "Zen Pan Asian",
+      "s3_folder": "Zen_Pan_Asian_ChIJTw6mIwAHGTkRCjtPug3Wl_8",
+      "category": "restaurants",
+      "city": "Lahore",
+      "available_images": [
+        "Zen_Pan_Asian_ChIJTw6mIwAHGTkRCjtPug3Wl_8_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJHbMIPjjp3zgRvcDXHUKxqDU",
+      "place_name": "ZEM MALL",
+      "s3_folder": "ZEM_MALL_Islamabad_ChIJHbMIPjjp3zgRvcDXHUKxqDU",
+      "category": "shopping",
+      "city": "Islamabad",
+      "available_images": [
+        "ZEM_MALL_ChIJHbMIPjjp3zgRvcDXHUKxqDU_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJeb9UyIEbGTkRk-gM74ie44o",
+      "place_name": "Zee Dee Grill Shawarma",
+      "s3_folder": "Zee_Dee_Grill_Shawarma_ChIJeb9UyIEbGTkRk-gM74ie44o",
+      "category": "restaurants",
+      "city": "Lahore",
+      "available_images": [
+        "Zee_Dee_Grill_Shawarma_ChIJeb9UyIEbGTkRk-gM74ie44o_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJi7CY8Bs7sz4RuFoEwKUSNpU",
+      "place_name": "Zeenat Restaurant",
+      "s3_folder": "Zeenat_Restaurant________________ChIJi7CY8Bs7sz4RuFoEwKUSNpU",
+      "category": "restaurants",
+      "city": "Karachi",
+      "available_images": [
+        "Zeenat_Restaurant_ChIJi7CY8Bs7sz4RuFoEwKUSNpU_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJmSKZRyo9sz4R1RXoiJvwqPY",
+      "place_name": "ZEBUN Art Gallery",
+      "s3_folder": "ZEBUN_Art_Gallery_Karachi_ChIJmSKZRyo9sz4R1RXoiJvwqPY",
+      "category": "arts-culture",
+      "city": "Karachi",
+      "available_images": [
+        "ZEBUN_Art_Gallery_ChIJmSKZRyo9sz4R1RXoiJvwqPY_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJOd8fctyX3zgRc6FmymNQOAk",
+      "place_name": "Zaviya Restaurant",
+      "s3_folder": "Zaviya_Restaurant_ChIJOd8fctyX3zgRc6FmymNQOAk",
+      "category": "restaurants",
+      "city": "Islamabad",
+      "available_images": [
+        "Zaviya_Restaurant_ChIJOd8fctyX3zgRc6FmymNQOAk_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJfUF37kkFGTkRZD1i3pp1v6A",
+      "place_name": "Zarqa's art house",
+      "s3_folder": "Zarqa's_art_house_Lahore_ChIJfUF37kkFGTkRZD1i3pp1v6A",
+      "category": "arts-culture",
+      "city": "Lahore",
+      "available_images": [
+        "Zarqa's_art_house_ChIJfUF37kkFGTkRZD1i3pp1v6A_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJI713lloEGTkRFJdq0VMCZCc",
+      "place_name": "Zarina Shopping Mall",
+      "s3_folder": "Zarina_Shopping_Mall_Lahore_ChIJI713lloEGTkRFJdq0VMCZCc",
+      "category": "shopping",
+      "city": "Lahore",
+      "available_images": [
+        "Zarina_Shopping_Mall_ChIJI713lloEGTkRFJdq0VMCZCc_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJTVheD33z3zgRl1R8LlGapj8",
+      "place_name": "Zaraj Football Club",
+      "s3_folder": "Zaraj_Football_Club_Islamabad_ChIJTVheD33z3zgRl1R8LlGapj8",
+      "category": "sports-fitness",
+      "city": "Islamabad",
+      "available_images": [
+        "Zaraj_Football_Club_ChIJTVheD33z3zgRl1R8LlGapj8_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJYxkiy2QBGTkRAXEVXCsN944",
+      "place_name": "Zara's Bakeshop",
+      "s3_folder": "Zara's_Bakeshop_ChIJYxkiy2QBGTkRAXEVXCsN944",
+      "category": "restaurants",
+      "city": "Lahore",
+      "available_images": [
+        "Zara's_Bakeshop_ChIJYxkiy2QBGTkRAXEVXCsN944_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJ1QIh2SEFGTkRDX5yMxVTkKI",
+      "place_name": "Zam Zam Tower",
+      "s3_folder": "Zam_Zam_Tower_Lahore_ChIJ1QIh2SEFGTkRDX5yMxVTkKI",
+      "category": "shopping",
+      "city": "Lahore",
+      "available_images": [
+        "Zam_Zam_Tower_ChIJ1QIh2SEFGTkRDX5yMxVTkKI_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJd1Fujwk-sz4R4T1M1Y2IkUA",
+      "place_name": "Zam Zam Peyala Hotel",
+      "s3_folder": "Zam_Zam_Peyala_Hotel_ChIJd1Fujwk-sz4R4T1M1Y2IkUA",
+      "category": "restaurants",
+      "city": "Karachi",
+      "available_images": [
+        "Zam_Zam_Peyala_Hotel_ChIJd1Fujwk-sz4R4T1M1Y2IkUA_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJbRPL3uI9sz4RFw1IGxp9J8Y",
+      "place_name": "zam zam Peyala",
+      "s3_folder": "zam_zam_Peyala_ChIJbRPL3uI9sz4RFw1IGxp9J8Y",
+      "category": "restaurants",
+      "city": "Karachi",
+      "available_images": [
+        "zam_zam_Peyala_ChIJbRPL3uI9sz4RFw1IGxp9J8Y_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJdzxX0VQ9sz4RlzmyG8JEBpw",
+      "place_name": "ZAM ZAM PEYALA BRANCH 8",
+      "s3_folder": "ZAM_ZAM_PEYALA_BRANCH_8_ChIJdzxX0VQ9sz4RlzmyG8JEBpw",
+      "category": "restaurants",
+      "city": "Karachi",
+      "available_images": [
+        "ZAM_ZAM_PEYALA_BRANCH_8_ChIJdzxX0VQ9sz4RlzmyG8JEBpw_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJYaxbzd45sz4Ru0ShBabpw-k",
+      "place_name": "Zam Zam Arab Shawarma",
+      "s3_folder": "Zam_Zam_Arab_Shawarma_ChIJYaxbzd45sz4Ru0ShBabpw-k",
+      "category": "restaurants",
+      "city": "Karachi",
+      "available_images": [
+        "Zam_Zam_Arab_Shawarma_ChIJYaxbzd45sz4Ru0ShBabpw-k_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJaXxBoxczsz4RMUx2RcG1G9U",
+      "place_name": "zam zama restaurant",
+      "s3_folder": "zam_zama_restaurant_ChIJaXxBoxczsz4RMUx2RcG1G9U",
+      "category": "restaurants",
+      "city": "Karachi",
+      "available_images": [
+        "zam_zama_restaurant_ChIJaXxBoxczsz4RMUx2RcG1G9U_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJOaC51j4BGTkRumuuodfao2k",
+      "place_name": "ZamZama Plaza",
+      "s3_folder": "ZamZama_Plaza_Lahore_ChIJOaC51j4BGTkRumuuodfao2k",
+      "category": "shopping",
+      "city": "Lahore",
+      "available_images": [
+        "ZamZama_Plaza_ChIJOaC51j4BGTkRumuuodfao2k_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJxxQHJAA9sz4RoRXa35UuG8I",
+      "place_name": "Zamzama Park Arcade",
+      "s3_folder": "Zamzama_Park_Arcade_Karachi_ChIJxxQHJAA9sz4RoRXa35UuG8I",
+      "category": "entertainment",
+      "city": "Karachi",
+      "available_images": [
+        "Zamzama_Park_Arcade_ChIJxxQHJAA9sz4RoRXa35UuG8I_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJYbAiC649sz4RKv6iRX3jkbQ",
+      "place_name": "Zamzama Mall Shopping Centre",
+      "s3_folder": "Zamzama_Mall_Shopping_Centre_Karachi_ChIJYbAiC649sz4RKv6iRX3jkbQ",
+      "category": "shopping",
+      "city": "Karachi",
+      "available_images": [
+        "Zamzama_Mall_Shopping_Centre_ChIJYbAiC649sz4RKv6iRX3jkbQ_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJeRoSmKgcGTkR9sWMwy9e-CM",
+      "place_name": "Zamzama Gun (Kim's Gun or Bhangianwali Toap)",
+      "s3_folder": "Zamzama_Gun_(Kim's_Gun_or_Bhangianwali_Toap)_Lahore_ChIJeRoSmKgcGTkR9sWMwy9e-CM",
+      "category": "arts-culture",
+      "city": "Lahore",
+      "available_images": [
+        "Zamzama_Gun_ChIJeRoSmKgcGTkR9sWMwy9e-CM_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJJcFO1ro_sz4RzSJU8QAvn2w",
+      "place_name": "Zameer Ansari Restaurant Gulshan",
+      "s3_folder": "Zameer_Ansari_Restaurant_Gulshan_ChIJJcFO1ro_sz4RzSJU8QAvn2w",
+      "category": "restaurants",
+      "city": "Karachi",
+      "available_images": [
+        "Zameer_Ansari_Restaurant_Gulshan_ChIJJcFO1ro_sz4RzSJU8QAvn2w_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJM-3Rc8A-sz4R-_IoziXrYNY",
+      "place_name": "Zameer Ansari BBQ",
+      "s3_folder": "Zameer_Ansari_BBQ_ChIJM-3Rc8A-sz4R-_IoziXrYNY",
+      "category": "restaurants",
+      "city": "Karachi",
+      "available_images": [
+        "Zameer_Ansari_BBQ_ChIJM-3Rc8A-sz4R-_IoziXrYNY_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJTVUiTW7A3zgR0_4iuna5DpA",
+      "place_name": "Zamana Cafe Serena",
+      "s3_folder": "Zamana_Cafe_Serena_ChIJTVUiTW7A3zgR0_4iuna5DpA",
+      "category": "cafes",
+      "city": "Islamabad",
+      "available_images": [
+        "Zamana_Cafe_Serena_ChIJTVUiTW7A3zgR0_4iuna5DpA_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJ-zXxtC8JGTkRzEEUPx79B60",
+      "place_name": "Zalmi's Kitchen RAYA",
+      "s3_folder": "Zalmi's_Kitchen_RAYA_ChIJ-zXxtC8JGTkRzEEUPx79B60",
+      "category": "restaurants",
+      "city": "Lahore",
+      "available_images": [
+        "Zalmi's_Kitchen_RAYA_ChIJ-zXxtC8JGTkRzEEUPx79B60_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJ043WhkIDGTkRGcRYIoyNRYU",
+      "place_name": "Zaks fitness hub",
+      "s3_folder": "Zaks_fitness_hub_Lahore_ChIJ043WhkIDGTkRGcRYIoyNRYU",
+      "category": "sports-fitness",
+      "city": "Lahore",
+      "available_images": [
+        "Zaks_fitness_hub_ChIJ043WhkIDGTkRGcRYIoyNRYU_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJ2W0g_-wFGTkRQLge0Lx3wnY",
+      "place_name": "Zakir Tikka",
+      "s3_folder": "Zakir_Tikka_ChIJ2W0g_-wFGTkRQLge0Lx3wnY",
+      "category": "restaurants",
+      "city": "Lahore",
+      "available_images": [
+        "Zakir_Tikka_ChIJ2W0g_-wFGTkRQLge0Lx3wnY_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJxcZZboG_3zgRO-mRaxkeVEs",
+      "place_name": "Zakia Aziz Plaza",
+      "s3_folder": "Zakia_Aziz_Plaza_Islamabad_ChIJxcZZboG_3zgRO-mRaxkeVEs",
+      "category": "shopping",
+      "city": "Islamabad",
+      "available_images": [
+        "Zakia_Aziz_Plaza_ChIJxcZZboG_3zgRO-mRaxkeVEs_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJwaXfi_0FGTkRM3iBVKBDFg0",
+      "place_name": "Zakhmi matching center",
+      "s3_folder": "Zakhmi_matching_center_Lahore_ChIJwaXfi_0FGTkRM3iBVKBDFg0",
+      "category": "shopping",
+      "city": "Lahore",
+      "available_images": [
+        "Zakhmi_matching_center_ChIJwaXfi_0FGTkRM3iBVKBDFg0_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJW6_ho8E_sz4R-rvf0OIK_Rg",
+      "place_name": "Zaiqa Restaurant",
+      "s3_folder": "Zaiqa_Restaurant_ChIJW6_ho8E_sz4R-rvf0OIK_Rg",
+      "category": "restaurants",
+      "city": "Karachi",
+      "available_images": [
+        "Zaiqa_Restaurant_ChIJW6_ho8E_sz4R-rvf0OIK_Rg_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJlVLKlM89sz4RKQnVmKy9CgQ",
+      "place_name": "Zaiqa food Restaurant",
+      "s3_folder": "Zaiqa_food_Restaurant_ChIJlVLKlM89sz4RKQnVmKy9CgQ",
+      "category": "restaurants",
+      "city": "Karachi",
+      "available_images": [
+        "Zaiqa_food_Restaurant_ChIJlVLKlM89sz4RKQnVmKy9CgQ_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJ_RQj6gI9sz4RUMFycicRct4",
+      "place_name": "Zaiqa",
+      "s3_folder": "Zaiqa_ChIJ_RQj6gI9sz4RUMFycicRct4",
+      "category": "restaurants",
+      "city": "Karachi",
+      "available_images": [
+        "Zaiqa_ChIJ_RQj6gI9sz4RUMFycicRct4_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJu3jjLU8_sz4RaedWO-Mk_-w",
+      "place_name": "Zaiqa-e-MASHRIQ",
+      "s3_folder": "Zaiqa-e-MASHRIQ_ChIJu3jjLU8_sz4RaedWO-Mk_-w",
+      "category": "restaurants",
+      "city": "Karachi",
+      "available_images": [
+        "Zaiqa-e-MASHRIQ_ChIJu3jjLU8_sz4RaedWO-Mk_-w_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJvfShxo8-sz4Rim0_yofm6xg",
+      "place_name": "Zain Shopping Mall",
+      "s3_folder": "Zain_Shopping_Mall_Karachi_ChIJvfShxo8-sz4Rim0_yofm6xg",
+      "category": "shopping",
+      "city": "Karachi",
+      "available_images": [
+        "Zain_Shopping_Mall_ChIJvfShxo8-sz4Rim0_yofm6xg_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJTWIVgQE9sz4RXoaFTqdXuDo",
+      "place_name": "Zainab Market Saddar Karachi",
+      "s3_folder": "Zainab_Market_Saddar_Karachi_Karachi_ChIJTWIVgQE9sz4RXoaFTqdXuDo",
+      "category": "shopping",
+      "city": "Karachi",
+      "available_images": [
+        "Zainab_Market_Saddar_Karachi_ChIJTWIVgQE9sz4RXoaFTqdXuDo_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJT0RBPFo_sz4RN5on9BSBMfU",
+      "place_name": "Zain-ul-Abideen Hotel",
+      "s3_folder": "Zain-ul-Abideen_Hotel_ChIJT0RBPFo_sz4RN5on9BSBMfU",
+      "category": "restaurants",
+      "city": "Karachi",
+      "available_images": [
+        "Zain-ul-Abideen_Hotel_ChIJT0RBPFo_sz4RN5on9BSBMfU_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJEwmEA2GV3zgRAyf-CIbppkc",
+      "place_name": "Zaika Des Des Ka",
+      "s3_folder": "Zaika_Des_Des_Ka_ChIJEwmEA2GV3zgRAyf-CIbppkc",
+      "category": "restaurants",
+      "city": "Islamabad",
+      "available_images": [
+        "Zaika_Des_Des_Ka_ChIJEwmEA2GV3zgRAyf-CIbppkc_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJHcwT7n_A3zgRVlNt5sIZUS4",
+      "place_name": "Zahoor Plaza",
+      "s3_folder": "Zahoor_Plaza_Islamabad_ChIJHcwT7n_A3zgRVlNt5sIZUS4",
+      "category": "shopping",
+      "city": "Islamabad",
+      "available_images": [
+        "Zahoor_Plaza_ChIJHcwT7n_A3zgRVlNt5sIZUS4_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJ6QQaZeq_3zgR6DTiHsRXHKI",
+      "place_name": "Zahoor Balti",
+      "s3_folder": "Zahoor_Balti_ChIJ6QQaZeq_3zgR6DTiHsRXHKI",
+      "category": "restaurants",
+      "city": "Islamabad",
+      "available_images": [
+        "Zahoor_Balti_ChIJ6QQaZeq_3zgR6DTiHsRXHKI_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJsZyZgVgbGTkRDfcxXSoFOKU",
+      "place_name": "Zafar Halwa Puri",
+      "s3_folder": "Zafar_Halwa_Puri_ChIJsZyZgVgbGTkRDfcxXSoFOKU",
+      "category": "restaurants",
+      "city": "Lahore",
+      "available_images": [
+        "Zafar_Halwa_Puri_ChIJsZyZgVgbGTkRDfcxXSoFOKU_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJbRlj9pYBGTkRqXjUVDZ3-GY",
+      "place_name": "Zaawiyah Restaurant",
+      "s3_folder": "Zaawiyah_Restaurant_ChIJbRlj9pYBGTkRqXjUVDZ3-GY",
+      "category": "restaurants",
+      "city": "Lahore",
+      "available_images": [
+        "Zaawiyah_Restaurant_ChIJbRlj9pYBGTkRqXjUVDZ3-GY_1.jpg"
+      ]
+    },
+    {
+      "place_id": "ChIJGSr1A8oFGTkR51l0T76Mhm4",
+      "place_name": "Yunus Emre Institute Turkish Cultural Center Lahore",
+      "s3_folder": "Yunus_Emre_Institute_Turkish_Cultural_Center_Lahore_Lahore_ChIJGSr1A8oFGTkR51l0T76Mhm4",
+      "category": "arts-culture",
+      "city": "Lahore",
+      "available_images": [
+        "Yunus_Emre_Institute_Turkish_Cultural_Center_Lahore_ChIJGSr1A8oFGTkR51l0T76Mhm4_1.jpg"
+      ]
+    }
+  ],
+  "metadata": {
+    "total_venues": 67,
+    "categories": {
+      "shopping": 15,
+      "restaurants": 35,
+      "arts-culture": 8,
+      "cafes": 2,
+      "health-wellness": 1,
+      "sports-fitness": 2,
+      "entertainment": 2
+    },
+    "cities": {
+      "Lahore": 35,
+      "Karachi": 25,
+      "Islamabad": 7
+    },
+    "image_pattern": "Folder name includes city, image name excludes city",
+    "example": {
+      "folder": "Zee_Avenue_Lahore_ChIJtRURlDQbGTkRQNFQ9aCui_g",
+      "image": "Zee_Avenue_ChIJtRURlDQbGTkRQNFQ9aCui_g_1.jpg"
+    }
+  }
+}
+
+
+
+
+

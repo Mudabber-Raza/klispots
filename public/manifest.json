@@ -1,0 +1,31 @@
+{
+  "name": "KLIspots - Discover Pakistan's Premium Lifestyle",
+  "short_name": "KLIspots",
+  "description": "AI-powered insights, local expert verification, and comprehensive data to find your perfect dining and lifestyle experiences in Pakistan.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#059669",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["lifestyle", "food", "travel", "entertainment"],
+  "lang": "en",
+  "dir": "ltr"
+}
+
+
+
+
