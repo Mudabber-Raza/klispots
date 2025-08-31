@@ -9,7 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Badge } from '@/components/ui/badge';
 import { Star, MapPin, Phone, Filter, Search } from 'lucide-react';
 import { sportsFitnessVenues, getSportsFitnessCities, getSportsFitnessTypes, SportsFitnessVenue } from '@/data/sports-fitness';
-import { SmartVenueImageV2 } from '@/utils/SmartVenueImageV2';
+import ComprehensiveVenueImage from '@/components/shared/ComprehensiveVenueImage';
 import CustomPagination from '@/components/ui/custom-pagination';
 
 const SportsFitnessListing = () => {
@@ -243,7 +243,7 @@ const SportsFitnessListing = () => {
                     <Link key={index} to={`/sports-fitness/${index + 1}`}>
                       <Card className="group cursor-pointer overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                         <div className="relative h-48 bg-gradient-to-br from-orange-100 to-orange-200">
-                          <SmartVenueImageV2
+                          <ComprehensiveVenueImage
                             category="sports-fitness"
                             placeId={(venue as any).original_place_id || venue.place_name}
                             placeName={venue.place_name}

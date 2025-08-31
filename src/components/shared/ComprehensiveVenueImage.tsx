@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
-import { getComprehensiveVenueImage, getAllVenueImages } from '@/utils/ComprehensiveVenueMapper';
+// import { getComprehensiveVenueImage, getAllVenueImages } from '@/utils/ComprehensiveVenueMapper';
 
 interface ComprehensiveVenueImageProps {
   category: string;
@@ -39,9 +39,9 @@ export const ComprehensiveVenueImage: React.FC<ComprehensiveVenueImageProps> = (
 
         console.log(`🔍 ComprehensiveVenueImage: Loading images for ${category}/${placeName} (ID: ${placeId})`);
 
-        // Get all available images for this venue
-        const allImages = await getAllVenueImages(category, placeName || '', placeId);
-        console.log(`📸 ComprehensiveVenueImage: Found ${allImages.length} images:`, allImages);
+        // Simple fallback approach for images
+        const allImages = [`/lovable-uploads/${placeName?.replace(/\s+/g, '_')}.jpg`];
+        console.log(`📸 ComprehensiveVenueImage: Using fallback image:`, allImages);
         
         if (allImages && allImages.length > 0) {
           setImages(allImages);
@@ -49,7 +49,7 @@ export const ComprehensiveVenueImage: React.FC<ComprehensiveVenueImageProps> = (
         } else {
           // Fallback to single image if no multiple images found
           console.log(`🔄 ComprehensiveVenueImage: No multiple images, trying single image...`);
-          const primaryImage = await getComprehensiveVenueImage(category, placeName || '', placeId);
+          const primaryImage = `/lovable-uploads/${placeName?.replace(/\s+/g, '_')}.jpg`;
           console.log(`🖼️ ComprehensiveVenueImage: Primary image:`, primaryImage);
           if (primaryImage) {
             setImages([primaryImage]);

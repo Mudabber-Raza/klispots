@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
-import { SmartVenueImageV2 } from '@/utils/SmartVenueImageV2';
+import ComprehensiveVenueImage from '@/components/shared/ComprehensiveVenueImage';
 
 interface VenueImageCarouselProps {
   category: string;
@@ -24,9 +24,9 @@ export const VenueImageCarousel: React.FC<VenueImageCarouselProps> = ({
     const loadImages = async () => {
       try {
         setLoading(true);
-        // Use SmartVenueImageV2 to find the best available image
-        const { findImageUrl } = await import('@/utils/SmartVenueImageV2');
-        const primaryImage = await findImageUrl(category, placeId, placeName);
+        // Use ComprehensiveVenueImage to find the best available image
+        // For now, we'll use a fallback approach
+        const primaryImage = `/lovable-uploads/${placeName?.replace(/\s+/g, '_')}.jpg`;
         
         // For now, we'll use a single image approach but with proper fallback
         // In the future, this could be expanded to load multiple images per venue
@@ -64,7 +64,7 @@ export const VenueImageCarousel: React.FC<VenueImageCarouselProps> = ({
   // If only one image, show it without carousel
   if (availableImages.length === 1) {
     return (
-      <SmartVenueImageV2
+      <ComprehensiveVenueImage
         category={category}
         placeId={placeId}
         placeName={placeName}
