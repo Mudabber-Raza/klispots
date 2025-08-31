@@ -74,12 +74,22 @@ const App = () => (
               <RestaurantDetail />
             </Suspense>
           } />
+          <Route path="/restaurant/:id-:slug" element={
+            <Suspense fallback={<LoadingSpinner />}>
+              <RestaurantDetail />
+            </Suspense>
+          } />
           <Route path="/restaurants" element={
             <Suspense fallback={<LoadingSpinner />}>
               <RestaurantListing />
             </Suspense>
           } />
           <Route path="/cafe/:id" element={
+            <Suspense fallback={<LoadingSpinner />}>
+              <CafeDetail />
+            </Suspense>
+          } />
+          <Route path="/cafe/:id-:slug" element={
             <Suspense fallback={<LoadingSpinner />}>
               <CafeDetail />
             </Suspense>
@@ -99,12 +109,22 @@ const App = () => (
               <ShoppingDetail />
             </Suspense>
           } />
+          <Route path="/shopping/:id-:slug" element={
+            <Suspense fallback={<LoadingSpinner />}>
+              <ShoppingDetail />
+            </Suspense>
+          } />
           <Route path="/entertainment" element={
             <Suspense fallback={<LoadingSpinner />}>
               <EntertainmentListing />
             </Suspense>
           } />
           <Route path="/entertainment/:id" element={
+            <Suspense fallback={<LoadingSpinner />}>
+              <EntertainmentDetail />
+            </Suspense>
+          } />
+          <Route path="/entertainment/:id-:slug" element={
             <Suspense fallback={<LoadingSpinner />}>
               <EntertainmentDetail />
             </Suspense>
@@ -119,6 +139,11 @@ const App = () => (
               <HealthWellnessDetail />
             </Suspense>
           } />
+          <Route path="/health-wellness/:id-:slug" element={
+            <Suspense fallback={<LoadingSpinner />}>
+              <HealthWellnessDetail />
+            </Suspense>
+          } />
           <Route path="/arts-culture" element={
             <Suspense fallback={<LoadingSpinner />}>
               <ArtsCultureListing />
@@ -129,12 +154,22 @@ const App = () => (
               <ArtsCultureDetail />
             </Suspense>
           } />
+          <Route path="/arts-culture/:id-:slug" element={
+            <Suspense fallback={<LoadingSpinner />}>
+              <ArtsCultureDetail />
+            </Suspense>
+          } />
           <Route path="/sports-fitness" element={
             <Suspense fallback={<LoadingSpinner />}>
               <SportsFitnessListing />
             </Suspense>
           } />
           <Route path="/sports-fitness/:id" element={
+            <Suspense fallback={<LoadingSpinner />}>
+              <SportsFitnessDetail />
+            </Suspense>
+          } />
+          <Route path="/sports-fitness/:id-:slug" element={
             <Suspense fallback={<LoadingSpinner />}>
               <SportsFitnessDetail />
             </Suspense>

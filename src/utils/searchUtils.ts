@@ -5,6 +5,7 @@ import { entertainmentVenues } from '@/data/entertainment';
 import { artsCultureVenues } from '@/data/arts-culture';
 import { sportsFitnessVenues } from '@/data/sports-fitness';
 import { healthWellnessVenues } from '@/data/health-wellness';
+import { createVenueUrl } from '@/utils/urlSlugs';
 
 export interface SearchResult {
   id: string;
@@ -103,7 +104,7 @@ export function searchAllVenues(query: string, filters: {
           neighborhood: restaurant.neighborhood,
           description: `${restaurant.cuisine} • ${restaurant.neighborhood}`,
           rating: Number(restaurant.total_score) || 0,
-          url: `/restaurant/${restaurant.restaurant_index}`,
+          url: createVenueUrl('restaurant', restaurant.restaurant_index, restaurant.place_name),
           matchScore: totalScore,
           actualPlaceId: restaurant.original_place_id || undefined
         });
@@ -139,7 +140,7 @@ export function searchAllVenues(query: string, filters: {
           neighborhood: cafe.neighborhood,
           description: `${cafe.cafe_category} • ${cafe.neighborhood}`,
           rating: Number(cafe.total_score) || 0,
-          url: `/cafe/${cafe.cafe_index}`,
+          url: createVenueUrl('cafe', cafe.cafe_index, cafe.place_name),
           matchScore: totalScore,
           actualPlaceId: cafe.original_place_id || undefined
         });
@@ -173,7 +174,7 @@ export function searchAllVenues(query: string, filters: {
           neighborhood: venue.neighborhood || '',
           description: `${venue.venue_type || 'Shopping'} • ${venue.neighborhood || ''}`,
           rating: Number(venue.total_score) || 0,
-          url: `/shopping/${index + 1}`,
+          url: createVenueUrl('shopping', index + 1, venue.place_name || 'Unknown'),
           matchScore: totalScore,
           actualPlaceId: undefined
         });
@@ -204,7 +205,7 @@ export function searchAllVenues(query: string, filters: {
           neighborhood: venue.neighborhood || '',
           description: `${venue.venue_type || 'Entertainment'} • ${venue.neighborhood || ''}`,
           rating: Number(venue.total_score) || 0,
-          url: `/entertainment/${index + 1}`,
+          url: createVenueUrl('entertainment', index + 1, venue.place_name || 'Unknown'),
           matchScore: totalScore,
           actualPlaceId: undefined
         });
@@ -231,7 +232,7 @@ export function searchAllVenues(query: string, filters: {
           neighborhood: venue.neighborhood || '',
           description: `${venue.venue_category || 'Arts & Culture'} • ${venue.neighborhood || ''}`,
           rating: Number(venue.total_score) || 0,
-          url: `/arts-culture/${index + 1}`,
+          url: createVenueUrl('arts-culture', index + 1, venue.place_name || 'Unknown'),
           matchScore: totalScore,
           actualPlaceId: undefined
         });
@@ -266,7 +267,7 @@ export function searchAllVenues(query: string, filters: {
           neighborhood: venue.neighborhood || '',
           description: `${venue.facility_type || 'Sports & Fitness'} • ${venue.neighborhood || ''}`,
           rating: Number(venue.total_score) || 0,
-          url: `/sports-fitness/${venue.venue_index}`,
+          url: createVenueUrl('sports-fitness', venue.venue_index, venue.place_name || 'Unknown'),
           matchScore: totalScore,
           actualPlaceId: undefined
         });
@@ -301,7 +302,7 @@ export function searchAllVenues(query: string, filters: {
           neighborhood: venue.neighborhood || '',
           description: `${venue.facility_type || 'Health & Wellness'} • ${venue.neighborhood || ''}`,
           rating: Number(venue.total_score) || 0,
-          url: `/health-wellness/${index + 1}`,
+          url: createVenueUrl('health-wellness', index + 1, venue.place_name || 'Unknown'),
           matchScore: totalScore,
           actualPlaceId: undefined
         });

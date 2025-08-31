@@ -11,6 +11,7 @@ import { Star, MapPin, Phone, Filter, Search } from 'lucide-react';
 import { sportsFitnessVenues, getSportsFitnessCities, getSportsFitnessTypes, SportsFitnessVenue } from '@/data/sports-fitness';
 import ComprehensiveVenueImage from '@/components/shared/ComprehensiveVenueImage';
 import CustomPagination from '@/components/ui/custom-pagination';
+import { createVenueUrl } from '@/utils/urlSlugs';
 
 const SportsFitnessListing = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -240,7 +241,7 @@ const SportsFitnessListing = () => {
                 {/* Results Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
                   {currentPageVenues.map((venue, index) => (
-                    <Link key={index} to={`/sports-fitness/${venue.venue_index}`}>
+                    <Link key={index} to={createVenueUrl('sports-fitness', venue.venue_index, venue.place_name || 'Unknown')}>
                       <Card className="group cursor-pointer overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                         <div className="relative h-48 bg-gradient-to-br from-orange-100 to-orange-200">
                           <ComprehensiveVenueImage
