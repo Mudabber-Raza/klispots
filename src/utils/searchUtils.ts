@@ -249,8 +249,12 @@ export function searchAllVenues(query: string, filters: {
       totalScore += searchText(venue.neighborhood || '', query) * 2;
       totalScore += searchText(venue.city || '', query) * 1.5;
       
-      if (queryLower.includes('gym') || queryLower.includes('fitness') || queryLower.includes('sports')) {
-        totalScore += 5; // Higher score for gym/fitness searches in sports-fitness category
+      if (queryLower.includes('sports') || queryLower.includes('fitness')) {
+        totalScore += 3;
+      }
+      // Reduce score for gym searches in sports-fitness to prioritize health-wellness
+      if (queryLower.includes('gym')) {
+        totalScore -= 2;
       }
       
       if (totalScore > 0.5 && (!filters.city || (venue.city || '').toLowerCase() === filters.city.toLowerCase())) {
@@ -283,9 +287,9 @@ export function searchAllVenues(query: string, filters: {
       if (queryLower.includes('health') || queryLower.includes('wellness') || queryLower.includes('spa')) {
         totalScore += 3;
       }
-      // Reduce score for gym searches in health-wellness to prioritize sports-fitness
-      if (queryLower.includes('gym') || queryLower.includes('fitness')) {
-        totalScore -= 2;
+      // Higher score for gym searches in health-wellness category
+      if (queryLower.includes('gym')) {
+        totalScore += 5;
       }
       
       if (totalScore > 0.5 && (!filters.city || (venue.city || '').toLowerCase() === filters.city.toLowerCase())) {
@@ -371,20 +375,22 @@ export function getPopularSearches(category?: string): string[] {
       'Heritage Sites'
     ],
     'sports-fitness': [
-      'Gyms Near Me',
       'Swimming Pools',
       'Sports Clubs',
       'Fitness Centers',
-      'Yoga Studios',
-      'Martial Arts'
+      'Martial Arts',
+      'Tennis Courts',
+      'Football Fields'
     ],
     'health-wellness': [
+      'Gyms Near Me',
       'Spa Services',
       'Wellness Centers',
       'Massage Therapy',
       'Beauty Salons',
       'Health Clinics',
-      'Meditation Centers'
+      'Meditation Centers',
+      'Yoga Studios'
     ]
   };
   
