@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import ComprehensiveVenueImage from '@/components/shared/ComprehensiveVenueImage';
+import { getVenueImage } from '@/utils/imageMapping';
 
 interface VenueImageCarouselProps {
   category: string;
@@ -24,9 +25,8 @@ export const VenueImageCarousel: React.FC<VenueImageCarouselProps> = ({
     const loadImages = async () => {
       try {
         setLoading(true);
-        // Use ComprehensiveVenueImage to find the best available image
-        // For now, we'll use a fallback approach
-        const primaryImage = `/lovable-uploads/${placeName?.replace(/\s+/g, '_')}.jpg`;
+        // Use proper image mapping to find the best available image
+        const primaryImage = getVenueImage(placeName || '', category);
         
         // For now, we'll use a single image approach but with proper fallback
         // In the future, this could be expanded to load multiple images per venue
