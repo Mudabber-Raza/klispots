@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Star, MapPin, Phone, Clock, Wifi, Car, Users, Shield, ChefHat } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { createVenueUrl } from '@/utils/urlSlugs';
 
 const FeaturedPlaces = () => {
   const featuredPlace = {
@@ -98,7 +99,7 @@ const FeaturedPlaces = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 mb-16">
           {/* Main Featured Place */}
           <div className="lg:col-span-2">
-            <Link to={`/restaurant/${featuredPlace.id}`}>
+            <Link to={createVenueUrl('restaurant', featuredPlace.id, featuredPlace.name)}>
               <Card className="overflow-hidden shadow-xl border-0 bg-gradient-to-br from-white to-gray-50 hover:shadow-2xl transition-shadow cursor-pointer">
                 <div className="relative h-80">
                   {/* Hero Image */}
@@ -220,7 +221,7 @@ const FeaturedPlaces = () => {
           {/* Other Featured Places */}
           <div className="space-y-6">
             {otherPlaces.map((place) => (
-              <Link key={place.id} to={place.category === 'Cafe' ? `/cafe/${place.id}` : `/restaurant/${place.id}`}>
+              <Link key={place.id} to={place.category === 'Cafe' ? createVenueUrl('cafe', place.id, place.name) : createVenueUrl('restaurant', place.id, place.name)}>
                 <Card className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
                   {/* Image Section */}
                   {place.imageUrl && (

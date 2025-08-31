@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { MapPin, Star, Clock, Utensils } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ComprehensiveVenueImage from '@/components/shared/ComprehensiveVenueImage';
+import { createVenueUrl } from '@/utils/urlSlugs';
 
 const CitySpotlight = () => {
   const cities = [
@@ -19,7 +20,7 @@ const CitySpotlight = () => {
           score: 8.8, 
           status: 'Open',
           id: '1862',
-          route: '/restaurant/1862',
+          route: createVenueUrl('restaurant', '1862', 'Istanbul'),
           s3Category: 'restaurants'
         },
         { 
@@ -28,7 +29,7 @@ const CitySpotlight = () => {
           score: 8.5, 
           status: 'Open',
           id: '182',
-          route: '/cafe/182',
+          route: createVenueUrl('cafe', '182', 'SENZO'),
           s3Category: 'cafes'
         },
         { 
@@ -37,7 +38,7 @@ const CitySpotlight = () => {
           score: 8.06, 
           status: 'Open',
           id: '10',
-          route: '/shopping/10',
+          route: createVenueUrl('shopping', '10', 'DOLMEN MALL - Clifton'),
           s3Category: 'shopping'
         },
         { 
@@ -46,7 +47,7 @@ const CitySpotlight = () => {
           score: 8.7, 
           status: 'Open',
           id: '34',
-          route: '/arts-culture/34',
+          route: createVenueUrl('arts-culture', '34', 'The Haveli: A Museum of Textiles'),
           s3Category: 'arts-culture'
         },
         { 
@@ -55,7 +56,7 @@ const CitySpotlight = () => {
           score: 8.4, 
           status: 'Open',
           id: '15',
-          route: '/entertainment/15',
+          route: createVenueUrl('entertainment', '15', 'Arts Council of Pakistan Karachi'),
           s3Category: 'entertainment'
         },
         { 
@@ -64,7 +65,7 @@ const CitySpotlight = () => {
           score: 8.1, 
           status: 'Open',
           id: '10',
-          route: '/sports-fitness/10',
+          route: createVenueUrl('sports-fitness', '10', 'Club Vibora'),
           s3Category: 'sports-fitness'
         }
       ],
@@ -81,7 +82,7 @@ const CitySpotlight = () => {
           score: 8.9, 
           status: 'Open',
           id: '1239',
-          route: '/restaurant/1239',
+          route: createVenueUrl('restaurant', '1239', 'Lahore Bamboo Union'),
           s3Category: 'restaurants'
         },
         { 
@@ -90,7 +91,7 @@ const CitySpotlight = () => {
           score: 8.6, 
           status: 'Open',
           id: '282',
-          route: '/cafe/282',
+          route: createVenueUrl('cafe', '282', 'Artisan Coffee Roaster'),
           s3Category: 'cafes'
         },
         { 
@@ -99,7 +100,7 @@ const CitySpotlight = () => {
           score: 8.3, 
           status: 'Open',
           id: '1',
-          route: '/shopping/1',
+          route: createVenueUrl('shopping', '1', 'Packages Mall'),
           s3Category: 'shopping'
         },
         { 
@@ -108,7 +109,7 @@ const CitySpotlight = () => {
           score: 8.5, 
           status: 'Open',
           id: '369',
-          route: '/health-wellness/369',
+          route: createVenueUrl('health-wellness', '369', 'EVOKE FITNESS ARENA - GYM'),
           s3Category: 'health-wellness'
         },
         { 
@@ -117,7 +118,7 @@ const CitySpotlight = () => {
           score: 8.8, 
           status: 'Open',
           id: '229',
-          route: '/arts-culture/229',
+          route: createVenueUrl('arts-culture', '229', 'Maharani Jindan Kaur Haveli: Sarkar-i Khalsa Gallery'),
           s3Category: 'arts-culture'
         },
         { 
@@ -126,7 +127,7 @@ const CitySpotlight = () => {
           score: 8.2, 
           status: 'Open',
           id: '130',
-          route: '/sports-fitness/130',
+          route: createVenueUrl('sports-fitness', '130', 'Padel Park Lahore'),
           s3Category: 'sports-fitness'
         }
       ],
@@ -143,7 +144,7 @@ const CitySpotlight = () => {
           score: 8.6, 
           status: 'Open',
           id: '608',
-          route: '/restaurant/608',
+          route: createVenueUrl('restaurant', '608', '1969 Restaurant'),
           s3Category: 'restaurants'
         },
         { 
@@ -152,7 +153,7 @@ const CitySpotlight = () => {
           score: 8.4, 
           status: 'Open',
           id: '603',
-          route: '/cafe/603',
+          route: createVenueUrl('cafe', '603', 'THE CROWN LOUNGE'),
           s3Category: 'cafes'
         },
         { 
@@ -161,7 +162,7 @@ const CitySpotlight = () => {
           score: 8.1, 
           status: 'Open',
           id: '3',
-          route: '/shopping/3',
+          route: createVenueUrl('shopping', '3', 'Centaurus Mall'),
           s3Category: 'shopping'
         },
         { 
@@ -170,7 +171,7 @@ const CitySpotlight = () => {
           score: 8.3, 
           status: 'Open',
           id: '113',
-          route: '/entertainment/113',
+          route: createVenueUrl('entertainment', '113', 'Fun Cage'),
           s3Category: 'entertainment'
         },
         { 
@@ -179,7 +180,7 @@ const CitySpotlight = () => {
           score: 8.5, 
           status: 'Open',
           id: '230',
-          route: '/health-wellness/230',
+          route: createVenueUrl('health-wellness', '230', '(TFR) The Fitness Revolution'),
           s3Category: 'health-wellness'
         },
         { 
@@ -188,7 +189,7 @@ const CitySpotlight = () => {
           score: 8.0, 
           status: 'Open',
           id: '288',
-          route: '/sports-fitness/288',
+          route: createVenueUrl('sports-fitness', '288', 'Court Cricket (Rooftop)'),
           s3Category: 'sports-fitness'
         }
       ],
