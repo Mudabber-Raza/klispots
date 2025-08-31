@@ -25,8 +25,8 @@ export const VenueImageCarousel: React.FC<VenueImageCarouselProps> = ({
     const loadImages = async () => {
       try {
         setLoading(true);
-        // Use proper image mapping to find the best available image
-        const primaryImage = getVenueImage(placeName || '', category);
+        // Use proper S3 image mapping to find the best available image
+        const primaryImage = getVenueImage(placeName || '', category, placeId);
         
         // For now, we'll use a single image approach but with proper fallback
         // In the future, this could be expanded to load multiple images per venue

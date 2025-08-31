@@ -39,8 +39,8 @@ export const ComprehensiveVenueImage: React.FC<ComprehensiveVenueImageProps> = (
 
         console.log(`🔍 ComprehensiveVenueImage: Loading images for ${category}/${placeName} (ID: ${placeId})`);
 
-        // Get all available images for this venue using proper mapping
-        const allImages = getAllVenueImages(placeName || '', category);
+        // Get all available images for this venue using proper S3 mapping
+        const allImages = getAllVenueImages(placeName || '', category, placeId);
         console.log(`📸 ComprehensiveVenueImage: Found ${allImages.length} images:`, allImages);
         
         if (allImages && allImages.length > 0) {
@@ -49,7 +49,7 @@ export const ComprehensiveVenueImage: React.FC<ComprehensiveVenueImageProps> = (
         } else {
           // Fallback to single image if no multiple images found
           console.log(`🔄 ComprehensiveVenueImage: No multiple images, trying single image...`);
-          const primaryImage = getVenueImage(placeName || '', category);
+          const primaryImage = getVenueImage(placeName || '', category, placeId);
           console.log(`🖼️ ComprehensiveVenueImage: Primary image:`, primaryImage);
           if (primaryImage) {
             setImages([primaryImage]);
