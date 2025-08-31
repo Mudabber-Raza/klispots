@@ -1,0 +1,167 @@
+{
+  "karachi": [
+    {
+      "name": "Casbah Seafood Restaurant",
+      "category": "Restaurant",
+      "score": 8.95,
+      "city": "karachi",
+      "status": "Open",
+      "id": 1806,
+      "route": "/restaurant/1806"
+    },
+    {
+      "name": "FUMA",
+      "category": "Cafe",
+      "score": 8.76,
+      "city": "karachi",
+      "status": "Open",
+      "id": 10,
+      "route": "/cafe/10"
+    },
+    {
+      "name": "Legends Arena",
+      "category": "Entertainment",
+      "score": 9.08,
+      "city": "karachi",
+      "status": "Open",
+      "id": 35,
+      "route": "/entertainment/35"
+    },
+    {
+      "name": "TRIFIT FITNESS CLUB (Luckyone Mall)",
+      "category": "Health & Wellness",
+      "score": 8.97,
+      "city": "karachi",
+      "status": "Open",
+      "id": 14,
+      "route": "/health-wellness/14"
+    },
+    {
+      "category": "Sports & Fitness",
+      "score": 8.93,
+      "city": "karachi",
+      "status": "Open",
+      "id": 3,
+      "route": "/sports-fitness/3"
+    },
+    {
+      "name": "Casbah Seafood Restaurant",
+      "category": "Restaurant",
+      "score": 8.95,
+      "city": "karachi",
+      "status": "Open",
+      "id": "1806-0",
+      "route": "/restaurant/1806-0"
+    }
+  ],
+  "lahore": [
+    {
+      "name": "Ghani Shinwari Restaurant",
+      "category": "Restaurant",
+      "score": 8.85,
+      "city": "lahore",
+      "status": "Open",
+      "id": 1173,
+      "route": "/restaurant/1173"
+    },
+    {
+      "name": "PARMO Cafe & Patisserie - Specialists in Chicken Parmesan, Fajitas, Enchiladas, Cakes, Cupcakes and Desserts",
+      "category": "Cafe",
+      "score": 8.78,
+      "city": "lahore",
+      "status": "Open",
+      "id": 805,
+      "route": "/cafe/805"
+    },
+    {
+      "name": "FuNation",
+      "category": "Entertainment",
+      "score": 9.01,
+      "city": "lahore",
+      "status": "Open",
+      "id": 68,
+      "route": "/entertainment/68"
+    },
+    {
+      "name": "Physiogic Physiotherapy Clinic",
+      "category": "Health & Wellness",
+      "score": 8.99,
+      "city": "lahore",
+      "status": "Open",
+      "id": 11,
+      "route": "/health-wellness/11"
+    },
+    {
+      "category": "Sports & Fitness",
+      "score": 8.77,
+      "city": "lahore",
+      "status": "Open",
+      "id": 121,
+      "route": "/sports-fitness/121"
+    },
+    {
+      "name": "Ghani Shinwari Restaurant",
+      "category": "Restaurant",
+      "score": 8.85,
+      "city": "lahore",
+      "status": "Open",
+      "id": "1173-0",
+      "route": "/restaurant/1173-0"
+    }
+  ],
+  "islamabad": [
+    {
+      "name": "Chai Saraye",
+      "category": "Cafe",
+      "score": 8.76,
+      "city": "islamabad",
+      "status": "Open",
+      "id": 470,
+      "route": "/cafe/470"
+    },
+    {
+      "name": "GritFit Prime",
+      "category": "Health & Wellness",
+      "score": 9.1,
+      "city": "islamabad",
+      "status": "Open",
+      "id": 8,
+      "route": "/health-wellness/8"
+    },
+    {
+      "category": "Sports & Fitness",
+      "score": 8.79,
+      "city": "islamabad",
+      "status": "Open",
+      "id": 256,
+      "route": "/sports-fitness/256"
+    },
+    {
+      "name": "Chai Saraye",
+      "category": "Cafe",
+      "score": 8.76,
+      "city": "islamabad",
+      "status": "Open",
+      "id": "470-0",
+      "route": "/cafe/470-0"
+    },
+    {
+      "name": "Azure Cafe",
+      "category": "Cafe",
+      "score": 8.79,
+      "city": "islamabad",
+      "status": "Open",
+      "id": "474-1",
+      "route": "/cafe/474-1"
+    },
+    {
+      "name": "Feeka Coffee & Goods",
+      "category": "Cafe",
+      "score": 9.06,
+      "city": "islamabad",
+      "status": "Open",
+      "id": "590-2",
+      "route": "/cafe/590-2"
+    }
+  ]
+}

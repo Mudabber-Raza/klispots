@@ -1,0 +1,28 @@
+[
+  {
+    "venue": {
+      "place_id": "ChIJsVpH2YU_sz4RsNinOKeBhhw",
+      "place_name": "The Haveli: A Museum of Textiles",
+      "s3_folder": "The_Haveli__A_Museum_of_Textiles_Karachi_ChIJsVpH2YU_sz4RsNinOKeBhhw",
+      "category": "arts-culture",
+      "city": "Karachi",
+      "neighborhood": "Scheme, Karachi East",
+      "full_address": "Plot no B1, KDA, 1 Miran Mohammed Shah Rd, Scheme, Karachi, Pakistan",
+      "phone_number": "+92 21 34311351",
+      "website_url": "https://nasreenkihaveli.com/",
+      "google_maps_link": "https://maps.google.com/?cid=2055472835151255728",
+      "about": "The Haveli: A Museum of Textiles is Karachi's first museum dedicated to showcasing and conserving heritage textiles from Pakistan and surrounding regions.  It houses a significant collection spanning centuries, offering a unique insight into the country's rich textile traditions.  The museum is housed in a beautiful haveli (mansion).",
+      "operating_hours": "Monday: Closed     * Tuesday - Sunday: 11:00 AM - 6:00 PM",
+      "total_score": 8.37,
+      "venue_index": 0,
+      "available_images": [],
+      "mapping_method": "no_images_found"
+    },
+    "alternative_folder": "The_Haveli__A_Museum_of_Textiles_Karachi",
+    "images": [
+      "The_Haveli__A_Museum_of_Textiles_1.jpg",
+      "The_Haveli__A_Museum_of_Textiles_2.jpg"
+    ],
+    "original_expected": "The_Haveli__A_Museum_of_Textiles_Karachi_ChIJsVpH2YU_sz4RsNinOKeBhhw"
+  }
+]

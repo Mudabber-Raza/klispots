@@ -1,0 +1,136 @@
+{
+  "karachi": [
+    {
+      "name": "Casbah Seafood Restaurant",
+      "category": "Restaurant",
+      "score": 8.95,
+      "city": "karachi",
+      "status": "Open",
+      "id": 1806
+    },
+    {
+      "name": "Dynasty Chinese Restaurant",
+      "category": "Restaurant",
+      "score": 9.08,
+      "city": "karachi",
+      "status": "Open",
+      "id": 1822
+    },
+    {
+      "name": "The Kebab House",
+      "category": "Restaurant",
+      "score": 9.05,
+      "city": "karachi",
+      "status": "Open",
+      "id": 1823
+    },
+    {
+      "name": "Port Grand",
+      "category": "Restaurant",
+      "score": 9.05,
+      "city": "karachi",
+      "status": "Open",
+      "id": 1829
+    },
+    {
+      "name": "Istanbul",
+      "category": "Restaurant",
+      "score": 8.76,
+      "city": "karachi",
+      "status": "Open",
+      "id": 1861
+    },
+    {
+      "name": "Mullah Nihari's Family Hall",
+      "category": "Restaurant",
+      "score": 8.92,
+      "city": "karachi",
+      "status": "Open",
+      "id": 1912
+    }
+  ],
+  "lahore": [
+    {
+      "name": "Ghani Shinwari Restaurant",
+      "category": "Restaurant",
+      "score": 8.85,
+      "city": "lahore",
+      "status": "Open",
+      "id": 1173
+    },
+    {
+      "name": "Fuchsia Kitchen",
+      "category": "Restaurant",
+      "score": 9,
+      "city": "lahore",
+      "status": "Open",
+      "id": 1180
+    },
+    {
+      "name": "Ambarsariya Restaurant",
+      "category": "Restaurant",
+      "score": 9.1,
+      "city": "lahore",
+      "status": "Open",
+      "id": 1186
+    },
+    {
+      "name": "Mandarin Kitchen",
+      "category": "Restaurant",
+      "score": 8.76,
+      "city": "lahore",
+      "status": "Open",
+      "id": 1198
+    },
+    {
+      "name": "Andaaz Restaurant",
+      "category": "Restaurant",
+      "score": 9.05,
+      "city": "lahore",
+      "status": "Open",
+      "id": 1214
+    },
+    {
+      "name": "What a Paratha",
+      "category": "Restaurant",
+      "score": 8.9,
+      "city": "lahore",
+      "status": "Open",
+      "id": 1223
+    }
+  ],
+  "islamabad": [
+    {
+      "name": "Chai Saraye",
+      "category": "Cafe",
+      "score": 8.76,
+      "city": "islamabad",
+      "status": "Open",
+      "id": 470
+    },
+    {
+      "name": "Azure Cafe",
+      "category": "Cafe",
+      "score": 8.79,
+      "city": "islamabad",
+      "status": "Open",
+      "id": 474
+    },
+    {
+      "name": "Feeka Coffee & Goods",
+      "category": "Cafe",
+      "score": 9.06,
+      "city": "islamabad",
+      "status": "Open",
+      "id": 590
+    },
+    {
+      "name": "Native Specialty Coffee & Eatery",
+      "category": "Cafe",
+      "score": 8.76,
+      "city": "islamabad",
+      "status": "Open",
+      "id": 612
+    }
+  ]
+}
