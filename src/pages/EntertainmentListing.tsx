@@ -12,6 +12,7 @@ import { Star, MapPin, Phone, Filter, Search } from 'lucide-react';
 import { entertainmentVenues, getEntertainmentCities, getEntertainmentTypes, EntertainmentVenue } from '@/data/entertainment';
 import { ComprehensiveVenueImage } from '@/components/shared/ComprehensiveVenueImage';
 import CustomPagination from '@/components/ui/custom-pagination';
+import { createVenueUrl } from '@/utils/urlSlugs';
 
 const EntertainmentListing = () => {
   const location = useLocation();
@@ -297,7 +298,7 @@ const EntertainmentListing = () => {
                     }
                     
                     return (
-                      <Link key={venueId} to={`/entertainment/${venueId}`}>
+                      <Link key={venueId} to={createVenueUrl('entertainment', venueId, venue.place_name || 'Unknown')}>
                         <Card className="group cursor-pointer overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                           <div className="listing-card-container">
                             <ComprehensiveVenueImage

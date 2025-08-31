@@ -12,6 +12,7 @@ import { Star, MapPin, Phone, Filter, Search } from 'lucide-react';
 import { healthWellnessVenues, getHealthWellnessCities, getHealthWellnessTypes, HealthWellnessVenue } from '@/data/health-wellness';
 import { ComprehensiveVenueImage } from '@/components/shared/ComprehensiveVenueImage';
 import CustomPagination from '@/components/ui/custom-pagination';
+import { createVenueUrl } from '@/utils/urlSlugs';
 
 const HealthWellnessListing = () => {
   const location = useLocation();
@@ -299,7 +300,7 @@ const HealthWellnessListing = () => {
                     }
                     
                     return (
-                      <Link key={venueId} to={`/health-wellness/${venueId}`}>
+                      <Link key={venueId} to={createVenueUrl('health-wellness', venueId, venue.place_name || 'Unknown')}>
                         <Card className="group cursor-pointer overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                           <div className="listing-card-container">
                             <ComprehensiveVenueImage

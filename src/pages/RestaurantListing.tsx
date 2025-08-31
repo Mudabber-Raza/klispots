@@ -13,6 +13,7 @@ import ComprehensiveVenueImage from '@/components/shared/ComprehensiveVenueImage
 import CustomPagination from '@/components/ui/custom-pagination';
 import VenueCardSkeleton from '@/components/ui/venue-card-skeleton';
 import { useURLManager } from '@/utils/urlManager';
+import { createVenueUrl } from '@/utils/urlSlugs';
 
 const RestaurantListing = () => {
   const location = useLocation();
@@ -340,7 +341,7 @@ const RestaurantListing = () => {
                     ))
                   ) : (
                     currentPageRestaurants.map((restaurant) => (
-                    <Link key={restaurant.restaurant_index} to={`/restaurant/${restaurant.restaurant_index}`}>
+                    <Link key={restaurant.restaurant_index} to={createVenueUrl('restaurant', restaurant.restaurant_index, restaurant.place_name)}>
                       <Card className="group cursor-pointer overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                         <div className="listing-card-container">
                           <ComprehensiveVenueImage

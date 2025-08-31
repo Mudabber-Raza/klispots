@@ -12,6 +12,7 @@ import { Star, MapPin, Phone, Filter, Search } from 'lucide-react';
 import { artsCultureVenues, getArtsCultureCities, getArtsCultureCategories, ArtsCultureVenue } from '@/data/arts-culture';
 import { ComprehensiveVenueImage } from '@/components/shared/ComprehensiveVenueImage';
 import CustomPagination from '@/components/ui/custom-pagination';
+import { createVenueUrl } from '@/utils/urlSlugs';
 
 const ArtsCultureListing = () => {
   const location = useLocation();
@@ -287,7 +288,7 @@ const ArtsCultureListing = () => {
                     }
                       
                     return (
-                      <Link key={venueId} to={`/arts-culture/${venueId}`}>
+                      <Link key={venueId} to={createVenueUrl('arts-culture', venueId, venue.place_name || 'Unknown')}>
                       <Card className="group cursor-pointer overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                         <div className="listing-card-container">
                           <ComprehensiveVenueImage
