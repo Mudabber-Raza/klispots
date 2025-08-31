@@ -45,7 +45,7 @@ src/utils/Comprehensive*.ts
 # src/utils/Smart*.tsx
 
 # Data files (keep only essential ones)
-src/data/comprehensive-venue-mappings*.json
+# src/data/comprehensive-venue-mappings*.json
 src/data/venue-image-mappings*.json
 still-unmapped-venues.json
 restaurant-cafe-mapping-investigation.json
