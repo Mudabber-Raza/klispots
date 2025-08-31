@@ -15,6 +15,9 @@ const mappings = comprehensiveMappings as {
 
 const S3_BASE_URL = 'https://klispots-venue-images.s3.eu-north-1.amazonaws.com';
 
+// Fallback image for restaurants when S3 fails
+const RESTAURANT_FALLBACK_IMAGE = 'https://th.bing.com/th/id/R.e5e24c0619512148b49064c4a0f7ec43?rik=KOKrCSELBkyRCw&riu=http%3a%2f%2fimages.unsplash.com%2fphoto-1582920980795-2f97b0834c58%3fcrop%3dentropy%26cs%3dtinysrgb%26fit%3dmax%26fm%3djpg%26ixid%3dMnwxMjA3fDB8MXxzZWFyY2h8M3x8cmVzdGF1cmFudHN8fDB8fHx8MTYxOTMxMDYxNA%26ixlib%3drb-1.2.1%26q%3d80%26w%3d1080&ehk=tjXn4HLoD22SD8pX8hAxRWKRnjuUiIh1Vud22FKgbHQ%3d&risl=&pid=ImgRaw&r=0';
+
 // Cache for found mappings
 const foundMappings = new Map<string, string | null>();
 
@@ -182,7 +185,12 @@ const findImageUrl = async (
   
   if (foundMappings.has(cacheKey)) {
     const result = foundMappings.get(cacheKey);
-    return result || customFallback || '/placeholder.svg';
+    if (result) return result;
+    // Use restaurant-specific fallback for restaurants
+    if (category === 'restaurants' || category === 'restaurant') {
+      return customFallback || RESTAURANT_FALLBACK_IMAGE;
+    }
+    return customFallback || '/placeholder.svg';
   }
 
   console.log(`🔍 SmartVenueImageV2: Searching for ${category}/${placeName} (${placeId})`);
@@ -191,6 +199,10 @@ const findImageUrl = async (
   if (!mappings || !mappings.venues) {
     console.warn('⚠️ mappings not properly loaded, using fallback');
     foundMappings.set(cacheKey, null);
+    // Use restaurant-specific fallback for restaurants
+    if (category === 'restaurants' || category === 'restaurant') {
+      return customFallback || RESTAURANT_FALLBACK_IMAGE;
+    }
     return customFallback || '/placeholder.svg';
   }
 
@@ -273,6 +285,10 @@ const findImageUrl = async (
 
   console.log(`❌ No S3 image found for ${category}/${placeName} (${placeId})`);
   foundMappings.set(cacheKey, null);
+  // Use restaurant-specific fallback for restaurants
+  if (category === 'restaurants' || category === 'restaurant') {
+    return customFallback || RESTAURANT_FALLBACK_IMAGE;
+  }
   return customFallback || '/placeholder.svg';
 };
 
@@ -289,7 +305,13 @@ export const SmartVenueImageV2: React.FC<SmartVenueImageProps> = ({
   onLoad,
   onError
 }) => {
-  const [imageSrc, setImageSrc] = useState<string>(fallback || '/placeholder.svg');
+  const [imageSrc, setImageSrc] = useState<string>(() => {
+    // Use restaurant-specific fallback for restaurants
+    if ((category === 'restaurants' || category === 'restaurant') && !fallback) {
+      return RESTAURANT_FALLBACK_IMAGE;
+    }
+    return fallback || '/placeholder.svg';
+  });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -300,7 +322,12 @@ export const SmartVenueImageV2: React.FC<SmartVenueImageProps> = ({
         setImageSrc(imageUrl);
       } catch (error) {
         console.error('Error loading S3 image:', error);
-        setImageSrc(fallback || '/placeholder.svg');
+        // Use restaurant-specific fallback for restaurants
+        if (category === 'restaurants' || category === 'restaurant') {
+          setImageSrc(fallback || RESTAURANT_FALLBACK_IMAGE);
+        } else {
+          setImageSrc(fallback || '/placeholder.svg');
+        }
       } finally {
         setLoading(false);
       }
@@ -315,7 +342,13 @@ export const SmartVenueImageV2: React.FC<SmartVenueImageProps> = ({
 
   const handleImageError = () => {
     console.warn(`Failed to load S3 image for ${category}/${placeName}`);
-    const fallbackImage = fallback || '/placeholder.svg';
+    // Use restaurant-specific fallback for restaurants
+    let fallbackImage;
+    if (category === 'restaurants' || category === 'restaurant') {
+      fallbackImage = fallback || RESTAURANT_FALLBACK_IMAGE;
+    } else {
+      fallbackImage = fallback || '/placeholder.svg';
+    }
     setImageSrc(fallbackImage);
     onError?.();
   };
