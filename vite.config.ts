@@ -17,6 +17,15 @@ export default defineConfig({
   build: {
     target: 'es2015',
     minify: 'esbuild',
+    rollupOptions: {
+      external: [],
+      output: {
+        manualChunks: undefined,
+      },
+    },
+    commonjsOptions: {
+      include: [/node_modules/],
+    },
   },
   optimizeDeps: {
     exclude: ['@rollup/rollup-linux-x64-gnu']
