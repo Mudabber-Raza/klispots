@@ -240,7 +240,7 @@ const SportsFitnessListing = () => {
                 {/* Results Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
                   {currentPageVenues.map((venue, index) => (
-                    <Link key={index} to={`/sports-fitness/${index + 1}`}>
+                    <Link key={index} to={`/sports-fitness/${venue.venue_index}`}>
                       <Card className="group cursor-pointer overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                         <div className="relative h-48 bg-gradient-to-br from-orange-100 to-orange-200">
                           <ComprehensiveVenueImage

@@ -250,7 +250,7 @@ export function searchAllVenues(query: string, filters: {
       totalScore += searchText(venue.city || '', query) * 1.5;
       
       if (queryLower.includes('gym') || queryLower.includes('fitness') || queryLower.includes('sports')) {
-        totalScore += 3;
+        totalScore += 5; // Higher score for gym/fitness searches in sports-fitness category
       }
       
       if (totalScore > 0.5 && (!filters.city || (venue.city || '').toLowerCase() === filters.city.toLowerCase())) {
@@ -262,7 +262,7 @@ export function searchAllVenues(query: string, filters: {
           neighborhood: venue.neighborhood || '',
           description: `${venue.facility_type || 'Sports & Fitness'} • ${venue.neighborhood || ''}`,
           rating: Number(venue.total_score) || 0,
-          url: `/sports-fitness/${index + 1}`,
+          url: `/sports-fitness/${venue.venue_index}`,
           matchScore: totalScore,
           actualPlaceId: undefined
         });
@@ -282,6 +282,10 @@ export function searchAllVenues(query: string, filters: {
       
       if (queryLower.includes('health') || queryLower.includes('wellness') || queryLower.includes('spa')) {
         totalScore += 3;
+      }
+      // Reduce score for gym searches in health-wellness to prioritize sports-fitness
+      if (queryLower.includes('gym') || queryLower.includes('fitness')) {
+        totalScore -= 2;
       }
       
       if (totalScore > 0.5 && (!filters.city || (venue.city || '').toLowerCase() === filters.city.toLowerCase())) {
