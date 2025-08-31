@@ -20,6 +20,7 @@ export default defineConfig(({ mode }) => ({
     target: 'es2015',
     minify: 'esbuild',
     rollupOptions: {
+      external: ['@rollup/rollup-linux-x64-gnu'],
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom'],
@@ -29,8 +30,13 @@ export default defineConfig(({ mode }) => ({
       },
     },
     sourcemap: mode === 'development',
+    commonjsOptions: {
+      include: [/node_modules/],
+      exclude: ['@rollup/rollup-linux-x64-gnu'],
+    },
   },
   optimizeDeps: {
     include: ['react', 'react-dom', 'react-router-dom'],
+    exclude: ['@rollup/rollup-linux-x64-gnu'],
   },
 }));
