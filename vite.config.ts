@@ -1,14 +1,16 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import path from 'path'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react-swc";
+import path from "path";
 
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
   },
-  plugins: [react()],
+  plugins: [
+    react(),
+  ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -18,16 +20,17 @@ export default defineConfig({
     target: 'es2015',
     minify: 'esbuild',
     rollupOptions: {
-      external: [],
       output: {
-        manualChunks: undefined,
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          router: ['react-router-dom'],
+          ui: ['@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu', '@radix-ui/react-select'],
+        },
       },
     },
-    commonjsOptions: {
-      include: [/node_modules/],
-    },
+    sourcemap: mode === 'development',
   },
   optimizeDeps: {
-    exclude: ['@rollup/rollup-linux-x64-gnu']
-  }
-})
+    include: ['react', 'react-dom', 'react-router-dom'],
+  },
+}));

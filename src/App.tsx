@@ -6,8 +6,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-
-
+import { ImageSystemDebugger } from "./components/shared/ImageSystemDebugger";
+import TestLocalImages from './pages/TestLocalImages';
+import TestAccurateMapping from './pages/TestAccurateMapping';
+import TestComprehensiveMapper from './pages/TestComprehensiveMapper';
+import { TestAccurateLocalMapper } from './pages/TestAccurateLocalMapper';
+import { TestOtherCategoriesMapper } from './pages/TestOtherCategoriesMapper';
 import LoadingSpinner from './components/ui/loading-spinner';
 import PerformanceMonitor from './components/ui/performance-monitor';
 import ScrollToTop from './components/shared/ScrollToTop';
@@ -65,7 +69,12 @@ const App = () => (
               <SearchResults />
             </Suspense>
           } />
-
+          <Route path="/debug" element={<ImageSystemDebugger />} />
+          <Route path="/test-local-images" element={<TestLocalImages />} />
+          <Route path="/test-accurate-mapping" element={<TestAccurateMapping />} />
+          <Route path="/test-comprehensive-mapper" element={<TestComprehensiveMapper />} />
+          <Route path="/test-accurate-local-mapper" element={<TestAccurateLocalMapper />} />
+          <Route path="/test-other-categories-mapper" element={<TestOtherCategoriesMapper />} />
           
           {/* Lazy-loaded routes with Suspense boundaries */}
           <Route path="/restaurant/:id" element={
