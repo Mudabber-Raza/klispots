@@ -1,5 +1,5 @@
 import React from 'react';
-import SmartVenueImageV2 from '@/utils/SmartVenueImageV2';
+import SmartVenueImageV2 from '@/utils/SmartVenueImageV2.tsx';
 
 interface ComprehensiveVenueImageProps {
   category: string;
