@@ -58,16 +58,16 @@ const FeaturedPlaces = () => {
       imageUrl: '/lovable-uploads/Havana_Terraces_ChIJiScdKsG93zgRibz8gP_ohZM_2.jpg'
     },
     {
-      id: '1305',
-      name: 'Sumo Japanese Restaurant',
+      id: '1321',
+      name: 'Tapestry7',
       category: 'Fine Dining',
       neighborhood: 'Lahore',
       city: 'Lahore',
       score: 9.3,
       priceRange: 'Rs 2,500-4,000',
       status: 'Open',
-      cuisine: 'Japanese',
-      imageUrl: '/lovable-uploads/Sumo.jpg'
+      cuisine: 'International',
+      imageUrl: '/lovable-uploads/Tapestry7_ChIJT3R7JpAFGTkRLLFSKfeqbf0_1.jpg'
     },
 
   ];
