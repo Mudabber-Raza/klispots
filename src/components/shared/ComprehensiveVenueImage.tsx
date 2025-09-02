@@ -17,6 +17,10 @@ const mappings = comprehensiveMappings as {
   }>;
 };
 
+// Fallback images for different categories
+const RESTAURANT_FALLBACK_IMAGE = 'https://th.bing.com/th/id/R.e5e24c0619512148b49064c4a0f7ec43?rik=KOKrCSELBkyRCw&riu=http%3a%2f%2fimages.unsplash.com%2fphoto-1582920980795-2f97b0834c58%3fcrop%3dentropy%26cs%3dtinysrgb%26fit%3dmax%26fm%3djpg%26ixid%3dMnwxMjA3fDB8MXxzZWFyY2h8M3x8cmVzdGF1cmFudHN8fDB8fHx8MTYxOTMxMDYxNA%26ixlib%3drb-1.2.1%26q%3d80%26w%3d1080&ehk=tjXn4HLoD22SD8pX8hAxRWKRnjuUiIh1Vud22FKgbHQ%3d&risl=&pid=ImgRaw&r=0';
+const CAFE_FALLBACK_IMAGE = 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80';
+
 interface ComprehensiveVenueImageProps {
   category: string;
   placeId?: string;
@@ -88,10 +92,27 @@ const findAvailableImages = async (
       }
     }
     
+    // Add fallback images if no images found
+    if (availableImages.length === 0) {
+      if (category === 'restaurants' || category === 'restaurant') {
+        availableImages.push(RESTAURANT_FALLBACK_IMAGE);
+        console.log(`✅ Added restaurant fallback image`);
+      } else if (category === 'cafes' || category === 'cafe') {
+        availableImages.push(CAFE_FALLBACK_IMAGE);
+        console.log(`✅ Added cafe fallback image`);
+      }
+    }
+    
     console.log(`Total available images: ${availableImages.length}`);
     return availableImages;
   } catch (error) {
     console.error('Error finding available images:', error);
+    // Add fallback images on error
+    if (category === 'restaurants' || category === 'restaurant') {
+      return [RESTAURANT_FALLBACK_IMAGE];
+    } else if (category === 'cafes' || category === 'cafe') {
+      return [CAFE_FALLBACK_IMAGE];
+    }
     return [];
   }
 };
@@ -150,7 +171,14 @@ export const ComprehensiveVenueImage: React.FC<ComprehensiveVenueImageProps> = (
                         className="w-full h-full object-cover"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;
-                          target.src = fallback || '/placeholder.svg';
+                          // Use category-specific fallback
+                          if (category === 'restaurants' || category === 'restaurant') {
+                            target.src = fallback || RESTAURANT_FALLBACK_IMAGE;
+                          } else if (category === 'cafes' || category === 'cafe') {
+                            target.src = fallback || CAFE_FALLBACK_IMAGE;
+                          } else {
+                            target.src = fallback || '/placeholder.svg';
+                          }
                         }}
                       />
                     </div>
