@@ -1,0 +1,10 @@
+[33m03cda34[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m FIX: Use same working logic as SmartVenueImageV2 in carousel with fallback images
+[33m705442b[m RESTORE: Full image carousel functionality with multiple images and navigation controls
+[33m0334e3c[m FIX: Simplify image carousel to use existing SmartVenueImageV2 logic
+[33m83988aa[m FIX: Restore image slider functionality in detail pages with proper carousel component
+[33m0ad089a[m FIX: Resolve merge conflict - use real Islamabad health venue
+[33m9bc8ce2[m FIX: Replace non-existent yoga venue with real Islamabad health venue in CitySpotlight
+[33m1e1d1d7[m Update CitySpotlight.tsx
+[33md9da076[m FIX: Process Cafes1.json for duplicate removal (no duplicates found)
+[33m6d2e2b6[m FIX: Remove 98 duplicates from sports and fitness.json based on place_id and original_place_id
+[33m9561301[m FIX: Mobile header menu visibility - increase max-height and enable scrolling
