@@ -15,8 +15,9 @@ const mappings = comprehensiveMappings as {
 
 const S3_BASE_URL = 'https://klispots-venue-images.s3.eu-north-1.amazonaws.com';
 
-// Fallback image for restaurants when S3 fails
+// Fallback images for different categories
 const RESTAURANT_FALLBACK_IMAGE = 'https://th.bing.com/th/id/R.e5e24c0619512148b49064c4a0f7ec43?rik=KOKrCSELBkyRCw&riu=http%3a%2f%2fimages.unsplash.com%2fphoto-1582920980795-2f97b0834c58%3fcrop%3dentropy%26cs%3dtinysrgb%26fit%3dmax%26fm%3djpg%26ixid%3dMnwxMjA3fDB8MXxzZWFyY2h8M3x8cmVzdGF1cmFudHN8fDB8fHx8MTYxOTMxMDYxNA%26ixlib%3drb-1.2.1%26q%3d80%26w%3d1080&ehk=tjXn4HLoD22SD8pX8hAxRWKRnjuUiIh1Vud22FKgbHQ%3d&risl=&pid=ImgRaw&r=0';
+const CAFE_FALLBACK_IMAGE = 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80';
 
 // Cache for found mappings
 const foundMappings = new Map<string, string | null>();
@@ -128,43 +129,36 @@ export const testCORSAccess = async (): Promise<{ corsWorking: boolean; error?: 
     
     // Test 1: Fetch with CORS mode
     try {
-      const response = await fetch(testImageUrl, {
-        method: 'GET',
+      const response = await fetch(testImageUrl, { 
+        method: 'HEAD',
         mode: 'cors'
       });
+      console.log('✅ CORS fetch test successful');
+    } catch (fetchError) {
+      console.log('⚠️ CORS fetch test failed, trying image load test');
+    }
+
+    // Test 2: Image load test
+    try {
+      const img = new Image();
+      const imageLoads = await new Promise<boolean>((resolve) => {
+        img.onload = () => resolve(true);
+        img.onerror = () => resolve(false);
+        img.crossOrigin = 'anonymous';
+        img.src = testImageUrl;
+        setTimeout(() => resolve(false), 5000);
+      });
       
-      if (response.ok) {
-        console.log('✅ CORS test successful - fetch working');
+      if (imageLoads) {
+        console.log('✅ CORS test successful - image loading working');
         return { corsWorking: true };
       } else {
-        console.log(`⚠️ CORS test failed - HTTP ${response.status}`);
-        return { corsWorking: false, error: `HTTP ${response.status}` };
+        console.log('⚠️ CORS test failed - image not loading');
+        return { corsWorking: false, error: 'Image not loading' };
       }
-    } catch (fetchError) {
-      console.log('⚠️ CORS test failed - fetch error:', fetchError);
-      
-      // Test 2: Image element with crossOrigin
-      try {
-        const img = new Image();
-        const imageLoads = await new Promise<boolean>((resolve) => {
-          img.onload = () => resolve(true);
-          img.onerror = () => resolve(false);
-          img.crossOrigin = 'anonymous';
-          img.src = testImageUrl;
-          setTimeout(() => resolve(false), 5000);
-        });
-        
-        if (imageLoads) {
-          console.log('✅ CORS test successful - image loading working');
-          return { corsWorking: true };
-        } else {
-          console.log('⚠️ CORS test failed - image not loading');
-          return { corsWorking: false, error: 'Image not loading' };
-        }
-      } catch (imgError) {
-        console.log('⚠️ CORS test failed - image error:', imgError);
-        return { corsWorking: false, error: 'Image loading failed' };
-      }
+    } catch (imgError) {
+      console.log('⚠️ CORS test failed - image error:', imgError);
+      return { corsWorking: false, error: 'Image loading failed' };
     }
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
@@ -186,9 +180,11 @@ const findImageUrl = async (
   if (foundMappings.has(cacheKey)) {
     const result = foundMappings.get(cacheKey);
     if (result) return result;
-    // Use restaurant-specific fallback for restaurants
+    // Use category-specific fallback
     if (category === 'restaurants' || category === 'restaurant') {
       return customFallback || RESTAURANT_FALLBACK_IMAGE;
+    } else if (category === 'cafes' || category === 'cafe') {
+      return customFallback || CAFE_FALLBACK_IMAGE;
     }
     return customFallback || '/placeholder.svg';
   }
@@ -199,9 +195,11 @@ const findImageUrl = async (
   if (!mappings || !mappings.venues) {
     console.warn('⚠️ mappings not properly loaded, using fallback');
     foundMappings.set(cacheKey, null);
-    // Use restaurant-specific fallback for restaurants
+    // Use category-specific fallback
     if (category === 'restaurants' || category === 'restaurant') {
       return customFallback || RESTAURANT_FALLBACK_IMAGE;
+    } else if (category === 'cafes' || category === 'cafe') {
+      return customFallback || CAFE_FALLBACK_IMAGE;
     }
     return customFallback || '/placeholder.svg';
   }
@@ -285,9 +283,11 @@ const findImageUrl = async (
 
   console.log(`❌ No S3 image found for ${category}/${placeName} (${placeId})`);
   foundMappings.set(cacheKey, null);
-  // Use restaurant-specific fallback for restaurants
+  // Use category-specific fallback
   if (category === 'restaurants' || category === 'restaurant') {
     return customFallback || RESTAURANT_FALLBACK_IMAGE;
+  } else if (category === 'cafes' || category === 'cafe') {
+    return customFallback || CAFE_FALLBACK_IMAGE;
   }
   return customFallback || '/placeholder.svg';
 };
@@ -306,9 +306,11 @@ export const SmartVenueImageV2: React.FC<SmartVenueImageProps> = ({
   onError
 }) => {
   const [imageSrc, setImageSrc] = useState<string>(() => {
-    // Use restaurant-specific fallback for restaurants
+    // Use category-specific fallback
     if ((category === 'restaurants' || category === 'restaurant') && !fallback) {
       return RESTAURANT_FALLBACK_IMAGE;
+    } else if ((category === 'cafes' || category === 'cafe') && !fallback) {
+      return CAFE_FALLBACK_IMAGE;
     }
     return fallback || '/placeholder.svg';
   });
@@ -322,9 +324,11 @@ export const SmartVenueImageV2: React.FC<SmartVenueImageProps> = ({
         setImageSrc(imageUrl);
       } catch (error) {
         console.error('Error loading S3 image:', error);
-        // Use restaurant-specific fallback for restaurants
+        // Use category-specific fallback
         if (category === 'restaurants' || category === 'restaurant') {
           setImageSrc(fallback || RESTAURANT_FALLBACK_IMAGE);
+        } else if (category === 'cafes' || category === 'cafe') {
+          setImageSrc(fallback || CAFE_FALLBACK_IMAGE);
         } else {
           setImageSrc(fallback || '/placeholder.svg');
         }
@@ -342,10 +346,12 @@ export const SmartVenueImageV2: React.FC<SmartVenueImageProps> = ({
 
   const handleImageError = () => {
     console.warn(`Failed to load S3 image for ${category}/${placeName}`);
-    // Use restaurant-specific fallback for restaurants
+    // Use category-specific fallback
     let fallbackImage;
     if (category === 'restaurants' || category === 'restaurant') {
       fallbackImage = fallback || RESTAURANT_FALLBACK_IMAGE;
+    } else if (category === 'cafes' || category === 'cafe') {
+      fallbackImage = fallback || CAFE_FALLBACK_IMAGE;
     } else {
       fallbackImage = fallback || '/placeholder.svg';
     }
@@ -355,25 +361,21 @@ export const SmartVenueImageV2: React.FC<SmartVenueImageProps> = ({
 
   if (loading) {
     return (
-      <div 
-        className={`${className} bg-gray-200 animate-pulse flex items-center justify-center`}
-        style={{ width, height }}
-      >
-        <div className="text-gray-400 text-sm">Loading...</div>
+      <div className={`${className} bg-gray-200 animate-pulse flex items-center justify-center`}>
+        <div className="text-gray-500 text-sm">Loading...</div>
       </div>
     );
   }
 
   return (
-    <img 
-      src={imageSrc} 
-      alt={alt} 
+    <img
+      src={imageSrc}
+      alt={alt}
       className={className}
       width={width}
       height={height}
       onLoad={handleImageLoad}
       onError={handleImageError}
-      loading="lazy"
     />
   );
 };
