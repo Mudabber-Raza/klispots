@@ -1,0 +1,5 @@
+[33m0ff07be[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m FIX: Mobile header menu and button styling issues
+[33m5ba5936[m FIX: Mobile header menu, button styling, and remove duplicate place IDs
+[33m341f2d2[m FIX: Add restaurant-specific fallback image for S3 failures
+[33mc9dc74e[m COMPLETE: Update all listing pages to use venue names in URLs
+[33m1bb8754[m FIX: Update FeaturedPlaces and CitySpotlight to use venue names in URLs

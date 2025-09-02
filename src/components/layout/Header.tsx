@@ -199,7 +199,7 @@ const Header = () => {
 
         {/* Enhanced Mobile Navigation with smooth animations */}
         <div className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          isMenuOpen ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'
+          isMenuOpen ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'
         }`}>
           <div className="border-t border-gray-100 py-4 space-y-2">
             <Link 

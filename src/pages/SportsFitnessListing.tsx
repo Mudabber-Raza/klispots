@@ -94,14 +94,14 @@ const SportsFitnessListing = () => {
       
       <main className="pt-20">
         {/* Hero Section */}
-        <section className="bg-gradient-to-r from-orange-600 to-orange-700 text-white py-16">
+        <section className="py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
-              <h1 className="text-4xl lg:text-6xl font-bold mb-6">
-                Sports & Fitness
+              <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-gray-900">
+                Discover Amazing <span className="text-emerald-600">Sports & Fitness</span>
               </h1>
-              <p className="text-xl lg:text-2xl opacity-90 max-w-3xl mx-auto">
-                Explore {sportsFitnessVenues.length} carefully curated sports and fitness venues across Pakistan
+              <p className="text-xl lg:text-2xl text-gray-600 max-w-3xl mx-auto">
+                Find the perfect spot for your fitness journey, sports activities, and wellness goals in Pakistan's best sports and fitness venues
               </p>
             </div>
           </div>
@@ -288,13 +288,15 @@ const SportsFitnessListing = () => {
                             </p>
                           </div>
 
-                          <div className="flex items-center justify-between">
-                            <Button variant="outline" size="sm" className="flex-1 mr-2">
+                          <div className="flex flex-col sm:flex-row gap-2">
+                            <Button 
+                              variant="outline" 
+                              className="flex-1 rounded-lg h-10"
+                            >
                               View Details
                             </Button>
                             <Button 
-                              size="sm" 
-                              className="bg-orange-600 hover:bg-orange-700"
+                              className="bg-emerald-600 hover:bg-emerald-700 sm:w-auto w-full rounded-lg h-10"
                               onClick={(e) => {
                                 e.preventDefault();
                                 window.open(`tel:${venue.phone_number}`, '_self');

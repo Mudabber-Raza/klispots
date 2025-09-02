@@ -342,7 +342,6 @@ const CafeListing = () => {
                           placeName={cafe.place_name}
                           alt={cafe.place_name}
                           className="w-full h-full object-cover"
-                          showSlider={false}
                         />
                         
                         <div className="absolute top-3 left-3">
@@ -393,12 +392,14 @@ const CafeListing = () => {
                         </div>
 
                         <div className="flex flex-col sm:flex-row gap-2">
-                          <Button variant="outline" size="sm" className="flex-1">
+                          <Button 
+                            variant="outline" 
+                            className="flex-1 rounded-lg h-10"
+                          >
                             View Details
                           </Button>
                           <Button 
-                            size="sm" 
-                            className="bg-emerald-600 hover:bg-emerald-700 sm:w-auto w-full"
+                            className="bg-emerald-600 hover:bg-emerald-700 sm:w-auto w-full rounded-lg h-10"
                             onClick={(e) => {
                               e.preventDefault();
                               window.open(`tel:${cafe.phone_number}`, '_self');
