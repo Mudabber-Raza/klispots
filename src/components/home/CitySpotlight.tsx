@@ -175,12 +175,12 @@ const CitySpotlight = () => {
           s3Category: 'entertainment'
         },
         { 
-          name: '(TFR) The Fitness Revolution', 
+          name: 'Best Yoga classes in Islamabad by Sumairas Yoganama', 
           category: 'Health & Wellness', 
           score: 8.5, 
           status: 'Open',
-          id: '230',
-          route: createVenueUrl('health-wellness', '230', '(TFR) The Fitness Revolution'),
+          id: '284',
+          route: createVenueUrl('health-wellness', '284', 'Best Yoga classes in Islamabad by Sumairas Yoganama'),
           s3Category: 'health-wellness'
         },
         { 
