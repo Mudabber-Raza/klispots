@@ -62,7 +62,7 @@ export interface EntertainmentVenue {
 const processedVenues: EntertainmentVenue[] = (entertainmentData as any[]).map((venue, index) => ({
   ...venue,
   place_name: venue.venue_name || venue.place_name,
-  venue_index: venue.cafe_index || (index + 1), // Use stable cafe_index if available, fallback to array position
+  venue_index: venue.venue_index || (index + 1), // Use venue_index if available, fallback to array position
 }));
 
 export const entertainmentVenues: EntertainmentVenue[] = processedVenues;

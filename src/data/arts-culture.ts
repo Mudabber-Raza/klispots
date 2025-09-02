@@ -56,7 +56,7 @@ export interface ArtsCultureVenue {
 // Process the imported JSON data
 const processedVenues: ArtsCultureVenue[] = (artsCultureData as any[]).map((venue, index) => ({
   ...venue,
-  venue_index: venue.cafe_index || (index + 1), // Use stable cafe_index if available, fallback to array position
+  venue_index: venue.venue_index || (index + 1), // Use venue_index if available, fallback to array position
 }));
 
 export const artsCultureVenues: ArtsCultureVenue[] = processedVenues;
