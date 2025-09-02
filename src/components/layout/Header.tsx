@@ -198,8 +198,8 @@ const Header = () => {
         </div>
 
         {/* Enhanced Mobile Navigation with smooth animations */}
-        <div className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          isMenuOpen ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'
+        <div className={`lg:hidden overflow-y-auto transition-all duration-300 ease-in-out ${
+          isMenuOpen ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
         }`}>
           <div className="border-t border-gray-100 py-4 space-y-2">
             <Link 
@@ -214,7 +214,7 @@ const Header = () => {
             </Link>
             
             <div className="px-3 py-2">
-              <span className="text-gray-500 text-sm font-medium mb-2 block">Categories ({categories.length})</span>
+              <span className="text-gray-500 text-sm font-medium mb-2 block">Categories</span>
               <div className="space-y-1 pl-4">
                 {categories.map((category) => (
                   <Link
