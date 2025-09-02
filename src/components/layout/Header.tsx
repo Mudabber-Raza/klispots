@@ -221,7 +221,15 @@ const Header = () => {
                 List Your Business
               </Button>
               
-
+              {/* Mobile search icon - visible on mobile */}
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                className="lg:hidden hover:bg-emerald-50 hover:text-emerald-600 transition-all duration-300 transform hover:scale-105"
+                onClick={handleSearchToggle}
+              >
+                <Search className="w-5 h-5" />
+              </Button>
               
               {/* Enhanced Mobile menu button */}
               <button
@@ -294,15 +302,6 @@ const Header = () => {
               
               {/* Mobile action buttons */}
               <div className="px-3 pt-4 border-t border-gray-100 space-y-2">
-                <Button 
-                  variant="outline" 
-                  className="w-full justify-center border-emerald-200 text-emerald-700 hover:bg-emerald-50"
-                  onClick={handleSearchToggle}
-                >
-                  <Search className="w-4 h-4 mr-2" />
-                  Search Venues
-                </Button>
-                
                 <Button 
                   variant="outline" 
                   className="w-full justify-center border-emerald-200 text-emerald-700 hover:bg-emerald-50"
