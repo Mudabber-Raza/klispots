@@ -175,12 +175,12 @@ const CitySpotlight = () => {
           s3Category: 'entertainment'
         },
         { 
-          name: '(TFR) The Fitness Revolution', 
+          name: 'Vostro World G-13', 
           category: 'Health & Wellness', 
-          score: 8.5, 
+          score: 9.27, 
           status: 'Open',
-          id: '230',
-          route: createVenueUrl('health-wellness', '230', '(TFR) The Fitness Revolution'),
+          id: '295',
+          route: createVenueUrl('health-wellness', '295', 'Vostro World G-13'),
           s3Category: 'health-wellness'
         },
         { 
@@ -257,7 +257,6 @@ const CitySpotlight = () => {
                           placeName={place.name}
                           alt={place.name}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                          showSlider={false}
                         />
                       </div>
                       
