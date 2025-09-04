@@ -8,6 +8,22 @@
       "destination": "/$1.xml"
     },
     {
+      "source": "/(.*)\\.txt",
+      "destination": "/$1.txt"
+    },
+    {
+      "source": "/(.*)\\.json",
+      "destination": "/$1.json"
+    },
+    {
+      "source": "/(.*)\\.ico",
+      "destination": "/$1.ico"
+    },
+    {
+      "source": "/(.*)\\.svg",
+      "destination": "/$1.svg"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
