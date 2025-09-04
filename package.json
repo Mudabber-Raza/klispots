@@ -9,6 +9,7 @@
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
+    "generate-sitemap": "node scripts/generate-sitemap.js",
     "postinstall": "echo 'Postinstall complete'"
   },
   "dependencies": {
