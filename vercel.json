@@ -4,20 +4,8 @@
   "framework": "vite",
   "rewrites": [
     {
-      "source": "/sitemap.xml",
-      "destination": "/sitemap.xml"
-    },
-    {
-      "source": "/sitemap-:category.xml",
-      "destination": "/sitemap-:category.xml"
-    },
-    {
-      "source": "/test-:name.xml",
-      "destination": "/test-:name.xml"
-    },
-    {
-      "source": "/test-simple.xml",
-      "destination": "/test-simple.xml"
+      "source": "/(.*)\\.xml",
+      "destination": "/$1.xml"
     },
     {
       "source": "/(.*)",
