@@ -32,6 +32,10 @@
       "destination": "/test-cafes.xml"
     },
     {
+      "source": "/cafe-test-new.xml",
+      "destination": "/cafe-test-new.xml"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
