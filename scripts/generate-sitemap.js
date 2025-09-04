@@ -87,7 +87,7 @@ const generateSitemaps = () => {
 
   // Restaurant pages (top 100 for main sitemap)
   const restaurantPages = restaurants.slice(0, 100).map(restaurant => ({
-    loc: `${baseUrl}/restaurant/${restaurant.restaurant_index}-${createSlug(restaurant.place_name)}`,
+    loc: escapeXml(`${baseUrl}/restaurant/${restaurant.restaurant_index}-${createSlug(restaurant.place_name)}`),
     lastmod: today,
     changefreq: 'weekly',
     priority: '0.7'
@@ -145,7 +145,7 @@ const generateSitemaps = () => {
   const fullRestaurantPages = restaurants
     .filter(restaurant => restaurant.restaurant_index && restaurant.place_name)
     .map(restaurant => ({
-      loc: `${baseUrl}/restaurant/${restaurant.restaurant_index}-${createSlug(restaurant.place_name)}`,
+      loc: escapeXml(`${baseUrl}/restaurant/${restaurant.restaurant_index}-${createSlug(restaurant.place_name)}`),
       lastmod: today,
       changefreq: 'weekly',
       priority: '0.7'
