@@ -1,0 +1,5 @@
+[33m001f8ac[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m fix: Update Vercel configuration with regex pattern for XML files
+[33mdd3e497[m fix: Resolve Vercel configuration issue blocking XML sitemap access
+[33m5bac35c[m test: Add minimal test sitemaps to debug Google Search Console fetch issues
+[33m716da97[m fix: Remove invalid 'venue' fallback causing XML validation errors in sitemaps
+[33m360dc17[m fix: Optimize sitemap file sizes by reducing chunk size to 500 URLs per file
