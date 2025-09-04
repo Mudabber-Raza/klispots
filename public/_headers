@@ -1,0 +1,11 @@
+/*.xml
+  Content-Type: application/xml
+  Cache-Control: public, max-age=3600
+
+/test*.xml
+  Content-Type: application/xml
+  Cache-Control: public, max-age=3600
+
+/sitemap*.xml
+  Content-Type: application/xml
+  Cache-Control: public, max-age=3600

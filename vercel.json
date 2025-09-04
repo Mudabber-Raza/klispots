@@ -4,36 +4,8 @@
   "framework": "vite",
   "rewrites": [
     {
-      "source": "/sitemap.xml",
-      "destination": "/sitemap.xml"
-    },
-    {
-      "source": "/sitemap-:category.xml",
-      "destination": "/sitemap-:category.xml"
-    },
-    {
-      "source": "/test-:name.xml",
-      "destination": "/test-:name.xml"
-    },
-    {
-      "source": "/test-cafe-simple.xml",
-      "destination": "/test-cafe-simple.xml"
-    },
-    {
-      "source": "/test-simple.xml",
-      "destination": "/test-simple.xml"
-    },
-    {
-      "source": "/test-restaurants.xml",
-      "destination": "/test-restaurants.xml"
-    },
-    {
-      "source": "/test-cafes.xml",
-      "destination": "/test-cafes.xml"
-    },
-    {
-      "source": "/cafe-test-new.xml",
-      "destination": "/cafe-test-new.xml"
+      "source": "/(.*)\\.xml",
+      "destination": "/$1.xml"
     },
     {
       "source": "/(.*)",
