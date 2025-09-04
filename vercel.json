@@ -4,6 +4,22 @@
   "framework": "vite",
   "rewrites": [
     {
+      "source": "/sitemap.xml",
+      "destination": "/sitemap.xml"
+    },
+    {
+      "source": "/sitemap-:category.xml",
+      "destination": "/sitemap-:category.xml"
+    },
+    {
+      "source": "/test-:name.xml",
+      "destination": "/test-:name.xml"
+    },
+    {
+      "source": "/test-simple.xml",
+      "destination": "/test-simple.xml"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
@@ -32,6 +48,19 @@
         {
           "key": "X-XSS-Protection",
           "value": "1; mode=block"
+        }
+      ]
+    },
+    {
+      "source": "/(.*).xml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/xml"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
         }
       ]
     }
