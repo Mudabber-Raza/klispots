@@ -13,6 +13,7 @@ import { shoppingVenues, getShoppingCities, getShoppingThemes, ShoppingVenue } f
 import { ComprehensiveVenueImage } from '@/components/shared/ComprehensiveVenueImage';
 import CustomPagination from '@/components/ui/custom-pagination';
 import { createVenueUrl } from '@/utils/urlSlugs';
+import SEOHead from '@/components/seo/SEOHead';
 
 const ShoppingListing = () => {
   const location = useLocation();
@@ -146,6 +147,15 @@ const ShoppingListing = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEOHead 
+        page="shopping"
+        city={selectedCity !== 'all' ? selectedCity : undefined}
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Shopping', url: '/shopping' },
+          ...(selectedCity !== 'all' ? [{ name: selectedCity, url: `/shopping?city=${selectedCity}` }] : [])
+        ]}
+      />
       <Header />
       
       <main className="pt-20">

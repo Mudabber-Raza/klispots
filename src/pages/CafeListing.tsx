@@ -14,6 +14,7 @@ import CustomPagination from '@/components/ui/custom-pagination';
 import VenueCardSkeleton from '@/components/ui/venue-card-skeleton';
 import { useURLManager } from '@/utils/urlManager';
 import { createVenueUrl } from '@/utils/urlSlugs';
+import SEOHead from '@/components/seo/SEOHead';
 
 const CafeListing = () => {
   const location = useLocation();
@@ -184,6 +185,15 @@ const CafeListing = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEOHead 
+        page="cafes"
+        city={selectedCity !== 'all' ? selectedCity : undefined}
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Cafes', url: '/cafes' },
+          ...(selectedCity !== 'all' ? [{ name: selectedCity, url: `/cafes?city=${selectedCity}` }] : [])
+        ]}
+      />
       <Header />
       
       <main className="pt-20">

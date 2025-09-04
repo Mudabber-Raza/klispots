@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>https://klispots.com/sitemap.xml</loc>
+    <lastmod>2025-09-04</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://klispots.com/sitemap-restaurants.xml</loc>
+    <lastmod>2025-09-04</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://klispots.com/sitemap-cafes.xml</loc>
+    <lastmod>2025-09-04</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://klispots.com/sitemap-shopping.xml</loc>
+    <lastmod>2025-09-04</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://klispots.com/sitemap-entertainment.xml</loc>
+    <lastmod>2025-09-04</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://klispots.com/sitemap-arts-culture.xml</loc>
+    <lastmod>2025-09-04</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://klispots.com/sitemap-sports-fitness.xml</loc>
+    <lastmod>2025-09-04</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://klispots.com/sitemap-health-wellness.xml</loc>
+    <lastmod>2025-09-04</lastmod>
+  </sitemap>
+</sitemapindex>
