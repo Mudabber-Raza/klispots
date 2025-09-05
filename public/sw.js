@@ -1,10 +1,8 @@
-const CACHE_NAME = 'klispots-v1';
+const CACHE_NAME = 'klispots-v2';
 const urlsToCache = [
   '/',
   '/index.html',
-  '/manifest.json',
-  '/static/js/bundle.js',
-  '/static/css/main.css'
+  '/manifest.json'
 ];
 
 // Install event - cache resources
@@ -20,11 +18,23 @@ self.addEventListener('install', (event) => {
 
 // Fetch event - serve from cache if available
 self.addEventListener('fetch', (event) => {
+  // Skip caching for API calls and dynamic content
+  if (event.request.url.includes('/api/') || 
+      event.request.url.includes('.json') ||
+      event.request.url.includes('vercel-analytics') ||
+      event.request.url.includes('adsbygoogle')) {
+    return;
+  }
+  
   event.respondWith(
     caches.match(event.request)
       .then((response) => {
         // Return cached version or fetch from network
         return response || fetch(event.request);
+      })
+      .catch(() => {
+        // Fallback to network if cache fails
+        return fetch(event.request);
       })
   );
 });

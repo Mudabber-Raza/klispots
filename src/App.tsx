@@ -12,6 +12,7 @@ import NotFound from "./pages/NotFound";
 import LoadingSpinner from './components/ui/loading-spinner';
 import PerformanceMonitor from './components/ui/performance-monitor';
 import ScrollToTop from './components/shared/ScrollToTop';
+import ErrorBoundary from './components/ui/ErrorBoundary';
 
 // Lazy load all detail and listing pages for better performance
 const RestaurantDetail = lazy(() => import("./pages/RestaurantDetail"));
@@ -34,20 +35,38 @@ const CityDetail = lazy(() => import("./pages/CityDetail"));
 const SearchResults = lazy(() => import("./pages/SearchResults"));
 import './App.css';
 
-const queryClient = new QueryClient();
+// Create QueryClient with proper configuration
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5 * 60 * 1000, // 5 minutes
+      cacheTime: 10 * 60 * 1000, // 10 minutes
+      retry: 1,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
-// Initialize Vercel Analytics
-inject();
+// Initialize Vercel Analytics only once
+if (typeof window !== 'undefined' && !window.vercelAnalyticsInitialized) {
+  try {
+    inject();
+    window.vercelAnalyticsInitialized = true;
+  } catch (error) {
+    console.warn('Vercel Analytics initialization failed:', error);
+  }
+}
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <PerformanceMonitor />
-      <BrowserRouter>
-        <ScrollToTop />
-        <Routes>
+  <ErrorBoundary>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <PerformanceMonitor />
+        <BrowserRouter>
+          <ScrollToTop />
+          <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={
             <Suspense fallback={<LoadingSpinner />}>
@@ -179,10 +198,11 @@ const App = () => (
             </Suspense>
           } />
           <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  </ErrorBoundary>
 );
 
 export default App;
