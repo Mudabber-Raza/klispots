@@ -2,7 +2,20 @@
   "buildCommand": "npm install --omit=optional && npm run build",
   "outputDirectory": "dist",
   "framework": "vite",
+  "functions": {
+    "api/sitemap.ts": {
+      "runtime": "nodejs18.x"
+    }
+  },
   "rewrites": [
+    {
+      "source": "/sitemap.xml",
+      "destination": "/api/sitemap"
+    },
+    {
+      "source": "/sitemap-(.*)",
+      "destination": "/api/sitemap?name=sitemap-$1"
+    },
     {
       "source": "/(.*)",
       "destination": "/index.html"
