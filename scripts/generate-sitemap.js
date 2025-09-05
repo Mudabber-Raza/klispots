@@ -248,7 +248,7 @@ const generateSitemaps = () => {
       // Multiple sitemaps
       const sitemapList = [];
       chunks.forEach((chunk, index) => {
-        const sitemapName = index === 0 ? categoryName : `${categoryName}-${index + 1}`;
+        const sitemapName = `${categoryName}-${index + 1}`;
         const sitemap = generateSitemapXML(chunk);
         fs.writeFileSync(path.join(__dirname, `../public/sitemap-${sitemapName}.xml`), sitemap);
         sitemapList.push({ name: sitemapName, urls: chunk });
