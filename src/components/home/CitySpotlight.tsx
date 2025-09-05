@@ -46,8 +46,8 @@ const CitySpotlight = () => {
           category: 'Arts & Culture', 
           score: 8.7, 
           status: 'Open',
-          id: '34',
-          route: createVenueUrl('arts-culture', '34', 'The Haveli: A Museum of Textiles'),
+          id: '31',
+          route: createVenueUrl('arts-culture', '31', 'The Haveli: A Museum of Textiles'),
           s3Category: 'arts-culture'
         },
         { 
@@ -117,8 +117,8 @@ const CitySpotlight = () => {
           category: 'Arts & Culture', 
           score: 8.8, 
           status: 'Open',
-          id: '229',
-          route: createVenueUrl('arts-culture', '229', 'Maharani Jindan Kaur Haveli: Sarkar-i Khalsa Gallery'),
+          id: '187',
+          route: createVenueUrl('arts-culture', '187', 'Maharani Jindan Kaur Haveli: Sarkar-i Khalsa Gallery'),
           s3Category: 'arts-culture'
         },
         { 
