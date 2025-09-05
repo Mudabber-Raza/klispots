@@ -29,6 +29,7 @@ export default defineConfig(({ mode }) => ({
     },
     sourcemap: mode === 'development',
   },
+  publicDir: 'public',
   optimizeDeps: {
     include: ['react', 'react-dom', 'react-router-dom'],
   },
