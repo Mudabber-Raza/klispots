@@ -35,7 +35,7 @@ const CitySpotlight = () => {
         { 
           name: 'DOLMEN MALL - Clifton', 
           category: 'Shopping', 
-          score: 8.06, 
+          score: 8.1, 
           status: 'Open',
           id: '10',
           route: createVenueUrl('shopping', '10', 'DOLMEN MALL - Clifton'),
@@ -44,7 +44,7 @@ const CitySpotlight = () => {
         { 
           name: 'The Haveli: A Museum of Textiles', 
           category: 'Arts & Culture', 
-          score: 8.7, 
+          score: 8.4, 
           status: 'Open',
           id: '31',
           route: createVenueUrl('arts-culture', '31', 'The Haveli: A Museum of Textiles'),
@@ -53,7 +53,7 @@ const CitySpotlight = () => {
         { 
           name: 'Arts Council of Pakistan Karachi', 
           category: 'Entertainment', 
-          score: 8.4, 
+          score: 8.0, 
           status: 'Open',
           id: '15',
           route: createVenueUrl('entertainment', '15', 'Arts Council of Pakistan Karachi'),
@@ -62,7 +62,7 @@ const CitySpotlight = () => {
         { 
           name: 'Club Vibora', 
           category: 'Sports & Fitness', 
-          score: 8.1, 
+          score: 9.1, 
           status: 'Open',
           id: '10',
           route: createVenueUrl('sports-fitness', '10', 'Club Vibora'),
@@ -79,7 +79,7 @@ const CitySpotlight = () => {
         { 
           name: 'Bamboo Union', 
           category: 'Restaurant', 
-          score: 8.9, 
+          score: 9.2, 
           status: 'Open',
           id: '1239',
           route: createVenueUrl('restaurant', '1239', 'Lahore Bamboo Union'),
@@ -88,7 +88,7 @@ const CitySpotlight = () => {
         { 
           name: 'Artisan Coffee Roaster', 
           category: 'Cafe', 
-          score: 8.6, 
+          score: 8.2, 
           status: 'Open',
           id: '282',
           route: createVenueUrl('cafe', '282', 'Artisan Coffee Roaster'),
@@ -97,7 +97,7 @@ const CitySpotlight = () => {
         { 
           name: 'Packages Mall', 
           category: 'Shopping', 
-          score: 8.3, 
+          score: 8.6, 
           status: 'Open',
           id: '1',
           route: createVenueUrl('shopping', '1', 'Packages Mall'),
@@ -106,7 +106,7 @@ const CitySpotlight = () => {
         { 
           name: 'EVOKE FITNESS ARENA - GYM', 
           category: 'Health & Wellness', 
-          score: 8.5, 
+          score: 9.2, 
           status: 'Open',
           id: '369',
           route: createVenueUrl('health-wellness', '369', 'EVOKE FITNESS ARENA - GYM'),
@@ -115,7 +115,7 @@ const CitySpotlight = () => {
         { 
           name: 'Maharani Jindan Kaur Haveli: Sarkar-i Khalsa Gallery', 
           category: 'Arts & Culture', 
-          score: 8.8, 
+          score: 8.2, 
           status: 'Open',
           id: '187',
           route: createVenueUrl('arts-culture', '187', 'Maharani Jindan Kaur Haveli: Sarkar-i Khalsa Gallery'),
@@ -124,7 +124,7 @@ const CitySpotlight = () => {
         { 
           name: 'Padel Park Lahore', 
           category: 'Sports & Fitness', 
-          score: 8.2, 
+          score: 8.8, 
           status: 'Open',
           id: '130',
           route: createVenueUrl('sports-fitness', '130', 'Padel Park Lahore'),
@@ -141,7 +141,7 @@ const CitySpotlight = () => {
         { 
           name: '1969 Restaurant', 
           category: 'Restaurant', 
-          score: 8.6, 
+          score: 8.4, 
           status: 'Open',
           id: '608',
           route: createVenueUrl('restaurant', '608', '1969 Restaurant'),
@@ -150,7 +150,7 @@ const CitySpotlight = () => {
         { 
           name: 'THE CROWN LOUNGE', 
           category: 'Cafe', 
-          score: 8.4, 
+          score: 8.7, 
           status: 'Open',
           id: '603',
           route: createVenueUrl('cafe', '603', 'THE CROWN LOUNGE'),
@@ -159,7 +159,7 @@ const CitySpotlight = () => {
         { 
           name: 'Centaurus Mall', 
           category: 'Shopping', 
-          score: 8.1, 
+          score: 8.3, 
           status: 'Open',
           id: '3',
           route: createVenueUrl('shopping', '3', 'Centaurus Mall'),
@@ -168,10 +168,10 @@ const CitySpotlight = () => {
         { 
           name: 'Fun Cage', 
           category: 'Entertainment', 
-          score: 8.3, 
+          score: 7.2, 
           status: 'Open',
-          id: '113',
-          route: createVenueUrl('entertainment', '113', 'Fun Cage'),
+          id: '109',
+          route: createVenueUrl('entertainment', '109', 'Fun Cage'),
           s3Category: 'entertainment'
         },
         { 
@@ -186,7 +186,7 @@ const CitySpotlight = () => {
         { 
           name: 'Court Cricket (Rooftop)', 
           category: 'Sports & Fitness', 
-          score: 8.0, 
+          score: 8.8, 
           status: 'Open',
           id: '288',
           route: createVenueUrl('sports-fitness', '288', 'Court Cricket (Rooftop)'),
