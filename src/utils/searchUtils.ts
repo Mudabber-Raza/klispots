@@ -167,14 +167,14 @@ export function searchAllVenues(query: string, filters: {
       
       if (totalScore > 0.5 && (!filters.city || (venue.city || '').toLowerCase() === filters.city.toLowerCase())) {
         results.push({
-          id: `shopping-${index + 1}`,
+          id: `shopping-${venue.venue_index || (index + 1)}`,
           name: venue.place_name || 'Unknown',
           category: 'shopping',
           city: venue.city || '',
           neighborhood: venue.neighborhood || '',
           description: `${venue.venue_type || 'Shopping'} • ${venue.neighborhood || ''}`,
           rating: Number(venue.total_score) || 0,
-          url: createVenueUrl('shopping', index + 1, venue.place_name || 'Unknown'),
+          url: createVenueUrl('shopping', venue.venue_index || (index + 1), venue.place_name || 'Unknown'),
           matchScore: totalScore,
           actualPlaceId: undefined
         });
@@ -198,14 +198,14 @@ export function searchAllVenues(query: string, filters: {
       
       if (totalScore > 0.5 && (!filters.city || (venue.city || '').toLowerCase() === filters.city.toLowerCase())) {
         results.push({
-          id: `entertainment-${index + 1}`,
+          id: `entertainment-${venue.venue_index || (index + 1)}`,
           name: venue.place_name || 'Unknown',
           category: 'entertainment',
           city: venue.city || '',
           neighborhood: venue.neighborhood || '',
           description: `${venue.venue_type || 'Entertainment'} • ${venue.neighborhood || ''}`,
           rating: Number(venue.total_score) || 0,
-          url: createVenueUrl('entertainment', index + 1, venue.place_name || 'Unknown'),
+          url: createVenueUrl('entertainment', venue.venue_index || (index + 1), venue.place_name || 'Unknown'),
           matchScore: totalScore,
           actualPlaceId: undefined
         });
@@ -225,14 +225,14 @@ export function searchAllVenues(query: string, filters: {
       
       if (totalScore > 0.5 && (!filters.city || (venue.city || '').toLowerCase() === filters.city.toLowerCase())) {
         results.push({
-          id: `arts-culture-${index + 1}`,
+          id: `arts-culture-${venue.venue_index || (index + 1)}`,
           name: venue.place_name || 'Unknown',
           category: 'arts-culture',
           city: venue.city || '',
           neighborhood: venue.neighborhood || '',
           description: `${venue.venue_category || 'Arts & Culture'} • ${venue.neighborhood || ''}`,
           rating: Number(venue.total_score) || 0,
-          url: createVenueUrl('arts-culture', index + 1, venue.place_name || 'Unknown'),
+          url: createVenueUrl('arts-culture', venue.venue_index || (index + 1), venue.place_name || 'Unknown'),
           matchScore: totalScore,
           actualPlaceId: undefined
         });
@@ -260,14 +260,14 @@ export function searchAllVenues(query: string, filters: {
       
       if (totalScore > 0.5 && (!filters.city || (venue.city || '').toLowerCase() === filters.city.toLowerCase())) {
         results.push({
-          id: `sports-fitness-${index + 1}`,
+          id: `sports-fitness-${venue.venue_index || (index + 1)}`,
           name: venue.place_name || 'Unknown',
           category: 'sports-fitness',
           city: venue.city || '',
           neighborhood: venue.neighborhood || '',
           description: `${venue.facility_type || 'Sports & Fitness'} • ${venue.neighborhood || ''}`,
           rating: Number(venue.total_score) || 0,
-          url: createVenueUrl('sports-fitness', venue.venue_index, venue.place_name || 'Unknown'),
+          url: createVenueUrl('sports-fitness', venue.venue_index || (index + 1), venue.place_name || 'Unknown'),
           matchScore: totalScore,
           actualPlaceId: undefined
         });
@@ -295,14 +295,14 @@ export function searchAllVenues(query: string, filters: {
       
       if (totalScore > 0.5 && (!filters.city || (venue.city || '').toLowerCase() === filters.city.toLowerCase())) {
         results.push({
-          id: `health-wellness-${index + 1}`,
+          id: `health-wellness-${venue.venue_index || (index + 1)}`,
           name: venue.place_name || 'Unknown',
           category: 'health-wellness',
           city: venue.city || '',
           neighborhood: venue.neighborhood || '',
           description: `${venue.facility_type || 'Health & Wellness'} • ${venue.neighborhood || ''}`,
           rating: Number(venue.total_score) || 0,
-          url: createVenueUrl('health-wellness', index + 1, venue.place_name || 'Unknown'),
+          url: createVenueUrl('health-wellness', venue.venue_index || (index + 1), venue.place_name || 'Unknown'),
           matchScore: totalScore,
           actualPlaceId: undefined
         });
