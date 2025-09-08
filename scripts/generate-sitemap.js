@@ -126,8 +126,8 @@ const generateSitemaps = () => {
   }));
 
   // Sports & Fitness pages (top 50 for main sitemap)
-  const sportsFitnessPages = sportsFitness.slice(0, 50).map(venue => ({
-    loc: `${baseUrl}/sports-fitness/${venue.venue_index || venue.id || venue.place_id}-${createSlug(venue.place_name)}`,
+  const sportsFitnessPages = sportsFitness.slice(0, 50).map((venue, index) => ({
+    loc: escapeXml(`${baseUrl}/sports-fitness/${venue.venue_index || venue.id || venue.place_id || (index + 1)}-${createSlug(venue.facility_name || venue.place_name)}`),
     lastmod: today,
     changefreq: 'weekly',
     priority: '0.6'
@@ -188,9 +188,9 @@ const generateSitemaps = () => {
     }));
 
   const fullSportsFitnessPages = sportsFitness
-    .filter(venue => venue.place_name)
-    .map(venue => ({
-      loc: `${baseUrl}/sports-fitness/${venue.venue_index || venue.id || venue.place_id}-${createSlug(venue.place_name)}`,
+    .filter(venue => venue.facility_name || venue.place_name)
+    .map((venue, index) => ({
+      loc: escapeXml(`${baseUrl}/sports-fitness/${venue.venue_index || venue.id || venue.place_id || (index + 1)}-${createSlug(venue.facility_name || venue.place_name)}`),
       lastmod: today,
       changefreq: 'weekly',
       priority: '0.6'
