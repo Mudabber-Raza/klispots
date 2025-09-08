@@ -177,7 +177,7 @@ const CitySpotlight = () => {
         { 
           name: 'Vostro World G-13', 
           category: 'Health & Wellness', 
-          score: 9.27, 
+          score: 9.3, 
           status: 'Open',
           id: '295',
           route: createVenueUrl('health-wellness', '295', 'Vostro World G-13'),
