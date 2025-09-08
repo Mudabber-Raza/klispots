@@ -102,8 +102,8 @@ const generateSitemaps = () => {
   }));
 
   // Shopping pages (top 50 for main sitemap)
-  const shoppingPages = shopping.slice(0, 50).map(venue => ({
-    loc: `${baseUrl}/shopping/${venue.venue_index || venue.id || venue.place_id}-${createSlug(venue.place_name)}`,
+  const shoppingPages = shopping.slice(0, 50).map((venue, index) => ({
+    loc: escapeXml(`${baseUrl}/shopping/${venue.venue_index || venue.id || venue.place_id || (index + 1)}-${createSlug(venue.mall_name || venue.place_name)}`),
     lastmod: today,
     changefreq: 'weekly',
     priority: '0.6'
@@ -161,9 +161,9 @@ const generateSitemaps = () => {
     }));
 
   const fullShoppingPages = shopping
-    .filter(venue => venue.place_name)
-    .map(venue => ({
-      loc: `${baseUrl}/shopping/${venue.venue_index || venue.id || venue.place_id}-${createSlug(venue.place_name)}`,
+    .filter(venue => venue.mall_name || venue.place_name)
+    .map((venue, index) => ({
+      loc: escapeXml(`${baseUrl}/shopping/${venue.venue_index || venue.id || venue.place_id || (index + 1)}-${createSlug(venue.mall_name || venue.place_name)}`),
       lastmod: today,
       changefreq: 'weekly',
       priority: '0.6'
