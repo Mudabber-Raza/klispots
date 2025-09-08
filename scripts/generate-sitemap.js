@@ -110,16 +110,16 @@ const generateSitemaps = () => {
   }));
 
   // Entertainment pages (top 50 for main sitemap)
-  const entertainmentPages = entertainment.slice(0, 50).map(venue => ({
-    loc: `${baseUrl}/entertainment/${venue.venue_index || venue.id || venue.place_id}-${createSlug(venue.place_name)}`,
+  const entertainmentPages = entertainment.slice(0, 50).map((venue, index) => ({
+    loc: escapeXml(`${baseUrl}/entertainment/${venue.venue_index || venue.id || venue.place_id || (index + 1)}-${createSlug(venue.venue_name || venue.place_name)}`),
     lastmod: today,
     changefreq: 'weekly',
     priority: '0.6'
   }));
 
   // Arts & Culture pages (top 50 for main sitemap)
-  const artsCulturePages = artsCulture.slice(0, 50).map(venue => ({
-    loc: `${baseUrl}/arts-culture/${venue.venue_index || venue.id || venue.place_id}-${createSlug(venue.place_name)}`,
+  const artsCulturePages = artsCulture.slice(0, 50).map((venue, index) => ({
+    loc: escapeXml(`${baseUrl}/arts-culture/${venue.venue_index || venue.id || venue.place_id || (index + 1)}-${createSlug(venue.place_name)}`),
     lastmod: today,
     changefreq: 'weekly',
     priority: '0.6'
@@ -134,8 +134,8 @@ const generateSitemaps = () => {
   }));
 
   // Health & Wellness pages (top 50 for main sitemap)
-  const healthWellnessPages = healthWellness.slice(0, 50).map(venue => ({
-    loc: `${baseUrl}/health-wellness/${venue.venue_index || venue.id || venue.place_id}-${createSlug(venue.place_name)}`,
+  const healthWellnessPages = healthWellness.slice(0, 50).map((venue, index) => ({
+    loc: escapeXml(`${baseUrl}/health-wellness/${venue.venue_index || venue.id || venue.place_id || (index + 1)}-${createSlug(venue.place_name)}`),
     lastmod: today,
     changefreq: 'weekly',
     priority: '0.6'
@@ -170,9 +170,9 @@ const generateSitemaps = () => {
     }));
 
   const fullEntertainmentPages = entertainment
-    .filter(venue => venue.place_name)
-    .map(venue => ({
-      loc: `${baseUrl}/entertainment/${venue.venue_index || venue.id || venue.place_id}-${createSlug(venue.place_name)}`,
+    .filter(venue => venue.venue_name || venue.place_name)
+    .map((venue, index) => ({
+      loc: escapeXml(`${baseUrl}/entertainment/${venue.venue_index || venue.id || venue.place_id || (index + 1)}-${createSlug(venue.venue_name || venue.place_name)}`),
       lastmod: today,
       changefreq: 'weekly',
       priority: '0.6'
@@ -180,8 +180,8 @@ const generateSitemaps = () => {
 
   const fullArtsCulturePages = artsCulture
     .filter(venue => venue.place_name)
-    .map(venue => ({
-      loc: `${baseUrl}/arts-culture/${venue.venue_index || venue.id || venue.place_id}-${createSlug(venue.place_name)}`,
+    .map((venue, index) => ({
+      loc: escapeXml(`${baseUrl}/arts-culture/${venue.venue_index || venue.id || venue.place_id || (index + 1)}-${createSlug(venue.place_name)}`),
       lastmod: today,
       changefreq: 'weekly',
       priority: '0.6'
@@ -198,8 +198,8 @@ const generateSitemaps = () => {
 
   const fullHealthWellnessPages = healthWellness
     .filter(venue => venue.place_name)
-    .map(venue => ({
-      loc: `${baseUrl}/health-wellness/${venue.venue_index || venue.id || venue.place_id}-${createSlug(venue.place_name)}`,
+    .map((venue, index) => ({
+      loc: escapeXml(`${baseUrl}/health-wellness/${venue.venue_index || venue.id || venue.place_id || (index + 1)}-${createSlug(venue.place_name)}`),
       lastmod: today,
       changefreq: 'weekly',
       priority: '0.6'
