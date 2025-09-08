@@ -1,0 +1,10 @@
+[33mb06d432[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m Fix shopping sitemap generation: Handle mall_name field correctly
+[33ma8ea0a3[m Fix sitemap: Remove invalid URLs with undefined- to enable Google indexing
+[33md3c0586[m merge branch 'master' of https://github.com/Mudabber-Raza/klispots git push origin master --forcegit statusgit push origin mastergit log --oneline -5echo "test"git push origin master --force-with-lgit push origin mastercxzfd
+[33ma1aba2d[m Fix search result routing for all categories
+[33me6adb3d[m Update CitySpotlight.tsx
+[33mbef3de3[m Update FeaturedPlaces.tsx
+[33m4c61004[m Fix sitemap naming to match Google Search Console expectations
+[33me88b322[m Clean slate: Remove all sitemap files and recreate them properly
+[33mfa0ab79[m Create API-based sitemap serving solution
+[33m3a64633[m Fix sitemap serving by copying files to dist directory
