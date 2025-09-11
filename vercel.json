@@ -2,6 +2,9 @@
   "buildCommand": "npm install --omit=optional --force && (npm run generate-sitemap || echo 'Sitemap generation failed, continuing build') && npm run build",
   "outputDirectory": "dist", 
   "framework": "vite",
+  "env": {
+    "FULL_SSG": "true"
+  },
   "rewrites": [
     {
       "source": "/sitemap.xml",
