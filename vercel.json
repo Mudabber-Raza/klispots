@@ -2,11 +2,6 @@
   "buildCommand": "npm install --omit=optional && (npm run generate-sitemap || echo 'Sitemap generation failed, continuing build') && npm run build",
   "outputDirectory": "dist", 
   "framework": "vite",
-  "functions": {
-    "src/pages/api/**/*.ts": {
-      "runtime": "nodejs18.x"
-    }
-  },
   "rewrites": [
     {
       "source": "/sitemap.xml",
