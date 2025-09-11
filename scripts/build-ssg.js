@@ -25,8 +25,17 @@ async function buildSSG() {
     
     console.log(`📋 Building ${routes.length} pages...`);
     
-    // Create a simple HTML template for each route
-    const htmlTemplate = `<!DOCTYPE html>
+    // Read the main index.html to get the correct asset references
+    const mainIndexPath = path.join(__dirname, '../dist/index.html');
+    let htmlTemplate;
+    
+    if (fs.existsSync(mainIndexPath)) {
+      // Use the actual built index.html as template
+      htmlTemplate = fs.readFileSync(mainIndexPath, 'utf8');
+      console.log('✅ Using built index.html as template');
+    } else {
+      // Fallback template if index.html doesn't exist
+      htmlTemplate = `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -47,6 +56,8 @@ async function buildSSG() {
     <script type="module" src="/src/main.tsx"></script>
 </body>
 </html>`;
+      console.log('⚠️ Using fallback template (index.html not found)');
+    }
     
     // Ensure dist directory exists
     const distDir = path.join(__dirname, '../dist');
