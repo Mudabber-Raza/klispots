@@ -77,7 +77,7 @@ function generateVenueRoutes() {
     }
     
     // Sports & Fitness
-    const sportsFitnessPath = path.join(__dirname, '../src/data/Sports and Fitness.json');
+    const sportsFitnessPath = path.join(__dirname, '../src/data/sports and fitness.json');
     if (fs.existsSync(sportsFitnessPath)) {
       const sportsFitness = JSON.parse(fs.readFileSync(sportsFitnessPath, 'utf8'));
       console.log(`🏃 Found ${sportsFitness.length} sports & fitness venues`);
@@ -89,7 +89,7 @@ function generateVenueRoutes() {
     }
     
     // Health & Wellness
-    const healthWellnessPath = path.join(__dirname, '../src/data/Health and Wellness.json');
+    const healthWellnessPath = path.join(__dirname, '../src/data/Health and wellness.json');
     if (fs.existsSync(healthWellnessPath)) {
       const healthWellness = JSON.parse(fs.readFileSync(healthWellnessPath, 'utf8'));
       console.log(`🏥 Found ${healthWellness.length} health & wellness venues`);
