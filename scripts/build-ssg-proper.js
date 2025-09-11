@@ -159,12 +159,18 @@ function generateVenueHTML(route, baseTemplate, venueData) {
   
   // Find venue data based on route
   if (category && id) {
+    console.log(`🔍 Looking for ${category} with ID: ${id}`);
     switch (category) {
       case 'restaurants':
         venue = venueData.restaurants.find(r => 
           (r.restaurant_index && r.restaurant_index.toString() === id) ||
           (r.id && r.id.toString() === id)
         );
+        if (venue) {
+          console.log(`✅ Found restaurant: ${venue.place_name || venue.name || 'Unknown'}`);
+        } else {
+          console.log(`❌ No restaurant found with ID: ${id}`);
+        }
         break;
       case 'cafes':
         venue = venueData.cafes.find(c => 
@@ -269,8 +275,35 @@ function generateVenueHTML(route, baseTemplate, venueData) {
     .replace(/<meta property="og:title" content=".*?"/i, `<meta property="og:title" content="${pageTitle}"`)
     .replace(/<meta property="og:description" content=".*?"/i, `<meta property="og:description" content="${pageDescription}"`)
     .replace(/<meta name="twitter:title" content=".*?"/i, `<meta name="twitter:title" content="${pageTitle}"`)
-    .replace(/<meta name="twitter:description" content=".*?"/i, `<meta name="twitter:description" content="${pageDescription}"`)
-    .replace(/(<div id="root">)(.*?)(<\/div>)/s, `$1${pageContent}$3`);
+    .replace(/<meta name="twitter:description" content=".*?"/i, `<meta name="twitter:description" content="${pageDescription}"`);
+  
+  // Fix the root div content injection - handle malformed HTML
+  // The base template has malformed HTML with content outside root div
+  // We need to clean this up and properly structure the HTML
+  
+  // Extract the head section (everything before <body>)
+  const headMatch = html.match(/<head>(.*?)<\/head>/s);
+  const headContent = headMatch ? headMatch[1] : '';
+  
+  // Extract the body opening tag
+  const bodyMatch = html.match(/<body[^>]*>/);
+  const bodyTag = bodyMatch ? bodyMatch[0] : '<body>';
+  
+  // Extract scripts and other content that should be at the end
+  const scriptMatches = html.match(/<script[^>]*>.*?<\/script>/gs) || [];
+  const otherScripts = scriptMatches.join('\n');
+  
+  // Rebuild the HTML with proper structure
+  html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+${headContent}
+</head>
+${bodyTag}
+<div id="root">${pageContent}</div>
+${otherScripts}
+</body>
+</html>`;
   
   return html;
 }
