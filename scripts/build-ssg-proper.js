@@ -175,23 +175,31 @@ function generateVenueHTML(route, baseTemplate, venueData) {
         }
         break;
       case 'cafe':
+        console.log(`🔍 Looking for cafe with ID: ${id}`);
+        console.log(`📊 Total cafes available: ${venueData.cafes.length}`);
+        console.log(`📋 First 10 cafe names: ${venueData.cafes.slice(0, 10).map(c => c.place_name || 'no-name').join(', ')}`);
+        
         // Cafe data doesn't have cafe_index or id fields, so use index + 1
         const cafeIndex = parseInt(id) - 1;
         venue = venueData.cafes[cafeIndex];
         if (venue) {
-          console.log(`✅ Found cafe: ${venue.place_name || venue.name || 'Unknown'}`);
+          console.log(`✅ Found cafe: ${venue.place_name || venue.name || 'Unknown'} at index ${cafeIndex}`);
         } else {
-          console.log(`❌ No cafe found with ID: ${id}`);
+          console.log(`❌ No cafe found with ID: ${id} (index ${cafeIndex})`);
         }
         break;
       case 'shopping':
+        console.log(`🔍 Looking for shopping with ID: ${id}`);
+        console.log(`📊 Total shopping venues available: ${venueData.shopping.length}`);
+        console.log(`📋 First 10 shopping names: ${venueData.shopping.slice(0, 10).map(s => s.mall_name || s.place_name || 'no-name').join(', ')}`);
+        
         // Shopping data doesn't have ID fields, so use index + 1
         const shoppingIndex = parseInt(id) - 1;
         venue = venueData.shopping[shoppingIndex];
         if (venue) {
-          console.log(`✅ Found shopping venue: ${venue.mall_name || venue.place_name || venue.name || 'Unknown'}`);
+          console.log(`✅ Found shopping venue: ${venue.mall_name || venue.place_name || venue.name || 'Unknown'} at index ${shoppingIndex}`);
         } else {
-          console.log(`❌ No shopping venue found with ID: ${id}`);
+          console.log(`❌ No shopping venue found with ID: ${id} (index ${shoppingIndex})`);
         }
         break;
       case 'entertainment':
@@ -219,23 +227,31 @@ function generateVenueHTML(route, baseTemplate, venueData) {
         }
         break;
       case 'sports-fitness':
+        console.log(`🔍 Looking for sports-fitness with ID: ${id}`);
+        console.log(`📊 Total sports & fitness venues available: ${venueData.sportsFitness.length}`);
+        console.log(`📋 First 10 sports & fitness names: ${venueData.sportsFitness.slice(0, 10).map(s => s.facility_name || s.place_name || 'no-name').join(', ')}`);
+        
         // Sports & fitness data doesn't have ID fields, so use index + 1
         const sportsIndex = parseInt(id) - 1;
         venue = venueData.sportsFitness[sportsIndex];
         if (venue) {
-          console.log(`✅ Found sports & fitness venue: ${venue.facility_name || venue.place_name || venue.name || 'Unknown'}`);
+          console.log(`✅ Found sports & fitness venue: ${venue.facility_name || venue.place_name || venue.name || 'Unknown'} at index ${sportsIndex}`);
         } else {
-          console.log(`❌ No sports & fitness venue found with ID: ${id}`);
+          console.log(`❌ No sports & fitness venue found with ID: ${id} (index ${sportsIndex})`);
         }
         break;
       case 'health-wellness':
+        console.log(`🔍 Looking for health-wellness with ID: ${id}`);
+        console.log(`📊 Total health & wellness venues available: ${venueData.healthWellness.length}`);
+        console.log(`📋 First 10 health & wellness names: ${venueData.healthWellness.slice(0, 10).map(h => h.place_name || 'no-name').join(', ')}`);
+        
         // Health & wellness data doesn't have ID fields, so use index + 1
         const healthIndex = parseInt(id) - 1;
         venue = venueData.healthWellness[healthIndex];
         if (venue) {
-          console.log(`✅ Found health & wellness venue: ${venue.place_name || venue.name || 'Unknown'}`);
+          console.log(`✅ Found health & wellness venue: ${venue.place_name || venue.name || 'Unknown'} at index ${healthIndex}`);
         } else {
-          console.log(`❌ No health & wellness venue found with ID: ${id}`);
+          console.log(`❌ No health & wellness venue found with ID: ${id} (index ${healthIndex})`);
         }
         break;
     }
