@@ -21,6 +21,7 @@ public/google_places_images1/
 *.js
 !vite.config.js
 !tailwind.config.js
+!scripts/*.js
 *.json
 !package.json
 !package-lock.json
