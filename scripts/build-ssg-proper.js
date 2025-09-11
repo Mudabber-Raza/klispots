@@ -177,6 +177,11 @@ function generateVenueHTML(route, baseTemplate, venueData) {
           (c.cafe_index && c.cafe_index.toString() === id) ||
           (c.id && c.id.toString() === id)
         );
+        if (venue) {
+          console.log(`✅ Found cafe: ${venue.place_name || venue.name || 'Unknown'}`);
+        } else {
+          console.log(`❌ No cafe found with ID: ${id}`);
+        }
         break;
       case 'shopping':
         venue = venueData.shopping.find(s => 
@@ -184,6 +189,11 @@ function generateVenueHTML(route, baseTemplate, venueData) {
           (s.id && s.id.toString() === id) ||
           (s.place_id && s.place_id.toString() === id)
         );
+        if (venue) {
+          console.log(`✅ Found shopping venue: ${venue.place_name || venue.name || 'Unknown'}`);
+        } else {
+          console.log(`❌ No shopping venue found with ID: ${id}`);
+        }
         break;
       case 'entertainment':
         venue = venueData.entertainment.find(e => 
@@ -191,6 +201,11 @@ function generateVenueHTML(route, baseTemplate, venueData) {
           (e.id && e.id.toString() === id) ||
           (e.place_id && e.place_id.toString() === id)
         );
+        if (venue) {
+          console.log(`✅ Found entertainment venue: ${venue.place_name || venue.name || 'Unknown'}`);
+        } else {
+          console.log(`❌ No entertainment venue found with ID: ${id}`);
+        }
         break;
       case 'arts-culture':
         venue = venueData.artsCulture.find(a => 
@@ -198,6 +213,11 @@ function generateVenueHTML(route, baseTemplate, venueData) {
           (a.id && a.id.toString() === id) ||
           (a.place_id && a.place_id.toString() === id)
         );
+        if (venue) {
+          console.log(`✅ Found arts & culture venue: ${venue.place_name || venue.name || 'Unknown'}`);
+        } else {
+          console.log(`❌ No arts & culture venue found with ID: ${id}`);
+        }
         break;
       case 'sports-fitness':
         venue = venueData.sportsFitness.find(s => 
@@ -205,6 +225,11 @@ function generateVenueHTML(route, baseTemplate, venueData) {
           (s.id && s.id.toString() === id) ||
           (s.place_id && s.place_id.toString() === id)
         );
+        if (venue) {
+          console.log(`✅ Found sports & fitness venue: ${venue.place_name || venue.name || 'Unknown'}`);
+        } else {
+          console.log(`❌ No sports & fitness venue found with ID: ${id}`);
+        }
         break;
       case 'health-wellness':
         venue = venueData.healthWellness.find(h => 
@@ -212,6 +237,11 @@ function generateVenueHTML(route, baseTemplate, venueData) {
           (h.id && h.id.toString() === id) ||
           (h.place_id && h.place_id.toString() === id)
         );
+        if (venue) {
+          console.log(`✅ Found health & wellness venue: ${venue.place_name || venue.name || 'Unknown'}`);
+        } else {
+          console.log(`❌ No health & wellness venue found with ID: ${id}`);
+        }
         break;
     }
   }
