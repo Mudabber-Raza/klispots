@@ -1,0 +1,279 @@
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { getRoutes } from './generate-routes.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+/**
+ * Proper SSG Build Script
+ * This actually prerenders content with venue-specific data
+ */
+async function buildSSG() {
+  console.log('🚀 Starting proper SSG build process...');
+  
+  try {
+    // Check if we should generate all routes
+    const isFullSSG = process.env.FULL_SSG === 'true' || process.env.FULL_SSG === true;
+    console.log(`🔧 FULL_SSG environment variable: ${process.env.FULL_SSG}`);
+    console.log(`🔧 isFullSSG: ${isFullSSG}`);
+    
+    // Get routes based on environment
+    const routes = getRoutes();
+    
+    console.log(`📋 Building ${routes.length} pages...`);
+    
+    // Load all venue data
+    const venueData = await loadVenueData();
+    
+    // Read the main index.html to get the correct asset references
+    const mainIndexPath = path.join(__dirname, '../dist/index.html');
+    let baseTemplate;
+    
+    if (fs.existsSync(mainIndexPath)) {
+      baseTemplate = fs.readFileSync(mainIndexPath, 'utf8');
+      console.log('✅ Using built index.html as base template');
+    } else {
+      console.error('❌ Built index.html not found. Run vite build first.');
+      process.exit(1);
+    }
+    
+    // Ensure dist directory exists
+    const distDir = path.join(__dirname, '../dist');
+    if (!fs.existsSync(distDir)) {
+      fs.mkdirSync(distDir, { recursive: true });
+    }
+    
+    // Generate HTML files for all routes
+    for (const route of routes) {
+      const routePath = route === '/' ? '/index.html' : `${route}/index.html`;
+      const fullPath = path.join(distDir, routePath);
+      
+      // Create directory if it doesn't exist
+      const dir = path.dirname(fullPath);
+      if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir, { recursive: true });
+      }
+      
+      // Generate venue-specific HTML
+      const html = generateVenueHTML(route, baseTemplate, venueData);
+      fs.writeFileSync(fullPath, html);
+      console.log(`✅ Generated: ${routePath}`);
+    }
+    
+    console.log('🎉 Proper SSG build completed successfully!');
+    console.log(`📊 Generated ${routes.length} static pages with unique content`);
+    
+  } catch (error) {
+    console.error('❌ SSG build failed:', error);
+    process.exit(1);
+  }
+}
+
+/**
+ * Load all venue data from JSON files
+ */
+async function loadVenueData() {
+  const dataDir = path.join(__dirname, '../src/data');
+  const venueData = {
+    restaurants: [],
+    cafes: [],
+    shopping: [],
+    entertainment: [],
+    artsCulture: [],
+    sportsFitness: [],
+    healthWellness: []
+  };
+  
+  try {
+    // Load restaurants
+    const restaurantsPath = path.join(dataDir, 'Restaurants1.json');
+    if (fs.existsSync(restaurantsPath)) {
+      venueData.restaurants = JSON.parse(fs.readFileSync(restaurantsPath, 'utf8'));
+      console.log(`🍽️ Loaded ${venueData.restaurants.length} restaurants`);
+    }
+    
+    // Load cafes
+    const cafesPath = path.join(dataDir, 'Cafes1.json');
+    if (fs.existsSync(cafesPath)) {
+      venueData.cafes = JSON.parse(fs.readFileSync(cafesPath, 'utf8'));
+      console.log(`☕ Loaded ${venueData.cafes.length} cafes`);
+    }
+    
+    // Load shopping
+    const shoppingPath = path.join(dataDir, 'Shopping.json');
+    if (fs.existsSync(shoppingPath)) {
+      venueData.shopping = JSON.parse(fs.readFileSync(shoppingPath, 'utf8'));
+      console.log(`🛍️ Loaded ${venueData.shopping.length} shopping venues`);
+    }
+    
+    // Load entertainment
+    const entertainmentPath = path.join(dataDir, 'entertainment.json');
+    if (fs.existsSync(entertainmentPath)) {
+      venueData.entertainment = JSON.parse(fs.readFileSync(entertainmentPath, 'utf8'));
+      console.log(`🎭 Loaded ${venueData.entertainment.length} entertainment venues`);
+    }
+    
+    // Load arts & culture
+    const artsCulturePath = path.join(dataDir, 'Arts and Culture.json');
+    if (fs.existsSync(artsCulturePath)) {
+      venueData.artsCulture = JSON.parse(fs.readFileSync(artsCulturePath, 'utf8'));
+      console.log(`🎨 Loaded ${venueData.artsCulture.length} arts & culture venues`);
+    }
+    
+    // Load sports & fitness
+    const sportsFitnessPath = path.join(dataDir, 'sports and fitness.json');
+    if (fs.existsSync(sportsFitnessPath)) {
+      venueData.sportsFitness = JSON.parse(fs.readFileSync(sportsFitnessPath, 'utf8'));
+      console.log(`🏃 Loaded ${venueData.sportsFitness.length} sports & fitness venues`);
+    }
+    
+    // Load health & wellness
+    const healthWellnessPath = path.join(dataDir, 'Health and wellness.json');
+    if (fs.existsSync(healthWellnessPath)) {
+      venueData.healthWellness = JSON.parse(fs.readFileSync(healthWellnessPath, 'utf8'));
+      console.log(`🏥 Loaded ${venueData.healthWellness.length} health & wellness venues`);
+    }
+    
+  } catch (error) {
+    console.error('❌ Error loading venue data:', error);
+  }
+  
+  return venueData;
+}
+
+/**
+ * Generate venue-specific HTML content
+ */
+function generateVenueHTML(route, baseTemplate, venueData) {
+  // Parse route to get category and ID
+  const routeParts = route.split('/').filter(part => part);
+  const category = routeParts[0];
+  const id = routeParts[1];
+  
+  let venue = null;
+  let pageTitle = 'KLIspots - Discover Pakistan\'s Premium Lifestyle';
+  let pageDescription = 'Discover the best restaurants, cafes, shopping, entertainment, and more across Pakistan';
+  let pageContent = '';
+  
+  // Find venue data based on route
+  if (category && id) {
+    switch (category) {
+      case 'restaurants':
+        venue = venueData.restaurants.find(r => 
+          (r.restaurant_index && r.restaurant_index.toString() === id) ||
+          (r.id && r.id.toString() === id)
+        );
+        break;
+      case 'cafes':
+        venue = venueData.cafes.find(c => 
+          (c.cafe_index && c.cafe_index.toString() === id) ||
+          (c.id && c.id.toString() === id)
+        );
+        break;
+      case 'shopping':
+        venue = venueData.shopping.find(s => 
+          (s.venue_index && s.venue_index.toString() === id) ||
+          (s.id && s.id.toString() === id) ||
+          (s.place_id && s.place_id.toString() === id)
+        );
+        break;
+      case 'entertainment':
+        venue = venueData.entertainment.find(e => 
+          (e.venue_index && e.venue_index.toString() === id) ||
+          (e.id && e.id.toString() === id) ||
+          (e.place_id && e.place_id.toString() === id)
+        );
+        break;
+      case 'arts-culture':
+        venue = venueData.artsCulture.find(a => 
+          (a.venue_index && a.venue_index.toString() === id) ||
+          (a.id && a.id.toString() === id) ||
+          (a.place_id && a.place_id.toString() === id)
+        );
+        break;
+      case 'sports-fitness':
+        venue = venueData.sportsFitness.find(s => 
+          (s.venue_index && s.venue_index.toString() === id) ||
+          (s.id && s.id.toString() === id) ||
+          (s.place_id && s.place_id.toString() === id)
+        );
+        break;
+      case 'health-wellness':
+        venue = venueData.healthWellness.find(h => 
+          (h.venue_index && h.venue_index.toString() === id) ||
+          (h.id && h.id.toString() === id) ||
+          (h.place_id && h.place_id.toString() === id)
+        );
+        break;
+    }
+  }
+  
+  // Generate venue-specific content
+  if (venue) {
+    const venueName = venue.name || venue.restaurant_name || venue.cafe_name || venue.venue_name || 'Unknown Venue';
+    const venueLocation = venue.location || venue.address || venue.city || 'Pakistan';
+    const venueDescription = venue.description || venue.about || venue.summary || `Visit ${venueName} in ${venueLocation}`;
+    
+    pageTitle = `${venueName} - ${venueLocation} | KLIspots`;
+    pageDescription = `${venueDescription} | Located in ${venueLocation}. Find more details, reviews, and contact information on KLIspots.`;
+    
+    // Generate structured data for SEO
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": venueName,
+      "description": venueDescription,
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": venueLocation
+      },
+      "url": `https://klispots.com${route}`
+    };
+    
+    pageContent = `
+    <noscript>
+      <div style="padding: 20px; max-width: 800px; margin: 0 auto;">
+        <h1>${venueName}</h1>
+        <p><strong>Location:</strong> ${venueLocation}</p>
+        <p><strong>Description:</strong> ${venueDescription}</p>
+        ${venue.phone ? `<p><strong>Phone:</strong> ${venue.phone}</p>` : ''}
+        ${venue.website ? `<p><strong>Website:</strong> <a href="${venue.website}" target="_blank">${venue.website}</a></p>` : ''}
+        <p><em>This page requires JavaScript to load the full interactive experience. Please enable JavaScript to view the complete venue details, reviews, and more.</em></p>
+      </div>
+    </noscript>
+    <script type="application/ld+json">${JSON.stringify(structuredData)}</script>`;
+  } else if (category && !id) {
+    // Category listing page
+    const categoryNames = {
+      'restaurants': 'Restaurants',
+      'cafes': 'Cafes',
+      'shopping': 'Shopping',
+      'entertainment': 'Entertainment',
+      'arts-culture': 'Arts & Culture',
+      'sports-fitness': 'Sports & Fitness',
+      'health-wellness': 'Health & Wellness'
+    };
+    
+    const categoryName = categoryNames[category] || category;
+    pageTitle = `${categoryName} in Pakistan | KLIspots`;
+    pageDescription = `Discover the best ${categoryName.toLowerCase()} venues across Pakistan. Find top-rated locations, reviews, and detailed information.`;
+  }
+  
+  // Replace placeholders in the base template
+  let html = baseTemplate
+    .replace(/{route}/g, route)
+    .replace(/<title>.*?<\/title>/i, `<title>${pageTitle}</title>`)
+    .replace(/<meta name="description" content=".*?"/i, `<meta name="description" content="${pageDescription}"`)
+    .replace(/<meta property="og:title" content=".*?"/i, `<meta property="og:title" content="${pageTitle}"`)
+    .replace(/<meta property="og:description" content=".*?"/i, `<meta property="og:description" content="${pageDescription}"`)
+    .replace(/<meta name="twitter:title" content=".*?"/i, `<meta name="twitter:title" content="${pageTitle}"`)
+    .replace(/<meta name="twitter:description" content=".*?"/i, `<meta name="twitter:description" content="${pageDescription}"`)
+    .replace(/<div id="root"><\/div>/i, `<div id="root">${pageContent}</div>`);
+  
+  return html;
+}
+
+// Run the build
+buildSSG();
