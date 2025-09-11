@@ -179,6 +179,9 @@ function generateVenueHTML(route, baseTemplate, venueData) {
         }
         break;
       case 'cafe':
+        console.log(`📊 Total cafes available: ${venueData.cafes.length}`);
+        console.log(`📋 First few cafe IDs: ${venueData.cafes.slice(0, 5).map(c => c.cafe_index || c.id || 'no-id').join(', ')}`);
+        
         venue = venueData.cafes.find((c, index) => 
           (c.cafe_index && c.cafe_index.toString() === id) ||
           (c.id && c.id.toString() === id) ||
@@ -188,9 +191,13 @@ function generateVenueHTML(route, baseTemplate, venueData) {
           console.log(`✅ Found cafe: ${venue.place_name || venue.name || 'Unknown'}`);
         } else {
           console.log(`❌ No cafe found with ID: ${id}`);
+          console.log(`🔍 Available cafe indices: ${venueData.cafes.map(c => c.cafe_index || 'no-index').slice(0, 10).join(', ')}`);
         }
         break;
       case 'shopping':
+        console.log(`📊 Total shopping venues available: ${venueData.shopping.length}`);
+        console.log(`📋 First few shopping IDs: ${venueData.shopping.slice(0, 5).map(s => s.venue_index || s.id || s.place_id || 'no-id').join(', ')}`);
+        
         // Match the same logic as route generation: venue_index || id || place_id || (index + 1)
         venue = venueData.shopping.find((s, index) => 
           (s.venue_index && s.venue_index.toString() === id) ||
@@ -202,6 +209,7 @@ function generateVenueHTML(route, baseTemplate, venueData) {
           console.log(`✅ Found shopping venue: ${venue.place_name || venue.name || 'Unknown'}`);
         } else {
           console.log(`❌ No shopping venue found with ID: ${id}`);
+          console.log(`🔍 Available shopping indices: ${venueData.shopping.map(s => s.venue_index || s.id || s.place_id || 'no-index').slice(0, 10).join(', ')}`);
         }
         break;
       case 'entertainment':
@@ -233,6 +241,9 @@ function generateVenueHTML(route, baseTemplate, venueData) {
         }
         break;
       case 'sports-fitness':
+        console.log(`📊 Total sports & fitness venues available: ${venueData.sportsFitness.length}`);
+        console.log(`📋 First few sports & fitness IDs: ${venueData.sportsFitness.slice(0, 5).map(s => s.venue_index || s.id || s.place_id || 'no-id').join(', ')}`);
+        
         // Match the same logic as route generation: venue_index || id || place_id || (index + 1)
         venue = venueData.sportsFitness.find((s, index) => 
           (s.venue_index && s.venue_index.toString() === id) ||
@@ -244,9 +255,13 @@ function generateVenueHTML(route, baseTemplate, venueData) {
           console.log(`✅ Found sports & fitness venue: ${venue.place_name || venue.name || 'Unknown'}`);
         } else {
           console.log(`❌ No sports & fitness venue found with ID: ${id}`);
+          console.log(`🔍 Available sports & fitness indices: ${venueData.sportsFitness.map(s => s.venue_index || s.id || s.place_id || 'no-index').slice(0, 10).join(', ')}`);
         }
         break;
       case 'health-wellness':
+        console.log(`📊 Total health & wellness venues available: ${venueData.healthWellness.length}`);
+        console.log(`📋 First few health & wellness IDs: ${venueData.healthWellness.slice(0, 5).map(h => h.venue_index || h.id || h.place_id || 'no-id').join(', ')}`);
+        
         // Match the same logic as route generation: venue_index || id || place_id || (index + 1)
         venue = venueData.healthWellness.find((h, index) => 
           (h.venue_index && h.venue_index.toString() === id) ||
@@ -258,6 +273,7 @@ function generateVenueHTML(route, baseTemplate, venueData) {
           console.log(`✅ Found health & wellness venue: ${venue.place_name || venue.name || 'Unknown'}`);
         } else {
           console.log(`❌ No health & wellness venue found with ID: ${id}`);
+          console.log(`🔍 Available health & wellness indices: ${venueData.healthWellness.map(h => h.venue_index || h.id || h.place_id || 'no-index').slice(0, 10).join(', ')}`);
         }
         break;
     }
