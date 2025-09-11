@@ -258,12 +258,16 @@ function generateVenueHTML(route, baseTemplate, venueData) {
   
   // Generate venue-specific content
   if (venue) {
-    const venueName = venue.name || venue.restaurant_name || venue.cafe_name || venue.venue_name || 'Unknown Venue';
+    console.log(`🎯 Generating content for venue: ${JSON.stringify(venue, null, 2).substring(0, 200)}...`);
+    const venueName = venue.name || venue.restaurant_name || venue.cafe_name || venue.venue_name || venue.place_name || 'Unknown Venue';
     const venueLocation = venue.location || venue.address || venue.city || 'Pakistan';
     const venueDescription = venue.description || venue.about || venue.summary || `Visit ${venueName} in ${venueLocation}`;
     
     pageTitle = `${venueName} - ${venueLocation} | KLIspots`;
     pageDescription = `${venueDescription} | Located in ${venueLocation}. Find more details, reviews, and contact information on KLIspots.`;
+    
+    console.log(`📝 Generated title: ${pageTitle}`);
+    console.log(`📝 Generated description: ${pageDescription}`);
     
     // Generate structured data for SEO
     const structuredData = {
@@ -305,6 +309,9 @@ function generateVenueHTML(route, baseTemplate, venueData) {
     const categoryName = categoryNames[category] || category;
     pageTitle = `${categoryName} in Pakistan | KLIspots`;
     pageDescription = `Discover the best ${categoryName.toLowerCase()} venues across Pakistan. Find top-rated locations, reviews, and detailed information.`;
+  } else {
+    console.log(`⚠️ No venue found for route: ${route}`);
+    console.log(`⚠️ Using default template for: ${route}`);
   }
   
   // Replace placeholders in the base template
