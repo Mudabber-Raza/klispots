@@ -162,21 +162,27 @@ function generateVenueHTML(route, baseTemplate, venueData) {
   if (category && id) {
     console.log(`🔍 Looking for ${category} with ID: ${id}`);
     switch (category) {
-      case 'restaurants':
-        venue = venueData.restaurants.find(r => 
+      case 'restaurant':
+        console.log(`📊 Total restaurants available: ${venueData.restaurants.length}`);
+        console.log(`📋 First few restaurant IDs: ${venueData.restaurants.slice(0, 5).map(r => r.restaurant_index || r.id || 'no-id').join(', ')}`);
+        
+        venue = venueData.restaurants.find((r, index) => 
           (r.restaurant_index && r.restaurant_index.toString() === id) ||
-          (r.id && r.id.toString() === id)
+          (r.id && r.id.toString() === id) ||
+          ((index + 1).toString() === id)
         );
         if (venue) {
           console.log(`✅ Found restaurant: ${venue.place_name || venue.name || 'Unknown'}`);
         } else {
           console.log(`❌ No restaurant found with ID: ${id}`);
+          console.log(`🔍 Available restaurant indices: ${venueData.restaurants.map(r => r.restaurant_index || 'no-index').slice(0, 10).join(', ')}`);
         }
         break;
-      case 'cafes':
-        venue = venueData.cafes.find(c => 
+      case 'cafe':
+        venue = venueData.cafes.find((c, index) => 
           (c.cafe_index && c.cafe_index.toString() === id) ||
-          (c.id && c.id.toString() === id)
+          (c.id && c.id.toString() === id) ||
+          ((index + 1).toString() === id)
         );
         if (venue) {
           console.log(`✅ Found cafe: ${venue.place_name || venue.name || 'Unknown'}`);
