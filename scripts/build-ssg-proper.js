@@ -184,10 +184,12 @@ function generateVenueHTML(route, baseTemplate, venueData) {
         }
         break;
       case 'shopping':
-        venue = venueData.shopping.find(s => 
+        // Match the same logic as route generation: venue_index || id || place_id || (index + 1)
+        venue = venueData.shopping.find((s, index) => 
           (s.venue_index && s.venue_index.toString() === id) ||
           (s.id && s.id.toString() === id) ||
-          (s.place_id && s.place_id.toString() === id)
+          (s.place_id && s.place_id.toString() === id) ||
+          ((index + 1).toString() === id)
         );
         if (venue) {
           console.log(`✅ Found shopping venue: ${venue.place_name || venue.name || 'Unknown'}`);
@@ -196,10 +198,12 @@ function generateVenueHTML(route, baseTemplate, venueData) {
         }
         break;
       case 'entertainment':
-        venue = venueData.entertainment.find(e => 
+        // Match the same logic as route generation: venue_index || id || place_id || (index + 1)
+        venue = venueData.entertainment.find((e, index) => 
           (e.venue_index && e.venue_index.toString() === id) ||
           (e.id && e.id.toString() === id) ||
-          (e.place_id && e.place_id.toString() === id)
+          (e.place_id && e.place_id.toString() === id) ||
+          ((index + 1).toString() === id)
         );
         if (venue) {
           console.log(`✅ Found entertainment venue: ${venue.place_name || venue.name || 'Unknown'}`);
@@ -208,10 +212,12 @@ function generateVenueHTML(route, baseTemplate, venueData) {
         }
         break;
       case 'arts-culture':
-        venue = venueData.artsCulture.find(a => 
+        // Match the same logic as route generation: venue_index || id || place_id || (index + 1)
+        venue = venueData.artsCulture.find((a, index) => 
           (a.venue_index && a.venue_index.toString() === id) ||
           (a.id && a.id.toString() === id) ||
-          (a.place_id && a.place_id.toString() === id)
+          (a.place_id && a.place_id.toString() === id) ||
+          ((index + 1).toString() === id)
         );
         if (venue) {
           console.log(`✅ Found arts & culture venue: ${venue.place_name || venue.name || 'Unknown'}`);
@@ -220,10 +226,12 @@ function generateVenueHTML(route, baseTemplate, venueData) {
         }
         break;
       case 'sports-fitness':
-        venue = venueData.sportsFitness.find(s => 
+        // Match the same logic as route generation: venue_index || id || place_id || (index + 1)
+        venue = venueData.sportsFitness.find((s, index) => 
           (s.venue_index && s.venue_index.toString() === id) ||
           (s.id && s.id.toString() === id) ||
-          (s.place_id && s.place_id.toString() === id)
+          (s.place_id && s.place_id.toString() === id) ||
+          ((index + 1).toString() === id)
         );
         if (venue) {
           console.log(`✅ Found sports & fitness venue: ${venue.place_name || venue.name || 'Unknown'}`);
@@ -232,10 +240,12 @@ function generateVenueHTML(route, baseTemplate, venueData) {
         }
         break;
       case 'health-wellness':
-        venue = venueData.healthWellness.find(h => 
+        // Match the same logic as route generation: venue_index || id || place_id || (index + 1)
+        venue = venueData.healthWellness.find((h, index) => 
           (h.venue_index && h.venue_index.toString() === id) ||
           (h.id && h.id.toString() === id) ||
-          (h.place_id && h.place_id.toString() === id)
+          (h.place_id && h.place_id.toString() === id) ||
+          ((index + 1).toString() === id)
         );
         if (venue) {
           console.log(`✅ Found health & wellness venue: ${venue.place_name || venue.name || 'Unknown'}`);
