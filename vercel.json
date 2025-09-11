@@ -24,31 +24,31 @@
     },
     {
       "source": "/restaurant/(.*)",
-      "destination": "/restaurant/$1"
+      "destination": "/restaurant/$1/index.html"
     },
     {
       "source": "/cafe/(.*)",
-      "destination": "/cafe/$1"
+      "destination": "/cafe/$1/index.html"
     },
     {
       "source": "/shopping/(.*)",
-      "destination": "/shopping/$1"
+      "destination": "/shopping/$1/index.html"
     },
     {
       "source": "/entertainment/(.*)",
-      "destination": "/entertainment/$1"
+      "destination": "/entertainment/$1/index.html"
     },
     {
       "source": "/arts-culture/(.*)",
-      "destination": "/arts-culture/$1"
+      "destination": "/arts-culture/$1/index.html"
     },
     {
       "source": "/sports-fitness/(.*)",
-      "destination": "/sports-fitness/$1"
+      "destination": "/sports-fitness/$1/index.html"
     },
     {
       "source": "/health-wellness/(.*)",
-      "destination": "/health-wellness/$1"
+      "destination": "/health-wellness/$1/index.html"
     },
     {
       "source": "/(.*)",
