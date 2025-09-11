@@ -175,9 +175,6 @@ function generateVenueHTML(route, baseTemplate, venueData) {
         }
         break;
       case 'cafe':
-        console.log(`📊 Total cafes available: ${venueData.cafes.length}`);
-        console.log(`📋 First 10 cafe IDs: ${venueData.cafes.slice(0, 10).map(c => c.cafe_index || c.id || 'no-id').join(', ')}`);
-        
         venue = venueData.cafes.find((c, index) => 
           (c.cafe_index && c.cafe_index.toString() === id) ||
           (c.id && c.id.toString() === id) ||
@@ -190,9 +187,6 @@ function generateVenueHTML(route, baseTemplate, venueData) {
         }
         break;
       case 'shopping':
-        console.log(`📊 Total shopping venues available: ${venueData.shopping.length}`);
-        console.log(`📋 First 10 shopping IDs: ${venueData.shopping.slice(0, 10).map(s => s.venue_index || s.id || s.place_id || 'no-id').join(', ')}`);
-        
         // Match the same logic as route generation: venue_index || id || place_id || (index + 1)
         venue = venueData.shopping.find((s, index) => 
           (s.venue_index && s.venue_index.toString() === id) ||
@@ -235,9 +229,6 @@ function generateVenueHTML(route, baseTemplate, venueData) {
         }
         break;
       case 'sports-fitness':
-        console.log(`📊 Total sports & fitness venues available: ${venueData.sportsFitness.length}`);
-        console.log(`📋 First 10 sports & fitness IDs: ${venueData.sportsFitness.slice(0, 10).map(s => s.venue_index || s.id || s.place_id || 'no-id').join(', ')}`);
-        
         // Match the same logic as route generation: venue_index || id || place_id || (index + 1)
         venue = venueData.sportsFitness.find((s, index) => 
           (s.venue_index && s.venue_index.toString() === id) ||
@@ -252,9 +243,6 @@ function generateVenueHTML(route, baseTemplate, venueData) {
         }
         break;
       case 'health-wellness':
-        console.log(`📊 Total health & wellness venues available: ${venueData.healthWellness.length}`);
-        console.log(`📋 First 10 health & wellness IDs: ${venueData.healthWellness.slice(0, 10).map(h => h.venue_index || h.id || h.place_id || 'no-id').join(', ')}`);
-        
         // Match the same logic as route generation: venue_index || id || place_id || (index + 1)
         venue = venueData.healthWellness.find((h, index) => 
           (h.venue_index && h.venue_index.toString() === id) ||
