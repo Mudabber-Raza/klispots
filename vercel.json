@@ -21,6 +21,34 @@
     {
       "source": "/assets/(.*)",
       "destination": "/assets/$1"
+    },
+    {
+      "source": "/cafe/(.*)",
+      "destination": "/cafe/$1"
+    },
+    {
+      "source": "/shopping/(.*)",
+      "destination": "/shopping/$1"
+    },
+    {
+      "source": "/entertainment/(.*)",
+      "destination": "/entertainment/$1"
+    },
+    {
+      "source": "/arts-culture/(.*)",
+      "destination": "/arts-culture/$1"
+    },
+    {
+      "source": "/sports-fitness/(.*)",
+      "destination": "/sports-fitness/$1"
+    },
+    {
+      "source": "/health-wellness/(.*)",
+      "destination": "/health-wellness/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ],
   "headers": [
