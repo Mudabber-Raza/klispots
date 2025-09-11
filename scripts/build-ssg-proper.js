@@ -175,44 +175,31 @@ function generateVenueHTML(route, baseTemplate, venueData) {
         }
         break;
       case 'cafe':
-        console.log(`🔍 Looking for cafe with ID: ${id}`);
-        console.log(`📋 First 5 cafe IDs in data: ${venueData.cafes.slice(0, 5).map(c => c.cafe_index || c.id || 'no-id').join(', ')}`);
-        
-        venue = venueData.cafes.find((c, index) => 
-          (c.cafe_index && c.cafe_index.toString() === id) ||
-          (c.id && c.id.toString() === id) ||
-          ((index + 1).toString() === id)
-        );
+        // Cafe data doesn't have cafe_index or id fields, so use index + 1
+        const cafeIndex = parseInt(id) - 1;
+        venue = venueData.cafes[cafeIndex];
         if (venue) {
-          console.log(`✅ Found cafe: ${venue.place_name || venue.name || 'Unknown'} with ID: ${venue.cafe_index || venue.id || 'no-id'}`);
+          console.log(`✅ Found cafe: ${venue.place_name || venue.name || 'Unknown'}`);
         } else {
           console.log(`❌ No cafe found with ID: ${id}`);
         }
         break;
       case 'shopping':
-        // Match the same logic as route generation: venue_index || id || place_id || (index + 1)
-        venue = venueData.shopping.find((s, index) => 
-          (s.venue_index && s.venue_index.toString() === id) ||
-          (s.id && s.id.toString() === id) ||
-          (s.place_id && s.place_id.toString() === id) ||
-          ((index + 1).toString() === id)
-        );
+        // Shopping data doesn't have ID fields, so use index + 1
+        const shoppingIndex = parseInt(id) - 1;
+        venue = venueData.shopping[shoppingIndex];
         if (venue) {
-          console.log(`✅ Found shopping venue: ${venue.place_name || venue.name || 'Unknown'}`);
+          console.log(`✅ Found shopping venue: ${venue.mall_name || venue.place_name || venue.name || 'Unknown'}`);
         } else {
           console.log(`❌ No shopping venue found with ID: ${id}`);
         }
         break;
       case 'entertainment':
-        // Match the same logic as route generation: venue_index || id || place_id || (index + 1)
-        venue = venueData.entertainment.find((e, index) => 
-          (e.venue_index && e.venue_index.toString() === id) ||
-          (e.id && e.id.toString() === id) ||
-          (e.place_id && e.place_id.toString() === id) ||
-          ((index + 1).toString() === id)
-        );
+        // Entertainment data doesn't have ID fields, so use index + 1
+        const entertainmentIndex = parseInt(id) - 1;
+        venue = venueData.entertainment[entertainmentIndex];
         if (venue) {
-          console.log(`✅ Found entertainment venue: ${venue.place_name || venue.name || 'Unknown'}`);
+          console.log(`✅ Found entertainment venue: ${venue.venue_name || venue.place_name || venue.name || 'Unknown'}`);
         } else {
           console.log(`❌ No entertainment venue found with ID: ${id}`);
         }
@@ -232,27 +219,19 @@ function generateVenueHTML(route, baseTemplate, venueData) {
         }
         break;
       case 'sports-fitness':
-        // Match the same logic as route generation: venue_index || id || place_id || (index + 1)
-        venue = venueData.sportsFitness.find((s, index) => 
-          (s.venue_index && s.venue_index.toString() === id) ||
-          (s.id && s.id.toString() === id) ||
-          (s.place_id && s.place_id.toString() === id) ||
-          ((index + 1).toString() === id)
-        );
+        // Sports & fitness data doesn't have ID fields, so use index + 1
+        const sportsIndex = parseInt(id) - 1;
+        venue = venueData.sportsFitness[sportsIndex];
         if (venue) {
-          console.log(`✅ Found sports & fitness venue: ${venue.place_name || venue.name || 'Unknown'}`);
+          console.log(`✅ Found sports & fitness venue: ${venue.facility_name || venue.place_name || venue.name || 'Unknown'}`);
         } else {
           console.log(`❌ No sports & fitness venue found with ID: ${id}`);
         }
         break;
       case 'health-wellness':
-        // Match the same logic as route generation: venue_index || id || place_id || (index + 1)
-        venue = venueData.healthWellness.find((h, index) => 
-          (h.venue_index && h.venue_index.toString() === id) ||
-          (h.id && h.id.toString() === id) ||
-          (h.place_id && h.place_id.toString() === id) ||
-          ((index + 1).toString() === id)
-        );
+        // Health & wellness data doesn't have ID fields, so use index + 1
+        const healthIndex = parseInt(id) - 1;
+        venue = venueData.healthWellness[healthIndex];
         if (venue) {
           console.log(`✅ Found health & wellness venue: ${venue.place_name || venue.name || 'Unknown'}`);
         } else {
