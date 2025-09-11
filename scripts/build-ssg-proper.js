@@ -356,6 +356,7 @@ function generateVenueHTML(route, baseTemplate, venueData) {
   const otherScripts = scriptMatches.join('\n');
   
   // Rebuild the HTML with proper structure
+  console.log(`🔧 Injecting pageContent: ${pageContent.substring(0, 100)}...`);
   html = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -366,6 +367,7 @@ ${bodyTag}
 ${otherScripts}
 </body>
 </html>`;
+  console.log(`✅ HTML rebuilt with content for route: ${route}`);
   
   return html;
 }
