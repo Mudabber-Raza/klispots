@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/build-ssg.js",
     "build:dev": "vite build --mode development",
     "build:monitor": "npm run build && echo 'Build completed at:' && date",
     "build:stats": "npm run build && echo 'Build size:' && du -sh dist/",
