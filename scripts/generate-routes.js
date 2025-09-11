@@ -53,7 +53,7 @@ function generateVenueRoutes() {
     }
     
     // Entertainment
-    const entertainmentPath = path.join(__dirname, '../src/data/Entertainment.json');
+    const entertainmentPath = path.join(__dirname, '../src/data/entertainment.json');
     if (fs.existsSync(entertainmentPath)) {
       const entertainment = JSON.parse(fs.readFileSync(entertainmentPath, 'utf8'));
       console.log(`🎭 Found ${entertainment.length} entertainment venues`);
