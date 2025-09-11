@@ -270,7 +270,7 @@ function generateVenueHTML(route, baseTemplate, venueData) {
     .replace(/<meta property="og:description" content=".*?"/i, `<meta property="og:description" content="${pageDescription}"`)
     .replace(/<meta name="twitter:title" content=".*?"/i, `<meta name="twitter:title" content="${pageTitle}"`)
     .replace(/<meta name="twitter:description" content=".*?"/i, `<meta name="twitter:description" content="${pageDescription}"`)
-    .replace(/<div id="root"><\/div>/i, `<div id="root">${pageContent}</div>`);
+    .replace(/(<div id="root">)(.*?)(<\/div>)/s, `$1${pageContent}$3`);
   
   return html;
 }
