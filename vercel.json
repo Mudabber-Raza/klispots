@@ -23,6 +23,10 @@
       "destination": "/assets/$1"
     },
     {
+      "source": "/restaurant/(.*)",
+      "destination": "/restaurant/$1"
+    },
+    {
       "source": "/cafe/(.*)",
       "destination": "/cafe/$1"
     },
