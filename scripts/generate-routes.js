@@ -24,7 +24,9 @@ function generateVenueRoutes() {
       
       restaurants.forEach((restaurant, index) => {
         const id = restaurant.restaurant_index || restaurant.id || (index + 1);
-        routes.push(`/restaurants/${id}`);
+        const name = restaurant.name || restaurant.restaurant_name || restaurant.place_name || 'restaurant';
+        const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+        routes.push(`/restaurant/${id}-${slug}`);
       });
     }
     
@@ -36,7 +38,9 @@ function generateVenueRoutes() {
       
       cafes.forEach((cafe, index) => {
         const id = cafe.cafe_index || cafe.id || (index + 1);
-        routes.push(`/cafes/${id}`);
+        const name = cafe.name || cafe.cafe_name || cafe.place_name || 'cafe';
+        const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+        routes.push(`/cafe/${id}-${slug}`);
       });
     }
     
@@ -48,7 +52,9 @@ function generateVenueRoutes() {
       
       shopping.forEach((venue, index) => {
         const id = venue.venue_index || venue.id || venue.place_id || (index + 1);
-        routes.push(`/shopping/${id}`);
+        const name = venue.name || venue.venue_name || venue.place_name || 'shopping';
+        const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+        routes.push(`/shopping/${id}-${slug}`);
       });
     }
     
@@ -60,7 +66,9 @@ function generateVenueRoutes() {
       
       entertainment.forEach((venue, index) => {
         const id = venue.venue_index || venue.id || venue.place_id || (index + 1);
-        routes.push(`/entertainment/${id}`);
+        const name = venue.name || venue.venue_name || venue.place_name || 'entertainment';
+        const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+        routes.push(`/entertainment/${id}-${slug}`);
       });
     }
     
@@ -72,7 +80,9 @@ function generateVenueRoutes() {
       
       artsCulture.forEach((venue, index) => {
         const id = venue.venue_index || venue.id || venue.place_id || (index + 1);
-        routes.push(`/arts-culture/${id}`);
+        const name = venue.name || venue.venue_name || venue.place_name || 'arts-culture';
+        const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+        routes.push(`/arts-culture/${id}-${slug}`);
       });
     }
     
@@ -84,7 +94,9 @@ function generateVenueRoutes() {
       
       sportsFitness.forEach((venue, index) => {
         const id = venue.venue_index || venue.id || venue.place_id || (index + 1);
-        routes.push(`/sports-fitness/${id}`);
+        const name = venue.name || venue.venue_name || venue.place_name || 'sports-fitness';
+        const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+        routes.push(`/sports-fitness/${id}-${slug}`);
       });
     }
     
@@ -96,7 +108,9 @@ function generateVenueRoutes() {
       
       healthWellness.forEach((venue, index) => {
         const id = venue.venue_index || venue.id || venue.place_id || (index + 1);
-        routes.push(`/health-wellness/${id}`);
+        const name = venue.name || venue.venue_name || venue.place_name || 'health-wellness';
+        const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+        routes.push(`/health-wellness/${id}-${slug}`);
       });
     }
     

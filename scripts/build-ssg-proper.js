@@ -147,10 +147,11 @@ async function loadVenueData() {
  * Generate venue-specific HTML content
  */
 function generateVenueHTML(route, baseTemplate, venueData) {
-  // Parse route to get category and ID
+  // Parse route to get category and ID (handle slug format: /category/id-slug)
   const routeParts = route.split('/').filter(part => part);
   const category = routeParts[0];
-  const id = routeParts[1];
+  const idWithSlug = routeParts[1];
+  const id = idWithSlug ? idWithSlug.split('-')[0] : null;
   
   let venue = null;
   let pageTitle = 'KLIspots - Discover Pakistan\'s Premium Lifestyle';
