@@ -168,9 +168,10 @@ function generateVenueHTML(route, baseTemplate, venueData) {
           (r.id && r.id.toString() === id) ||
           ((index + 1).toString() === id)
         );
-        if (venue) {
+        // Only log first 10 restaurants to avoid flooding logs
+        if (venue && parseInt(id) <= 10) {
           console.log(`✅ Found restaurant: ${venue.place_name || venue.name || 'Unknown'}`);
-        } else {
+        } else if (!venue && parseInt(id) <= 10) {
           console.log(`❌ No restaurant found with ID: ${id}`);
         }
         break;
@@ -180,9 +181,10 @@ function generateVenueHTML(route, baseTemplate, venueData) {
           (c.id && c.id.toString() === id) ||
           ((index + 1).toString() === id)
         );
-        if (venue) {
+        // Only log first 10 cafes
+        if (venue && parseInt(id) <= 10) {
           console.log(`✅ Found cafe: ${venue.place_name || venue.name || 'Unknown'}`);
-        } else {
+        } else if (!venue && parseInt(id) <= 10) {
           console.log(`❌ No cafe found with ID: ${id}`);
         }
         break;
@@ -194,9 +196,10 @@ function generateVenueHTML(route, baseTemplate, venueData) {
           (s.place_id && s.place_id.toString() === id) ||
           ((index + 1).toString() === id)
         );
-        if (venue) {
+        // Only log first 10 shopping venues
+        if (venue && parseInt(id) <= 10) {
           console.log(`✅ Found shopping venue: ${venue.place_name || venue.name || 'Unknown'}`);
-        } else {
+        } else if (!venue && parseInt(id) <= 10) {
           console.log(`❌ No shopping venue found with ID: ${id}`);
         }
         break;
@@ -208,9 +211,10 @@ function generateVenueHTML(route, baseTemplate, venueData) {
           (e.place_id && e.place_id.toString() === id) ||
           ((index + 1).toString() === id)
         );
-        if (venue) {
+        // Only log first 10 entertainment venues
+        if (venue && parseInt(id) <= 10) {
           console.log(`✅ Found entertainment venue: ${venue.place_name || venue.name || 'Unknown'}`);
-        } else {
+        } else if (!venue && parseInt(id) <= 10) {
           console.log(`❌ No entertainment venue found with ID: ${id}`);
         }
         break;
@@ -222,9 +226,10 @@ function generateVenueHTML(route, baseTemplate, venueData) {
           (a.place_id && a.place_id.toString() === id) ||
           ((index + 1).toString() === id)
         );
-        if (venue) {
+        // Only log first 10 arts & culture venues
+        if (venue && parseInt(id) <= 10) {
           console.log(`✅ Found arts & culture venue: ${venue.place_name || venue.name || 'Unknown'}`);
-        } else {
+        } else if (!venue && parseInt(id) <= 10) {
           console.log(`❌ No arts & culture venue found with ID: ${id}`);
         }
         break;
@@ -236,9 +241,10 @@ function generateVenueHTML(route, baseTemplate, venueData) {
           (s.place_id && s.place_id.toString() === id) ||
           ((index + 1).toString() === id)
         );
-        if (venue) {
+        // Only log first 10 sports & fitness venues
+        if (venue && parseInt(id) <= 10) {
           console.log(`✅ Found sports & fitness venue: ${venue.place_name || venue.name || 'Unknown'}`);
-        } else {
+        } else if (!venue && parseInt(id) <= 10) {
           console.log(`❌ No sports & fitness venue found with ID: ${id}`);
         }
         break;
@@ -250,9 +256,10 @@ function generateVenueHTML(route, baseTemplate, venueData) {
           (h.place_id && h.place_id.toString() === id) ||
           ((index + 1).toString() === id)
         );
-        if (venue) {
+        // Only log first 10 health & wellness venues
+        if (venue && parseInt(id) <= 10) {
           console.log(`✅ Found health & wellness venue: ${venue.place_name || venue.name || 'Unknown'}`);
-        } else {
+        } else if (!venue && parseInt(id) <= 10) {
           console.log(`❌ No health & wellness venue found with ID: ${id}`);
         }
         break;
@@ -261,7 +268,10 @@ function generateVenueHTML(route, baseTemplate, venueData) {
   
   // Generate venue-specific content
   if (venue) {
-    console.log(`🎯 Generating content for venue: ${JSON.stringify(venue, null, 2).substring(0, 200)}...`);
+    // Only log content generation for first 10 venues to avoid flooding logs
+    if (parseInt(id) <= 10) {
+      console.log(`🎯 Generating content for venue: ${JSON.stringify(venue, null, 2).substring(0, 200)}...`);
+    }
     const venueName = venue.name || venue.restaurant_name || venue.cafe_name || venue.venue_name || venue.place_name || 'Unknown Venue';
     const venueLocation = venue.location || venue.address || venue.city || 'Pakistan';
     const venueDescription = venue.description || venue.about || venue.summary || `Visit ${venueName} in ${venueLocation}`;
@@ -269,8 +279,10 @@ function generateVenueHTML(route, baseTemplate, venueData) {
     pageTitle = `${venueName} - ${venueLocation} | KLIspots`;
     pageDescription = `${venueDescription} | Located in ${venueLocation}. Find more details, reviews, and contact information on KLIspots.`;
     
-    console.log(`📝 Generated title: ${pageTitle}`);
-    console.log(`📝 Generated description: ${pageDescription}`);
+    if (parseInt(id) <= 10) {
+      console.log(`📝 Generated title: ${pageTitle}`);
+      console.log(`📝 Generated description: ${pageDescription}`);
+    }
     
     // Generate structured data for SEO
     const structuredData = {
@@ -344,7 +356,9 @@ function generateVenueHTML(route, baseTemplate, venueData) {
   const otherScripts = scriptMatches.join('\n');
   
   // Rebuild the HTML with proper structure
-  console.log(`🔧 Injecting pageContent: ${pageContent.substring(0, 100)}...`);
+  if (parseInt(id) <= 10) {
+    console.log(`🔧 Injecting pageContent: ${pageContent.substring(0, 100)}...`);
+  }
   html = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -355,7 +369,9 @@ ${bodyTag}
 ${otherScripts}
 </body>
 </html>`;
-  console.log(`✅ HTML rebuilt with content for route: ${route}`);
+  if (parseInt(id) <= 10) {
+    console.log(`✅ HTML rebuilt with content for route: ${route}`);
+  }
   
   return html;
 }
