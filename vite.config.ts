@@ -19,12 +19,14 @@ export default defineConfig(({ mode }) => ({
   build: {
     target: 'es2015',
     minify: 'esbuild',
+    // Memory optimizations for 5,500+ pages
+    chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom'],
-          router: ['react-router-dom'],
-        },
+        // Disable manual chunks to prevent memory issues with large builds
+        manualChunks: undefined,
+        // Optimize for large number of pages
+        maxParallelFileOps: 5,
       },
     },
     sourcemap: mode === 'development',

@@ -5,11 +5,16 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/build-ssg.js",
     "build:dev": "vite build --mode development",
+    "build:monitor": "npm run build && echo 'Build completed at:' && date",
+    "build:stats": "npm run build && echo 'Build size:' && du -sh dist/",
+    "build:full-ssg": "set FULL_SSG=true && npm run build",
+    "build:test": "npm run build && echo 'Testing build...' && npm run preview",
+    "generate-routes": "node scripts/generate-routes.js",
+    "generate-sitemap": "node scripts/generate-sitemap.js",
     "lint": "eslint .",
     "preview": "vite preview",
-    "generate-sitemap": "node scripts/generate-sitemap.js",
     "postinstall": "echo 'Postinstall complete'"
   },
   "dependencies": {
@@ -68,6 +73,8 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
+    "@prerenderer/rollup-plugin": "^0.3.12",
+    "@rollup/rollup-win32-x64-msvc": "^4.50.1",
     "@tailwindcss/typography": "^0.5.15",
     "@types/node": "^22.5.5",
     "@types/react": "^18.3.3",
@@ -82,6 +89,6 @@
     "tailwindcss": "^3.4.11",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.1",
-    "vite": "^5.4.1"
+    "vite": "^7.1.5"
   }
 }
