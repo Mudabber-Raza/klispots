@@ -175,39 +175,41 @@ function generateVenueHTML(route, baseTemplate, venueData) {
         }
         break;
       case 'cafe':
-        console.log(`🔍 Looking for cafe with ID: ${id}`);
-        console.log(`📊 Total cafes available: ${venueData.cafes.length}`);
-        console.log(`📋 First 10 cafe names: ${venueData.cafes.slice(0, 10).map(c => c.place_name || 'no-name').join(', ')}`);
-        
-        // Cafe data doesn't have cafe_index or id fields, so use index + 1
-        const cafeIndex = parseInt(id) - 1;
-        venue = venueData.cafes[cafeIndex];
+        venue = venueData.cafes.find((c, index) => 
+          (c.cafe_index && c.cafe_index.toString() === id) ||
+          (c.id && c.id.toString() === id) ||
+          ((index + 1).toString() === id)
+        );
         if (venue) {
-          console.log(`✅ Found cafe: ${venue.place_name || venue.name || 'Unknown'} at index ${cafeIndex}`);
+          console.log(`✅ Found cafe: ${venue.place_name || venue.name || 'Unknown'}`);
         } else {
-          console.log(`❌ No cafe found with ID: ${id} (index ${cafeIndex})`);
+          console.log(`❌ No cafe found with ID: ${id}`);
         }
         break;
       case 'shopping':
-        console.log(`🔍 Looking for shopping with ID: ${id}`);
-        console.log(`📊 Total shopping venues available: ${venueData.shopping.length}`);
-        console.log(`📋 First 10 shopping names: ${venueData.shopping.slice(0, 10).map(s => s.mall_name || s.place_name || 'no-name').join(', ')}`);
-        
-        // Shopping data doesn't have ID fields, so use index + 1
-        const shoppingIndex = parseInt(id) - 1;
-        venue = venueData.shopping[shoppingIndex];
+        // Match the same logic as route generation: venue_index || id || place_id || (index + 1)
+        venue = venueData.shopping.find((s, index) => 
+          (s.venue_index && s.venue_index.toString() === id) ||
+          (s.id && s.id.toString() === id) ||
+          (s.place_id && s.place_id.toString() === id) ||
+          ((index + 1).toString() === id)
+        );
         if (venue) {
-          console.log(`✅ Found shopping venue: ${venue.mall_name || venue.place_name || venue.name || 'Unknown'} at index ${shoppingIndex}`);
+          console.log(`✅ Found shopping venue: ${venue.place_name || venue.name || 'Unknown'}`);
         } else {
-          console.log(`❌ No shopping venue found with ID: ${id} (index ${shoppingIndex})`);
+          console.log(`❌ No shopping venue found with ID: ${id}`);
         }
         break;
       case 'entertainment':
-        // Entertainment data doesn't have ID fields, so use index + 1
-        const entertainmentIndex = parseInt(id) - 1;
-        venue = venueData.entertainment[entertainmentIndex];
+        // Match the same logic as route generation: venue_index || id || place_id || (index + 1)
+        venue = venueData.entertainment.find((e, index) => 
+          (e.venue_index && e.venue_index.toString() === id) ||
+          (e.id && e.id.toString() === id) ||
+          (e.place_id && e.place_id.toString() === id) ||
+          ((index + 1).toString() === id)
+        );
         if (venue) {
-          console.log(`✅ Found entertainment venue: ${venue.venue_name || venue.place_name || venue.name || 'Unknown'}`);
+          console.log(`✅ Found entertainment venue: ${venue.place_name || venue.name || 'Unknown'}`);
         } else {
           console.log(`❌ No entertainment venue found with ID: ${id}`);
         }
@@ -227,31 +229,31 @@ function generateVenueHTML(route, baseTemplate, venueData) {
         }
         break;
       case 'sports-fitness':
-        console.log(`🔍 Looking for sports-fitness with ID: ${id}`);
-        console.log(`📊 Total sports & fitness venues available: ${venueData.sportsFitness.length}`);
-        console.log(`📋 First 10 sports & fitness names: ${venueData.sportsFitness.slice(0, 10).map(s => s.facility_name || s.place_name || 'no-name').join(', ')}`);
-        
-        // Sports & fitness data doesn't have ID fields, so use index + 1
-        const sportsIndex = parseInt(id) - 1;
-        venue = venueData.sportsFitness[sportsIndex];
+        // Match the same logic as route generation: venue_index || id || place_id || (index + 1)
+        venue = venueData.sportsFitness.find((s, index) => 
+          (s.venue_index && s.venue_index.toString() === id) ||
+          (s.id && s.id.toString() === id) ||
+          (s.place_id && s.place_id.toString() === id) ||
+          ((index + 1).toString() === id)
+        );
         if (venue) {
-          console.log(`✅ Found sports & fitness venue: ${venue.facility_name || venue.place_name || venue.name || 'Unknown'} at index ${sportsIndex}`);
+          console.log(`✅ Found sports & fitness venue: ${venue.place_name || venue.name || 'Unknown'}`);
         } else {
-          console.log(`❌ No sports & fitness venue found with ID: ${id} (index ${sportsIndex})`);
+          console.log(`❌ No sports & fitness venue found with ID: ${id}`);
         }
         break;
       case 'health-wellness':
-        console.log(`🔍 Looking for health-wellness with ID: ${id}`);
-        console.log(`📊 Total health & wellness venues available: ${venueData.healthWellness.length}`);
-        console.log(`📋 First 10 health & wellness names: ${venueData.healthWellness.slice(0, 10).map(h => h.place_name || 'no-name').join(', ')}`);
-        
-        // Health & wellness data doesn't have ID fields, so use index + 1
-        const healthIndex = parseInt(id) - 1;
-        venue = venueData.healthWellness[healthIndex];
+        // Match the same logic as route generation: venue_index || id || place_id || (index + 1)
+        venue = venueData.healthWellness.find((h, index) => 
+          (h.venue_index && h.venue_index.toString() === id) ||
+          (h.id && h.id.toString() === id) ||
+          (h.place_id && h.place_id.toString() === id) ||
+          ((index + 1).toString() === id)
+        );
         if (venue) {
-          console.log(`✅ Found health & wellness venue: ${venue.place_name || venue.name || 'Unknown'} at index ${healthIndex}`);
+          console.log(`✅ Found health & wellness venue: ${venue.place_name || venue.name || 'Unknown'}`);
         } else {
-          console.log(`❌ No health & wellness venue found with ID: ${id} (index ${healthIndex})`);
+          console.log(`❌ No health & wellness venue found with ID: ${id}`);
         }
         break;
     }
@@ -315,8 +317,16 @@ function generateVenueHTML(route, baseTemplate, venueData) {
     console.log(`⚠️ Using default template for: ${route}`);
   }
   
-  // Replace placeholders in the base template
-  let html = baseTemplate
+  // Fix the root div content injection - handle malformed HTML
+  // The base template has malformed HTML with content outside root div
+  // We need to clean this up and properly structure the HTML
+  
+  // Extract the head section (everything before <body>)
+  const headMatch = baseTemplate.match(/<head>(.*?)<\/head>/s);
+  let headContent = headMatch ? headMatch[1] : '';
+  
+  // Apply meta tag replacements to the head content
+  headContent = headContent
     .replace(/{route}/g, route)
     .replace(/<title>.*?<\/title>/i, `<title>${pageTitle}</title>`)
     .replace(/<meta name="description" content=".*?"/i, `<meta name="description" content="${pageDescription}"`)
@@ -325,25 +335,17 @@ function generateVenueHTML(route, baseTemplate, venueData) {
     .replace(/<meta name="twitter:title" content=".*?"/i, `<meta name="twitter:title" content="${pageTitle}"`)
     .replace(/<meta name="twitter:description" content=".*?"/i, `<meta name="twitter:description" content="${pageDescription}"`);
   
-  // Fix the root div content injection - handle malformed HTML
-  // The base template has malformed HTML with content outside root div
-  // We need to clean this up and properly structure the HTML
-  
-  // Extract the head section (everything before <body>)
-  const headMatch = html.match(/<head>(.*?)<\/head>/s);
-  const headContent = headMatch ? headMatch[1] : '';
-  
   // Extract the body opening tag
-  const bodyMatch = html.match(/<body[^>]*>/);
+  const bodyMatch = baseTemplate.match(/<body[^>]*>/);
   const bodyTag = bodyMatch ? bodyMatch[0] : '<body>';
   
   // Extract scripts and other content that should be at the end
-  const scriptMatches = html.match(/<script[^>]*>.*?<\/script>/gs) || [];
+  const scriptMatches = baseTemplate.match(/<script[^>]*>.*?<\/script>/gs) || [];
   const otherScripts = scriptMatches.join('\n');
   
-  // Rebuild the HTML with proper structure
+  // Rebuild the HTML with proper structure and correct meta tags
   console.log(`🔧 Injecting pageContent: ${pageContent.substring(0, 100)}...`);
-  html = `<!DOCTYPE html>
+  const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
 ${headContent}
