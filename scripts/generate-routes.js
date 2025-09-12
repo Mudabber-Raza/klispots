@@ -37,12 +37,10 @@ function generateVenueRoutes() {
       console.log(`☕ Found ${cafes.length} cafes`);
       
       cafes.forEach((cafe, index) => {
-        // Use the same ID logic as SSG script: cafe_index || id || (index + 1)
         const id = cafe.cafe_index || cafe.id || (index + 1);
         const name = cafe.name || cafe.cafe_name || cafe.place_name || 'cafe';
         const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
         routes.push(`/cafe/${id}-${slug}`);
-        console.log(`Generated route: /cafe/${id}-${slug} for cafe: ${name}`);
       });
     }
     
@@ -163,7 +161,7 @@ export function getRoutes() {
 }
 
 // If run directly, output routes
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (import.meta.url === `file://${process.argv[1]}` || process.argv[1].endsWith('generate-routes.js')) {
   const routes = getRoutes();
   console.log('\n📋 Generated routes:');
   routes.forEach(route => console.log(`  ${route}`));

@@ -178,6 +178,7 @@ function generateVenueHTML(route, baseTemplate, venueData) {
         venue = venueData.cafes.find((c, index) => 
           (c.cafe_index && c.cafe_index.toString() === id) ||
           (c.id && c.id.toString() === id) ||
+          (c.place_id && c.place_id.toString() === id) ||
           ((index + 1).toString() === id)
         );
         if (venue) {
