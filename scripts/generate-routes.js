@@ -52,7 +52,7 @@ function generateVenueRoutes() {
       
       shopping.forEach((venue, index) => {
         const id = venue.venue_index || venue.id || venue.place_id || (index + 1);
-        const name = venue.name || venue.venue_name || venue.place_name || 'shopping';
+        const name = venue.mall_name || venue.name || venue.venue_name || venue.place_name || 'shopping';
         const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
         routes.push(`/shopping/${id}-${slug}`);
       });
@@ -94,7 +94,7 @@ function generateVenueRoutes() {
       
       sportsFitness.forEach((venue, index) => {
         const id = venue.venue_index || venue.id || venue.place_id || (index + 1);
-        const name = venue.name || venue.venue_name || venue.place_name || 'sports-fitness';
+        const name = venue.facility_name || venue.name || venue.venue_name || venue.place_name || 'sports-fitness';
         const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
         routes.push(`/sports-fitness/${id}-${slug}`);
       });
