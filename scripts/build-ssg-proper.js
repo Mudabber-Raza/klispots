@@ -263,7 +263,7 @@ function generateVenueHTML(route, baseTemplate, venueData) {
   // Generate venue-specific content
   if (venue) {
     console.log(`🎯 Generating content for venue: ${JSON.stringify(venue, null, 2).substring(0, 200)}...`);
-    const venueName = venue.name || venue.restaurant_name || venue.cafe_name || venue.venue_name || venue.place_name || 'Unknown Venue';
+    const venueName = venue.name || venue.restaurant_name || venue.cafe_name || venue.venue_name || venue.place_name || venue.mall_name || venue.facility_name || 'Unknown Venue';
     const venueLocation = venue.location || venue.address || venue.city || 'Pakistan';
     const venueDescription = venue.description || venue.about || venue.summary || `Visit ${venueName} in ${venueLocation}`;
     
