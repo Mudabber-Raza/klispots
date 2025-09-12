@@ -244,8 +244,9 @@ function generateVenueHTML(route, baseTemplate, venueData) {
         }
         break;
       case 'health-wellness':
-        // Match the same logic as route generation: venue_index || id || place_id || (index + 1)
+        // Match the same logic as route generation: cafe_index || venue_index || id || place_id || (index + 1)
         venue = venueData.healthWellness.find((h, index) => 
+          (h.cafe_index && h.cafe_index.toString() === id) ||
           (h.venue_index && h.venue_index.toString() === id) ||
           (h.id && h.id.toString() === id) ||
           (h.place_id && h.place_id.toString() === id) ||
