@@ -33,8 +33,15 @@ function generateVenueRoutes() {
     // Cafes
     const cafesPath = path.join(__dirname, '../src/data/Cafes1.json');
     if (fs.existsSync(cafesPath)) {
-      const cafes = JSON.parse(fs.readFileSync(cafesPath, 'utf8'));
-      console.log(`☕ Found ${cafes.length} cafes`);
+      const rawCafes = JSON.parse(fs.readFileSync(cafesPath, 'utf8'));
+      console.log(`☕ Found ${rawCafes.length} cafes`);
+      
+      // Process cafes data the same way as frontend (cafes.ts)
+      const cafes = rawCafes.map((cafe, index) => ({
+        ...cafe,
+        cafe_index: index + 1, // Override with sequential index like frontend
+        location_and_accessibility_score: cafe.location_and_accessibility_score || 8.0
+      }));
       
       cafes.forEach((cafe, index) => {
         const id = cafe.cafe_index || cafe.id || (index + 1);
