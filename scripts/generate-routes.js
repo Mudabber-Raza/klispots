@@ -155,8 +155,9 @@ export function getRoutes() {
   const isProduction = process.env.NODE_ENV === 'production';
   const isFullSSG = process.env.FULL_SSG === 'true' || process.env.FULL_SSG === true || process.env.FULL_SSG?.trim() === 'true';
   
-  console.log(`🔧 Environment check - NODE_ENV: ${process.env.NODE_ENV}, FULL_SSG: "${process.env.FULL_SSG}"`);
+  console.log(`🔧 Environment check - NODE_ENV: "${process.env.NODE_ENV}", FULL_SSG: "${process.env.FULL_SSG}"`);
   console.log(`🔧 isProduction: ${isProduction}, isFullSSG: ${isFullSSG}`);
+  console.log(`🔧 All environment variables:`, Object.keys(process.env).filter(key => key.includes('SSG') || key.includes('NODE')));
   
   if (isProduction || isFullSSG) {
     console.log('🚀 Generating full SSG routes (5,500+ pages)');

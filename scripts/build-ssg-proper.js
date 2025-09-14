@@ -18,9 +18,10 @@ async function buildSSG() {
   try {
     // Check if we should generate all routes - match generate-routes.js logic exactly
     const isFullSSG = process.env.FULL_SSG === 'true' || process.env.FULL_SSG === true || process.env.FULL_SSG?.trim() === 'true';
-    console.log(`🔧 FULL_SSG environment variable: ${process.env.FULL_SSG}`);
+    console.log(`🔧 FULL_SSG environment variable: "${process.env.FULL_SSG}"`);
     console.log(`🔧 isFullSSG: ${isFullSSG}`);
-    console.log(`🔧 NODE_ENV: ${process.env.NODE_ENV}`);
+    console.log(`🔧 NODE_ENV: "${process.env.NODE_ENV}"`);
+    console.log(`🔧 All environment variables:`, Object.keys(process.env).filter(key => key.includes('SSG') || key.includes('NODE')));
     
     // Get routes based on environment
     const routes = getRoutes();
