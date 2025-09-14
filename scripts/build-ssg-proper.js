@@ -12,6 +12,8 @@ const __dirname = path.dirname(__filename);
  */
 async function buildSSG() {
   console.log('🚀 Starting proper SSG build process...');
+  console.log(`🔧 Current working directory: ${process.cwd()}`);
+  console.log(`🔧 Script directory: ${__dirname}`);
   
   try {
     // Check if we should generate all routes - match generate-routes.js logic exactly
@@ -47,21 +49,42 @@ async function buildSSG() {
     }
     
     // Generate HTML files for all routes
+    let successCount = 0;
+    let errorCount = 0;
+    
     for (const route of routes) {
-      const routePath = route === '/' ? '/index.html' : `${route}/index.html`;
-      const fullPath = path.join(distDir, routePath);
-      
-      // Create directory if it doesn't exist
-      const dir = path.dirname(fullPath);
-      if (!fs.existsSync(dir)) {
-        fs.mkdirSync(dir, { recursive: true });
+      try {
+        const routePath = route === '/' ? '/index.html' : `${route}/index.html`;
+        const fullPath = path.join(distDir, routePath);
+        
+        // Create directory if it doesn't exist
+        const dir = path.dirname(fullPath);
+        if (!fs.existsSync(dir)) {
+          fs.mkdirSync(dir, { recursive: true });
+        }
+        
+        // Generate venue-specific HTML
+        const html = generateVenueHTML(route, baseTemplate, venueData);
+        fs.writeFileSync(fullPath, html);
+        
+        // Verify file was created and has content
+        if (fs.existsSync(fullPath) && fs.statSync(fullPath).size > 0) {
+          console.log(`✅ Generated: ${routePath} (${fs.statSync(fullPath).size} bytes)`);
+          successCount++;
+        } else {
+          console.error(`❌ Failed to generate: ${routePath}`);
+          errorCount++;
+        }
+      } catch (error) {
+        console.error(`❌ Error generating ${route}:`, error.message);
+        errorCount++;
       }
-      
-      // Generate venue-specific HTML
-      const html = generateVenueHTML(route, baseTemplate, venueData);
-      fs.writeFileSync(fullPath, html);
-      console.log(`✅ Generated: ${routePath}`);
     }
+    
+    console.log(`\n📊 SSG Build Summary:`);
+    console.log(`✅ Successfully generated: ${successCount} files`);
+    console.log(`❌ Failed to generate: ${errorCount} files`);
+    console.log(`📁 Total files in dist: ${fs.readdirSync(distDir).length}`);
     
     console.log('🎉 Proper SSG build completed successfully!');
     console.log(`📊 Generated ${routes.length} static pages with unique content`);

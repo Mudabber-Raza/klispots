@@ -1,0 +1,5 @@
+[33m391e7dc[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m FIX: Align cafes SSG processing with frontend
+[33mc288034[m CRITICAL FIX: Fix health and wellness venue matching
+[33mec44582[m CRITICAL FIX: Fix venue name extraction for all categories
+[33mebf3791[m CRITICAL FIX: Fix route generation for shopping and sports categories
+[33m485b15f[m CRITICAL FIX: Add missing cafe routes and fix cafe ID matching
