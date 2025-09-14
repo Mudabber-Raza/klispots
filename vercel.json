@@ -2,10 +2,47 @@
   "buildCommand": "npm install --omit=optional --force && (npm run generate-sitemap || echo 'Sitemap generation failed, continuing build') && FULL_SSG=true NODE_ENV=production npm run build && echo 'Build completed successfully'",
   "outputDirectory": "dist", 
   "framework": "vite",
+  "trailingSlash": false,
   "env": {
     "FULL_SSG": "true"
   },
   "rewrites": [
+    {
+      "source": "/restaurant/(.*)/index.html",
+      "destination": "/restaurant/$1/index.html"
+    },
+    {
+      "source": "/cafe/(.*)/index.html",
+      "destination": "/cafe/$1/index.html"
+    },
+    {
+      "source": "/shopping/(.*)/index.html",
+      "destination": "/shopping/$1/index.html"
+    },
+    {
+      "source": "/entertainment/(.*)/index.html",
+      "destination": "/entertainment/$1/index.html"
+    },
+    {
+      "source": "/arts-culture/(.*)/index.html",
+      "destination": "/arts-culture/$1/index.html"
+    },
+    {
+      "source": "/sports-fitness/(.*)/index.html",
+      "destination": "/sports-fitness/$1/index.html"
+    },
+    {
+      "source": "/health-wellness/(.*)/index.html",
+      "destination": "/health-wellness/$1/index.html"
+    },
+    {
+      "source": "/cities/(.*)/index.html",
+      "destination": "/cities/$1/index.html"
+    },
+    {
+      "source": "/about/index.html",
+      "destination": "/about/index.html"
+    },
     {
       "source": "/sitemap.xml",
       "destination": "/sitemap.xml"
@@ -61,6 +98,10 @@
     {
       "source": "/assets/(.*)",
       "destination": "/assets/$1"
+    },
+    {
+      "source": "/(.*\\.html)",
+      "destination": "/$1"
     },
     {
       "source": "/restaurant/(.*)",
