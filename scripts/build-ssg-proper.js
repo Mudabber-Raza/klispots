@@ -182,6 +182,9 @@ function generateVenueHTML(route, baseTemplate, venueData) {
         }
         break;
       case 'cafe':
+        console.log(`🔍 Searching cafes for ID: ${id}`);
+        console.log(`🔍 Total cafes loaded: ${venueData.cafes.length}`);
+        console.log(`🔍 First 3 cafes:`, venueData.cafes.slice(0, 3).map(c => ({ cafe_index: c.cafe_index, place_name: c.place_name })));
         venue = venueData.cafes.find((c, index) => 
           (c.cafe_index && c.cafe_index.toString() === id) ||
           (c.id && c.id.toString() === id) ||
@@ -190,8 +193,10 @@ function generateVenueHTML(route, baseTemplate, venueData) {
         );
         if (venue) {
           console.log(`✅ Found cafe: ${venue.place_name || venue.name || 'Unknown'}`);
+          console.log(`✅ Cafe cafe_index: ${venue.cafe_index}, matched ID: ${id}`);
         } else {
           console.log(`❌ No cafe found with ID: ${id}`);
+          console.log(`❌ Available cafe_index values:`, venueData.cafes.slice(0, 5).map(c => c.cafe_index));
         }
         break;
       case 'shopping':
