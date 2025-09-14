@@ -367,6 +367,220 @@ function generateVenueHTML(route, baseTemplate, venueData) {
     const categoryName = categoryNames[category] || category;
     pageTitle = `${categoryName} in Pakistan | KLIspots`;
     pageDescription = `Discover the best ${categoryName.toLowerCase()} venues across Pakistan. Find top-rated locations, reviews, and detailed information.`;
+    
+    // Generate rich content for category pages
+    pageContent = `
+      <noscript>
+        <div style="padding: 20px; max-width: 800px; margin: 0 auto;">
+          <h1>${categoryName} in Pakistan</h1>
+          <p>Explore the finest ${categoryName.toLowerCase()} venues across Pakistan. From bustling cities to charming towns, discover exceptional places that offer memorable experiences.</p>
+          <h2>Popular Cities</h2>
+          <ul>
+            <li><strong>Karachi:</strong> Pakistan's largest city with diverse ${categoryName.toLowerCase()} options</li>
+            <li><strong>Lahore:</strong> Cultural hub featuring traditional and modern venues</li>
+            <li><strong>Islamabad:</strong> Capital city with premium ${categoryName.toLowerCase()} establishments</li>
+            <li><strong>Rawalpindi:</strong> Historic city with authentic local experiences</li>
+          </ul>
+          <h2>What to Expect</h2>
+          <p>Our curated collection of ${categoryName.toLowerCase()} venues includes:</p>
+          <ul>
+            <li>Top-rated establishments with verified reviews</li>
+            <li>Detailed information about services and amenities</li>
+            <li>Contact details and location information</li>
+            <li>Photos and descriptions to help you choose</li>
+          </ul>
+          <p><a href="/">← Back to KLIspots Homepage</a></p>
+        </div>
+      </noscript>
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "${categoryName} in Pakistan",
+        "description": "${pageDescription}",
+        "url": "https://klispots.com/${category}",
+        "mainEntity": {
+          "@type": "ItemList",
+          "name": "${categoryName}",
+          "description": "Collection of ${categoryName.toLowerCase()} venues in Pakistan"
+        }
+      }
+      </script>`;
+  } else if (route === '/') {
+    // Homepage
+    pageTitle = 'KLIspots - Discover Pakistan\'s Premium Lifestyle';
+    pageDescription = 'Discover the best restaurants, cafes, shopping, entertainment, and more across Pakistan. Find top-rated venues, read reviews, and plan your perfect experience.';
+    
+    pageContent = `
+      <noscript>
+        <div style="padding: 20px; max-width: 800px; margin: 0 auto;">
+          <h1>Welcome to KLIspots</h1>
+          <p>Your ultimate guide to Pakistan's premium lifestyle destinations. Discover exceptional venues across the country and create unforgettable experiences.</p>
+          
+          <h2>Explore Categories</h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 20px 0;">
+            <div style="border: 1px solid #ddd; padding: 15px; border-radius: 8px;">
+              <h3><a href="/restaurants">🍽️ Restaurants</a></h3>
+              <p>Fine dining, casual eateries, and local favorites</p>
+            </div>
+            <div style="border: 1px solid #ddd; padding: 15px; border-radius: 8px;">
+              <h3><a href="/cafes">☕ Cafes</a></h3>
+              <p>Cozy coffee shops and trendy hangout spots</p>
+            </div>
+            <div style="border: 1px solid #ddd; padding: 15px; border-radius: 8px;">
+              <h3><a href="/shopping">🛍️ Shopping</a></h3>
+              <p>Malls, markets, and boutique stores</p>
+            </div>
+            <div style="border: 1px solid #ddd; padding: 15px; border-radius: 8px;">
+              <h3><a href="/entertainment">🎬 Entertainment</a></h3>
+              <p>Cinemas, theaters, and entertainment venues</p>
+            </div>
+            <div style="border: 1px solid #ddd; padding: 15px; border-radius: 8px;">
+              <h3><a href="/arts-culture">🎨 Arts & Culture</a></h3>
+              <p>Museums, galleries, and cultural centers</p>
+            </div>
+            <div style="border: 1px solid #ddd; padding: 15px; border-radius: 8px;">
+              <h3><a href="/sports-fitness">🏃 Sports & Fitness</a></h3>
+              <p>Gyms, sports facilities, and fitness centers</p>
+            </div>
+            <div style="border: 1px solid #ddd; padding: 15px; border-radius: 8px;">
+              <h3><a href="/health-wellness">🏥 Health & Wellness</a></h3>
+              <p>Spas, clinics, and wellness centers</p>
+            </div>
+          </div>
+          
+          <h2>Popular Cities</h2>
+          <p>Explore venues in Pakistan's most vibrant cities:</p>
+          <ul>
+            <li><a href="/cities/karachi">Karachi</a> - Pakistan's largest metropolitan city</li>
+            <li><a href="/cities/lahore">Lahore</a> - Cultural capital with rich heritage</li>
+            <li><a href="/cities/islamabad">Islamabad</a> - Modern capital city</li>
+            <li><a href="/cities/rawalpindi">Rawalpindi</a> - Historic twin city</li>
+          </ul>
+          
+          <h2>Why Choose KLIspots?</h2>
+          <ul>
+            <li><strong>Curated Selection:</strong> Handpicked venues for quality assurance</li>
+            <li><strong>Verified Reviews:</strong> Real experiences from genuine visitors</li>
+            <li><strong>Detailed Information:</strong> Complete details to help you decide</li>
+            <li><strong>Easy Navigation:</strong> Find exactly what you're looking for</li>
+          </ul>
+        </div>
+      </noscript>
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "KLIspots",
+        "description": "Discover Pakistan's premium lifestyle destinations",
+        "url": "https://klispots.com",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://klispots.com/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+      </script>`;
+  } else if (route.startsWith('/cities/')) {
+    // Cities page
+    const cityName = route.split('/')[2] || 'Pakistan';
+    const cityDisplayName = cityName.charAt(0).toUpperCase() + cityName.slice(1);
+    pageTitle = `${cityDisplayName} Venues | KLIspots`;
+    pageDescription = `Discover the best restaurants, cafes, shopping, and entertainment in ${cityDisplayName}. Find top-rated venues and plan your perfect experience.`;
+    
+    pageContent = `
+      <noscript>
+        <div style="padding: 20px; max-width: 800px; margin: 0 auto;">
+          <h1>${cityDisplayName} Venues</h1>
+          <p>Explore the finest venues in ${cityDisplayName}, Pakistan. From traditional favorites to modern establishments, discover what makes this city special.</p>
+          
+          <h2>Popular Categories in ${cityDisplayName}</h2>
+          <ul>
+            <li><a href="/restaurants">🍽️ Restaurants</a> - Dining experiences in ${cityDisplayName}</li>
+            <li><a href="/cafes">☕ Cafes</a> - Coffee culture and casual hangouts</li>
+            <li><a href="/shopping">🛍️ Shopping</a> - Retail therapy destinations</li>
+            <li><a href="/entertainment">🎬 Entertainment</a> - Fun and entertainment venues</li>
+            <li><a href="/arts-culture">🎨 Arts & Culture</a> - Cultural experiences</li>
+            <li><a href="/sports-fitness">🏃 Sports & Fitness</a> - Active lifestyle options</li>
+            <li><a href="/health-wellness">🏥 Health & Wellness</a> - Wellness and healthcare</li>
+          </ul>
+          
+          <h2>About ${cityDisplayName}</h2>
+          <p>${cityDisplayName} offers a unique blend of traditional Pakistani culture and modern amenities. Whether you're a local resident or visiting, you'll find exceptional venues that cater to every taste and preference.</p>
+          
+          <h2>Getting Around</h2>
+          <p>Navigate ${cityDisplayName} easily with our venue listings. Each location includes detailed address information, contact details, and helpful directions to ensure you reach your destination without hassle.</p>
+          
+          <p><a href="/">← Back to KLIspots Homepage</a></p>
+        </div>
+      </noscript>
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "City",
+        "name": "${cityDisplayName}",
+        "description": "Explore venues and attractions in ${cityDisplayName}, Pakistan",
+        "url": "https://klispots.com${route}"
+      }
+      </script>`;
+  } else if (route === '/about') {
+    // About page
+    pageTitle = 'About KLIspots - Pakistan\'s Premium Lifestyle Guide';
+    pageDescription = 'Learn about KLIspots, your trusted guide to Pakistan\'s best restaurants, cafes, shopping, and entertainment venues. Discover our mission and commitment to quality.';
+    
+    pageContent = `
+      <noscript>
+        <div style="padding: 20px; max-width: 800px; margin: 0 auto;">
+          <h1>About KLIspots</h1>
+          <p>KLIspots is Pakistan's premier lifestyle guide, dedicated to helping you discover the finest venues across the country. We believe that every great experience starts with finding the right place.</p>
+          
+          <h2>Our Mission</h2>
+          <p>To connect people with exceptional venues that offer memorable experiences. We curate and showcase the best restaurants, cafes, shopping destinations, entertainment venues, and more across Pakistan.</p>
+          
+          <h2>What We Offer</h2>
+          <ul>
+            <li><strong>Curated Selection:</strong> Every venue is carefully selected for quality and authenticity</li>
+            <li><strong>Detailed Information:</strong> Complete details including contact info, hours, and amenities</li>
+            <li><strong>Verified Reviews:</strong> Real experiences from genuine visitors</li>
+            <li><strong>Easy Discovery:</strong> Find venues by category, location, or specific needs</li>
+            <li><strong>Local Expertise:</strong> Deep knowledge of Pakistan's diverse cities and regions</li>
+          </ul>
+          
+          <h2>Our Categories</h2>
+          <p>We cover all aspects of lifestyle and entertainment:</p>
+          <ul>
+            <li><strong>Restaurants:</strong> From fine dining to street food, discover culinary excellence</li>
+            <li><strong>Cafes:</strong> Cozy coffee shops and trendy hangout spots</li>
+            <li><strong>Shopping:</strong> Malls, markets, and boutique stores</li>
+            <li><strong>Entertainment:</strong> Cinemas, theaters, and entertainment venues</li>
+            <li><strong>Arts & Culture:</strong> Museums, galleries, and cultural centers</li>
+            <li><strong>Sports & Fitness:</strong> Gyms, sports facilities, and fitness centers</li>
+            <li><strong>Health & Wellness:</strong> Spas, clinics, and wellness centers</li>
+          </ul>
+          
+          <h2>Why Trust KLIspots?</h2>
+          <p>We're committed to providing accurate, up-to-date information about venues across Pakistan. Our team regularly visits and verifies venues to ensure the information we provide is reliable and helpful.</p>
+          
+          <h2>Contact Us</h2>
+          <p>Have questions or suggestions? We'd love to hear from you. Reach out to us through our website or social media channels.</p>
+          
+          <p><a href="/">← Back to KLIspots Homepage</a></p>
+        </div>
+      </noscript>
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "name": "About KLIspots",
+        "description": "Learn about KLIspots, Pakistan's premium lifestyle guide",
+        "url": "https://klispots.com/about",
+        "mainEntity": {
+          "@type": "Organization",
+          "name": "KLIspots",
+          "description": "Pakistan's premier lifestyle guide for discovering exceptional venues"
+        }
+      }
+      </script>`;
   } else {
     console.log(`⚠️ No venue found for route: ${route}`);
     console.log(`⚠️ Using default template for: ${route}`);
