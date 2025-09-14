@@ -14,10 +14,11 @@ async function buildSSG() {
   console.log('🚀 Starting proper SSG build process...');
   
   try {
-    // Check if we should generate all routes
-    const isFullSSG = process.env.FULL_SSG === 'true' || process.env.FULL_SSG === true;
+    // Check if we should generate all routes - match generate-routes.js logic exactly
+    const isFullSSG = process.env.FULL_SSG === 'true' || process.env.FULL_SSG === true || process.env.FULL_SSG?.trim() === 'true';
     console.log(`🔧 FULL_SSG environment variable: ${process.env.FULL_SSG}`);
     console.log(`🔧 isFullSSG: ${isFullSSG}`);
+    console.log(`🔧 NODE_ENV: ${process.env.NODE_ENV}`);
     
     // Get routes based on environment
     const routes = getRoutes();
@@ -270,12 +271,42 @@ function generateVenueHTML(route, baseTemplate, venueData) {
   // Generate venue-specific content
   if (venue) {
     console.log(`🎯 Generating content for venue: ${JSON.stringify(venue, null, 2).substring(0, 200)}...`);
-    const venueName = venue.name || venue.restaurant_name || venue.cafe_name || venue.venue_name || venue.place_name || venue.mall_name || venue.facility_name || 'Unknown Venue';
+    // Generate unique venue name with better fallbacks
+    const venueName = venue.name || venue.restaurant_name || venue.cafe_name || venue.venue_name || venue.place_name || venue.mall_name || venue.facility_name || `Venue ${id}`;
     const venueLocation = venue.location || venue.address || venue.city || 'Pakistan';
     const venueDescription = venue.description || venue.about || venue.summary || `Visit ${venueName} in ${venueLocation}`;
     
+    console.log(`📝 Generated title: ${venueName} - ${venueLocation} | KLIspots`);
+    console.log(`📝 Generated description: ${venueDescription.substring(0, 100)}...`);
+    
     pageTitle = `${venueName} - ${venueLocation} | KLIspots`;
     pageDescription = `${venueDescription} | Located in ${venueLocation}. Find more details, reviews, and contact information on KLIspots.`;
+    
+    // Generate rich content for better SEO
+    pageContent = `
+      <noscript>
+        <div style="padding: 20px; max-width: 800px; margin: 0 auto;">
+          <h1>${venueName}</h1>
+          <p><strong>Location:</strong> ${venueLocation}</p>
+          <p><strong>Description:</strong> ${venueDescription}</p>
+          <p>Visit ${venueName} in ${venueLocation} for an amazing experience. Find more details, reviews, and contact information on KLIspots.</p>
+          <p><a href="/">← Back to KLIspots</a></p>
+        </div>
+      </noscript>
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "${venueName}",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "${venueLocation}",
+          "addressCountry": "Pakistan"
+        },
+        "description": "${venueDescription}",
+        "url": "https://klispots.com${route}"
+      }
+      </script>`;
     
     console.log(`📝 Generated title: ${pageTitle}`);
     console.log(`📝 Generated description: ${pageDescription}`);
@@ -364,6 +395,9 @@ ${otherScripts}
 </body>
 </html>`;
   console.log(`✅ HTML rebuilt with content for route: ${route}`);
+  console.log(`🔧 Final HTML length: ${html.length} characters`);
+  console.log(`🔧 Title in HTML: ${html.includes(pageTitle) ? '✅ Found' : '❌ Missing'}`);
+  console.log(`🔧 Description in HTML: ${html.includes(pageDescription) ? '✅ Found' : '❌ Missing'}`);
   
   return html;
 }
