@@ -70,7 +70,6 @@ async function buildSSG() {
         
         // Verify file was created and has content
         if (fs.existsSync(fullPath) && fs.statSync(fullPath).size > 0) {
-          console.log(`✅ Generated: ${routePath} (${fs.statSync(fullPath).size} bytes)`);
           successCount++;
         } else {
           console.error(`❌ Failed to generate: ${routePath}`);
@@ -202,64 +201,36 @@ function generateVenueHTML(route, baseTemplate, venueData) {
         );
         break;
       case 'cafe':
-        console.log(`🔍 Searching cafes for ID: ${id}`);
-        console.log(`🔍 Total cafes loaded: ${venueData.cafes.length}`);
-        console.log(`🔍 First 3 cafes:`, venueData.cafes.slice(0, 3).map(c => ({ cafe_index: c.cafe_index, place_name: c.place_name })));
         venue = venueData.cafes.find((c, index) => 
           (c.cafe_index && c.cafe_index.toString() === id) ||
           (c.id && c.id.toString() === id) ||
           (c.place_id && c.place_id.toString() === id) ||
           ((index + 1).toString() === id)
         );
-        if (venue) {
-          console.log(`✅ Found cafe: ${venue.place_name || venue.name || 'Unknown'}`);
-          console.log(`✅ Cafe cafe_index: ${venue.cafe_index}, matched ID: ${id}`);
-        } else {
-          console.log(`❌ No cafe found with ID: ${id}`);
-          console.log(`❌ Available cafe_index values:`, venueData.cafes.slice(0, 5).map(c => c.cafe_index));
-        }
         break;
       case 'shopping':
-        // Match the same logic as route generation: venue_index || id || place_id || (index + 1)
         venue = venueData.shopping.find((s, index) => 
           (s.venue_index && s.venue_index.toString() === id) ||
           (s.id && s.id.toString() === id) ||
           (s.place_id && s.place_id.toString() === id) ||
           ((index + 1).toString() === id)
         );
-        if (venue) {
-          console.log(`✅ Found shopping venue: ${venue.place_name || venue.name || 'Unknown'}`);
-        } else {
-          console.log(`❌ No shopping venue found with ID: ${id}`);
-        }
         break;
       case 'entertainment':
-        // Match the same logic as route generation: venue_index || id || place_id || (index + 1)
         venue = venueData.entertainment.find((e, index) => 
           (e.venue_index && e.venue_index.toString() === id) ||
           (e.id && e.id.toString() === id) ||
           (e.place_id && e.place_id.toString() === id) ||
           ((index + 1).toString() === id)
         );
-        if (venue) {
-          console.log(`✅ Found entertainment venue: ${venue.place_name || venue.name || 'Unknown'}`);
-        } else {
-          console.log(`❌ No entertainment venue found with ID: ${id}`);
-        }
         break;
       case 'arts-culture':
-        // Match the same logic as route generation: venue_index || id || place_id || (index + 1)
         venue = venueData.artsCulture.find((a, index) => 
           (a.venue_index && a.venue_index.toString() === id) ||
           (a.id && a.id.toString() === id) ||
           (a.place_id && a.place_id.toString() === id) ||
           ((index + 1).toString() === id)
         );
-        if (venue) {
-          console.log(`✅ Found arts & culture venue: ${venue.place_name || venue.name || 'Unknown'}`);
-        } else {
-          console.log(`❌ No arts & culture venue found with ID: ${id}`);
-        }
         break;
       case 'sports-fitness':
         console.log(`🔍 Searching sports-fitness for ID: ${id}`);
@@ -302,20 +273,12 @@ function generateVenueHTML(route, baseTemplate, venueData) {
     }
   }
   
-  // Generate venue-specific content
-  if (venue) {
-    if (category !== 'restaurant') {
-      console.log(`🎯 Generating content for venue: ${JSON.stringify(venue, null, 2).substring(0, 200)}...`);
-    }
-    // Generate unique venue name with better fallbacks
-    const venueName = venue.name || venue.restaurant_name || venue.cafe_name || venue.venue_name || venue.place_name || venue.mall_name || venue.facility_name || `Venue ${id}`;
-    const venueLocation = venue.location || venue.address || venue.city || 'Pakistan';
-    const venueDescription = venue.description || venue.about || venue.summary || `Visit ${venueName} in ${venueLocation}`;
-    
-    if (category !== 'restaurant') {
-      console.log(`📝 Generated title: ${venueName} - ${venueLocation} | KLIspots`);
-      console.log(`📝 Generated description: ${venueDescription.substring(0, 100)}...`);
-    }
+    // Generate venue-specific content
+    if (venue) {
+      // Generate unique venue name with better fallbacks
+      const venueName = venue.name || venue.restaurant_name || venue.cafe_name || venue.venue_name || venue.place_name || venue.mall_name || venue.facility_name || `Venue ${id}`;
+      const venueLocation = venue.location || venue.address || venue.city || 'Pakistan';
+      const venueDescription = venue.description || venue.about || venue.summary || `Visit ${venueName} in ${venueLocation}`;
     
     pageTitle = `${venueName} - ${venueLocation} | KLIspots`;
     pageDescription = `${venueDescription} | Located in ${venueLocation}. Find more details, reviews, and contact information on KLIspots.`;
