@@ -11,8 +11,44 @@
       "destination": "/sitemap.xml"
     },
     {
-      "source": "/sitemap-*.xml",
-      "destination": "/sitemap-*.xml"
+      "source": "/sitemap-restaurants-1.xml",
+      "destination": "/sitemap-restaurants-1.xml"
+    },
+    {
+      "source": "/sitemap-restaurants-2.xml",
+      "destination": "/sitemap-restaurants-2.xml"
+    },
+    {
+      "source": "/sitemap-restaurants-3.xml",
+      "destination": "/sitemap-restaurants-3.xml"
+    },
+    {
+      "source": "/sitemap-cafes-1.xml",
+      "destination": "/sitemap-cafes-1.xml"
+    },
+    {
+      "source": "/sitemap-cafes-2.xml",
+      "destination": "/sitemap-cafes-2.xml"
+    },
+    {
+      "source": "/sitemap-shopping.xml",
+      "destination": "/sitemap-shopping.xml"
+    },
+    {
+      "source": "/sitemap-entertainment.xml",
+      "destination": "/sitemap-entertainment.xml"
+    },
+    {
+      "source": "/sitemap-arts-culture.xml",
+      "destination": "/sitemap-arts-culture.xml"
+    },
+    {
+      "source": "/sitemap-sports-fitness.xml",
+      "destination": "/sitemap-sports-fitness.xml"
+    },
+    {
+      "source": "/sitemap-health-wellness.xml",
+      "destination": "/sitemap-health-wellness.xml"
     },
     {
       "source": "/robots.txt",
@@ -117,7 +153,124 @@
       ]
     },
     {
-      "source": "/sitemap-*.xml",
+      "source": "/sitemap-restaurants-1.xml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/xml"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    },
+    {
+      "source": "/sitemap-restaurants-2.xml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/xml"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    },
+    {
+      "source": "/sitemap-restaurants-3.xml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/xml"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    },
+    {
+      "source": "/sitemap-cafes-1.xml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/xml"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    },
+    {
+      "source": "/sitemap-cafes-2.xml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/xml"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    },
+    {
+      "source": "/sitemap-shopping.xml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/xml"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    },
+    {
+      "source": "/sitemap-entertainment.xml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/xml"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    },
+    {
+      "source": "/sitemap-arts-culture.xml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/xml"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    },
+    {
+      "source": "/sitemap-sports-fitness.xml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/xml"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    },
+    {
+      "source": "/sitemap-health-wellness.xml",
       "headers": [
         {
           "key": "Content-Type",
@@ -153,23 +306,7 @@
           "value": "1; mode=block"
         }
       ]
-    },
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
-        }
-      ]
     }
   ]
 }
+
