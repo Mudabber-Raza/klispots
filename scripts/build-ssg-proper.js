@@ -92,7 +92,6 @@ async function loadVenueData() {
     const restaurantsPath = path.join(dataDir, 'Restaurants1.json');
     if (fs.existsSync(restaurantsPath)) {
       venueData.restaurants = JSON.parse(fs.readFileSync(restaurantsPath, 'utf8'));
-      console.log(`🍽️ Loaded ${venueData.restaurants.length} restaurants`);
     }
     
     // Load cafes
@@ -167,7 +166,9 @@ function generateVenueHTML(route, baseTemplate, venueData) {
   
   // Find venue data based on route
   if (category && id) {
-    console.log(`🔍 Looking for ${category} with ID: ${id}`);
+    if (category !== 'restaurant') {
+      console.log(`🔍 Looking for ${category} with ID: ${id}`);
+    }
     switch (category) {
       case 'restaurant':
         venue = venueData.restaurants.find((r, index) => 
@@ -279,14 +280,18 @@ function generateVenueHTML(route, baseTemplate, venueData) {
   
   // Generate venue-specific content
   if (venue) {
-    console.log(`🎯 Generating content for venue: ${JSON.stringify(venue, null, 2).substring(0, 200)}...`);
+    if (category !== 'restaurant') {
+      console.log(`🎯 Generating content for venue: ${JSON.stringify(venue, null, 2).substring(0, 200)}...`);
+    }
     // Generate unique venue name with better fallbacks
     const venueName = venue.name || venue.restaurant_name || venue.cafe_name || venue.venue_name || venue.place_name || venue.mall_name || venue.facility_name || `Venue ${id}`;
     const venueLocation = venue.location || venue.address || venue.city || 'Pakistan';
     const venueDescription = venue.description || venue.about || venue.summary || `Visit ${venueName} in ${venueLocation}`;
     
-    console.log(`📝 Generated title: ${venueName} - ${venueLocation} | KLIspots`);
-    console.log(`📝 Generated description: ${venueDescription.substring(0, 100)}...`);
+    if (category !== 'restaurant') {
+      console.log(`📝 Generated title: ${venueName} - ${venueLocation} | KLIspots`);
+      console.log(`📝 Generated description: ${venueDescription.substring(0, 100)}...`);
+    }
     
     pageTitle = `${venueName} - ${venueLocation} | KLIspots`;
     pageDescription = `${venueDescription} | Located in ${venueLocation}. Find more details, reviews, and contact information on KLIspots.`;
@@ -317,8 +322,10 @@ function generateVenueHTML(route, baseTemplate, venueData) {
       }
       </script>`;
     
-    console.log(`📝 Generated title: ${pageTitle}`);
-    console.log(`📝 Generated description: ${pageDescription}`);
+    if (category !== 'restaurant') {
+      console.log(`📝 Generated title: ${pageTitle}`);
+      console.log(`📝 Generated description: ${pageDescription}`);
+    }
     
     // Generate structured data for SEO
     const structuredData = {
@@ -392,7 +399,9 @@ function generateVenueHTML(route, baseTemplate, venueData) {
   const otherScripts = scriptMatches.join('\n');
   
   // Rebuild the HTML with proper structure and correct meta tags
-  console.log(`🔧 Injecting pageContent: ${pageContent.substring(0, 100)}...`);
+  if (category !== 'restaurant') {
+    console.log(`🔧 Injecting pageContent: ${pageContent.substring(0, 100)}...`);
+  }
   const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -403,10 +412,12 @@ ${bodyTag}
 ${otherScripts}
 </body>
 </html>`;
-  console.log(`✅ HTML rebuilt with content for route: ${route}`);
-  console.log(`🔧 Final HTML length: ${html.length} characters`);
-  console.log(`🔧 Title in HTML: ${html.includes(pageTitle) ? '✅ Found' : '❌ Missing'}`);
-  console.log(`🔧 Description in HTML: ${html.includes(pageDescription) ? '✅ Found' : '❌ Missing'}`);
+  if (category !== 'restaurant') {
+    console.log(`✅ HTML rebuilt with content for route: ${route}`);
+    console.log(`🔧 Final HTML length: ${html.length} characters`);
+    console.log(`🔧 Title in HTML: ${html.includes(pageTitle) ? '✅ Found' : '❌ Missing'}`);
+    console.log(`🔧 Description in HTML: ${html.includes(pageDescription) ? '✅ Found' : '❌ Missing'}`);
+  }
   
   return html;
 }
