@@ -1,5 +1,5 @@
 {
-  "buildCommand": "npm install --omit=optional --force && (npm run generate-sitemap || echo 'Sitemap generation failed, continuing build') && FULL_SSG=true npm run build",
+  "buildCommand": "npm install --omit=optional --force && (npm run generate-sitemap || echo 'Sitemap generation failed, continuing build') && npm run build && echo 'Build completed successfully'",
   "outputDirectory": "dist", 
   "framework": "vite",
   "env": {
