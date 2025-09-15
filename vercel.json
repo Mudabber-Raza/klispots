@@ -140,7 +140,7 @@
       "destination": "/about/index.html"
     },
     {
-      "source": "/(.*)",
+      "source": "/",
       "destination": "/index.html"
     }
   ],
