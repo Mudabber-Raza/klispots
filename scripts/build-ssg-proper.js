@@ -649,7 +649,7 @@ function generateComprehensiveVenueContent(venue, venueName, venueLocation, venu
   content += generateCategorySpecificContent(venue, category);
 
   // Timing Intelligence
-  content += generateTimingIntelligence(venue);
+  content += generateTimingIntelligence(venue, category);
 
   // Scoring System
   content += generateScoringSystem(venue, category);
@@ -674,7 +674,7 @@ function generateComprehensiveVenueContent(venue, venueName, venueLocation, venu
 }
 
 /**
- * Generate category-specific content
+ * Generate category-specific content with unique fields for each category
  */
 function generateCategorySpecificContent(venue, category) {
   let content = '';
@@ -690,8 +690,12 @@ function generateCategorySpecificContent(venue, category) {
           ${venue.specialty ? `<div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #ddd;"><strong>Specialty:</strong> ${venue.specialty}</div>` : ''}
           ${venue.menu_price_range ? `<div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #ddd;"><strong>Price Range:</strong> ${venue.menu_price_range}</div>` : ''}
         </div>
-        ${venue.signature_dishes ? `<div style="margin-top: 15px;"><strong>Signature Dishes:</strong> ${venue.signature_dishes}</div>` : ''}
-        ${venue.vegetarian_options ? `<div style="margin-top: 10px;"><strong>Vegetarian Options:</strong> ${venue.vegetarian_options}</div>` : ''}
+        ${venue.signature_dishes ? `<div style="margin-top: 15px; padding: 12px; background: #fff3cd; border-radius: 6px; border-left: 4px solid #ffc107;"><strong>Signature Dishes:</strong> ${venue.signature_dishes}</div>` : ''}
+        ${venue.vegetarian_options ? `<div style="margin-top: 10px; padding: 12px; background: #d4edda; border-radius: 6px; border-left: 4px solid #28a745;"><strong>Vegetarian Options:</strong> ${venue.vegetarian_options}</div>` : ''}
+        ${venue.dining_areas ? `<div style="margin-top: 10px; padding: 12px; background: #e8f5e8; border-radius: 6px;"><strong>Dining Areas:</strong> ${venue.dining_areas}</div>` : ''}
+        ${venue.decor_style ? `<div style="margin-top: 10px; padding: 12px; background: #f8f9fa; border-radius: 6px;"><strong>Decor Style:</strong> ${venue.decor_style}</div>` : ''}
+        ${venue.noise_level ? `<div style="margin-top: 10px; padding: 12px; background: #e8f5e8; border-radius: 6px;"><strong>Noise Level:</strong> ${venue.noise_level}</div>` : ''}
+        ${venue.service_style ? `<div style="margin-top: 10px; padding: 12px; background: #f8f9fa; border-radius: 6px;"><strong>Service Style:</strong> ${venue.service_style}</div>` : ''}
       </div>`;
       break;
 
@@ -704,8 +708,13 @@ function generateCategorySpecificContent(venue, category) {
           ${venue.specialty ? `<div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #ddd;"><strong>Specialty:</strong> ${venue.specialty}</div>` : ''}
           ${venue.menu_price_range ? `<div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #ddd;"><strong>Price Range:</strong> ${venue.menu_price_range}</div>` : ''}
         </div>
-        ${venue.signature_items ? `<div style="margin-top: 15px;"><strong>Signature Items:</strong> ${venue.signature_items}</div>` : ''}
-        ${venue.coffee_types ? `<div style="margin-top: 10px;"><strong>Coffee Types:</strong> ${venue.coffee_types}</div>` : ''}
+        ${venue.signature_items ? `<div style="margin-top: 15px; padding: 12px; background: #fff3cd; border-radius: 6px; border-left: 4px solid #ffc107;"><strong>Signature Items:</strong> ${venue.signature_items}</div>` : ''}
+        ${venue.coffee_types ? `<div style="margin-top: 10px; padding: 12px; background: #d4edda; border-radius: 6px; border-left: 4px solid #28a745;"><strong>Coffee Types:</strong> ${venue.coffee_types}</div>` : ''}
+        ${venue.coffee_and_beverages ? `<div style="margin-top: 10px; padding: 12px; background: #e8f5e8; border-radius: 6px;"><strong>Beverages:</strong> ${venue.coffee_and_beverages}</div>` : ''}
+        ${venue.food_options ? `<div style="margin-top: 10px; padding: 12px; background: #f8f9fa; border-radius: 6px;"><strong>Food Options:</strong> ${venue.food_options}</div>` : ''}
+        ${venue.seating_capacity ? `<div style="margin-top: 10px; padding: 12px; background: #e8f5e8; border-radius: 6px;"><strong>Seating Capacity:</strong> ${venue.seating_capacity}</div>` : ''}
+        ${venue.study_environment ? `<div style="margin-top: 10px; padding: 12px; background: #f8f9fa; border-radius: 6px;"><strong>Study Environment:</strong> ${venue.study_environment}</div>` : ''}
+        ${venue.vibes ? `<div style="margin-top: 10px; padding: 12px; background: #e8f5e8; border-radius: 6px;"><strong>Vibes:</strong> ${venue.vibes}</div>` : ''}
       </div>`;
       break;
 
@@ -718,8 +727,12 @@ function generateCategorySpecificContent(venue, category) {
           ${venue.brands_and_stores ? `<div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #ddd;"><strong>Brands & Stores:</strong> ${venue.brands_and_stores}</div>` : ''}
           ${venue.mall_theme ? `<div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #ddd;"><strong>Theme:</strong> ${venue.mall_theme}</div>` : ''}
         </div>
-        ${venue.dining_options ? `<div style="margin-top: 15px;"><strong>Dining Options:</strong> ${venue.dining_options}</div>` : ''}
-        ${venue.entertainment_and_recreation ? `<div style="margin-top: 10px;"><strong>Entertainment:</strong> ${venue.entertainment_and_recreation}</div>` : ''}
+        ${venue.dining_options ? `<div style="margin-top: 15px; padding: 12px; background: #fff3cd; border-radius: 6px; border-left: 4px solid #ffc107;"><strong>Dining Options:</strong> ${venue.dining_options}</div>` : ''}
+        ${venue.entertainment_and_recreation ? `<div style="margin-top: 10px; padding: 12px; background: #d4edda; border-radius: 6px; border-left: 4px solid #28a745;"><strong>Entertainment:</strong> ${venue.entertainment_and_recreation}</div>` : ''}
+        ${venue.facilities_and_amenities ? `<div style="margin-top: 10px; padding: 12px; background: #e8f5e8; border-radius: 6px;"><strong>Facilities:</strong> ${venue.facilities_and_amenities}</div>` : ''}
+        ${venue.parking_availability ? `<div style="margin-top: 10px; padding: 12px; background: #f8f9fa; border-radius: 6px;"><strong>Parking:</strong> ${venue.parking_availability}</div>` : ''}
+        ${venue.special_services ? `<div style="margin-top: 10px; padding: 12px; background: #e8f5e8; border-radius: 6px;"><strong>Special Services:</strong> ${venue.special_services}</div>` : ''}
+        ${venue.payment_options ? `<div style="margin-top: 10px; padding: 12px; background: #f8f9fa; border-radius: 6px;"><strong>Payment Options:</strong> ${venue.payment_options}</div>` : ''}
       </div>`;
       break;
 
@@ -732,8 +745,14 @@ function generateCategorySpecificContent(venue, category) {
           ${venue.sports_offered ? `<div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #ddd;"><strong>Sports Offered:</strong> ${venue.sports_offered}</div>` : ''}
           ${venue.membership_options ? `<div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #ddd;"><strong>Membership:</strong> ${venue.membership_options}</div>` : ''}
         </div>
-        ${venue.equipment_provided ? `<div style="margin-top: 15px;"><strong>Equipment:</strong> ${venue.equipment_provided}</div>` : ''}
-        ${venue.coaching_available ? `<div style="margin-top: 10px;"><strong>Coaching:</strong> ${venue.coaching_available}</div>` : ''}
+        ${venue.equipment_provided ? `<div style="margin-top: 15px; padding: 12px; background: #fff3cd; border-radius: 6px; border-left: 4px solid #ffc107;"><strong>Equipment:</strong> ${venue.equipment_provided}</div>` : ''}
+        ${venue.coaching_available ? `<div style="margin-top: 10px; padding: 12px; background: #d4edda; border-radius: 6px; border-left: 4px solid #28a745;"><strong>Coaching:</strong> ${venue.coaching_available}</div>` : ''}
+        ${venue.pricing_structure ? `<div style="margin-top: 10px; padding: 12px; background: #e8f5e8; border-radius: 6px;"><strong>Pricing:</strong> ${venue.pricing_structure}</div>` : ''}
+        ${venue.tournament_facilities ? `<div style="margin-top: 10px; padding: 12px; background: #f8f9fa; border-radius: 6px;"><strong>Tournament Facilities:</strong> ${venue.tournament_facilities}</div>` : ''}
+        ${venue.group_bookings ? `<div style="margin-top: 10px; padding: 12px; background: #e8f5e8; border-radius: 6px;"><strong>Group Bookings:</strong> ${venue.group_bookings}</div>` : ''}
+        ${venue.special_programs ? `<div style="margin-top: 10px; padding: 12px; background: #f8f9fa; border-radius: 6px;"><strong>Special Programs:</strong> ${venue.special_programs}</div>` : ''}
+        ${venue.amenities ? `<div style="margin-top: 10px; padding: 12px; background: #e8f5e8; border-radius: 6px;"><strong>Amenities:</strong> ${venue.amenities}</div>` : ''}
+        ${venue.changing_facilities ? `<div style="margin-top: 10px; padding: 12px; background: #f8f9fa; border-radius: 6px;"><strong>Changing Facilities:</strong> ${venue.changing_facilities}</div>` : ''}
       </div>`;
       break;
 
@@ -746,8 +765,12 @@ function generateCategorySpecificContent(venue, category) {
           ${venue.services_offered ? `<div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #ddd;"><strong>Services:</strong> ${venue.services_offered}</div>` : ''}
           ${venue.specializations ? `<div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #ddd;"><strong>Specializations:</strong> ${venue.specializations}</div>` : ''}
         </div>
-        ${venue.treatment_options ? `<div style="margin-top: 15px;"><strong>Treatments:</strong> ${venue.treatment_options}</div>` : ''}
-        ${venue.amenities ? `<div style="margin-top: 10px;"><strong>Amenities:</strong> ${venue.amenities}</div>` : ''}
+        ${venue.treatment_options ? `<div style="margin-top: 15px; padding: 12px; background: #fff3cd; border-radius: 6px; border-left: 4px solid #ffc107;"><strong>Treatments:</strong> ${venue.treatment_options}</div>` : ''}
+        ${venue.amenities ? `<div style="margin-top: 10px; padding: 12px; background: #d4edda; border-radius: 6px; border-left: 4px solid #28a745;"><strong>Amenities:</strong> ${venue.amenities}</div>` : ''}
+        ${venue.equipment_quality_and_variety_score ? `<div style="margin-top: 10px; padding: 12px; background: #e8f5e8; border-radius: 6px;"><strong>Equipment Quality:</strong> ${venue.equipment_quality_and_variety_score}/10</div>` : ''}
+        ${venue.trainer_and_staff_expertise_score ? `<div style="margin-top: 10px; padding: 12px; background: #f8f9fa; border-radius: 6px;"><strong>Trainer Expertise:</strong> ${venue.trainer_and_staff_expertise_score}/10</div>` : ''}
+        ${venue.hygiene_and_cleanliness_score ? `<div style="margin-top: 10px; padding: 12px; background: #e8f5e8; border-radius: 6px;"><strong>Hygiene & Cleanliness:</strong> ${venue.hygiene_and_cleanliness_score}/10</div>` : ''}
+        ${venue.membership_and_pricing_score ? `<div style="margin-top: 10px; padding: 12px; background: #f8f9fa; border-radius: 6px;"><strong>Membership & Pricing:</strong> ${venue.membership_and_pricing_score}/10</div>` : ''}
       </div>`;
       break;
 
@@ -760,8 +783,13 @@ function generateCategorySpecificContent(venue, category) {
           ${venue.entertainment_options ? `<div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #ddd;"><strong>Options:</strong> ${venue.entertainment_options}</div>` : ''}
           ${venue.ticket_pricing ? `<div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #ddd;"><strong>Pricing:</strong> ${venue.ticket_pricing}</div>` : ''}
         </div>
-        ${venue.facilities_available ? `<div style="margin-top: 15px;"><strong>Facilities:</strong> ${venue.facilities_available}</div>` : ''}
-        ${venue.age_restrictions ? `<div style="margin-top: 10px;"><strong>Age Restrictions:</strong> ${venue.age_restrictions}</div>` : ''}
+        ${venue.facilities_available ? `<div style="margin-top: 15px; padding: 12px; background: #fff3cd; border-radius: 6px; border-left: 4px solid #ffc107;"><strong>Facilities:</strong> ${venue.facilities_available}</div>` : ''}
+        ${venue.age_restrictions ? `<div style="margin-top: 10px; padding: 12px; background: #d4edda; border-radius: 6px; border-left: 4px solid #28a745;"><strong>Age Restrictions:</strong> ${venue.age_restrictions}</div>` : ''}
+        ${venue.booking_system ? `<div style="margin-top: 10px; padding: 12px; background: #e8f5e8; border-radius: 6px;"><strong>Booking System:</strong> ${venue.booking_system}</div>` : ''}
+        ${venue.group_discounts ? `<div style="margin-top: 10px; padding: 12px; background: #f8f9fa; border-radius: 6px;"><strong>Group Discounts:</strong> ${venue.group_discounts}</div>` : ''}
+        ${venue.special_packages ? `<div style="margin-top: 10px; padding: 12px; background: #e8f5e8; border-radius: 6px;"><strong>Special Packages:</strong> ${venue.special_packages}</div>` : ''}
+        ${venue.food_and_beverages ? `<div style="margin-top: 10px; padding: 12px; background: #f8f9fa; border-radius: 6px;"><strong>Food & Beverages:</strong> ${venue.food_and_beverages}</div>` : ''}
+        ${venue.holiday_considerations ? `<div style="margin-top: 10px; padding: 12px; background: #e8f5e8; border-radius: 6px;"><strong>Holiday Considerations:</strong> ${venue.holiday_considerations}</div>` : ''}
       </div>`;
       break;
 
@@ -770,12 +798,17 @@ function generateCategorySpecificContent(venue, category) {
       <div style="margin-bottom: 25px;">
         <h3 style="color: #333;">🎨 Arts & Culture Details</h3>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
-          ${venue.venue_type ? `<div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #ddd;"><strong>Type:</strong> ${venue.venue_type}</div>` : ''}
+          ${venue.venue_category ? `<div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #ddd;"><strong>Category:</strong> ${venue.venue_category}</div>` : ''}
           ${venue.exhibitions_and_collections ? `<div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #ddd;"><strong>Exhibitions:</strong> ${venue.exhibitions_and_collections}</div>` : ''}
           ${venue.artistic_focus ? `<div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #ddd;"><strong>Focus:</strong> ${venue.artistic_focus}</div>` : ''}
         </div>
-        ${venue.programs_and_events ? `<div style="margin-top: 15px;"><strong>Programs:</strong> ${venue.programs_and_events}</div>` : ''}
-        ${venue.educational_offerings ? `<div style="margin-top: 10px;"><strong>Education:</strong> ${venue.educational_offerings}</div>` : ''}
+        ${venue.programs_and_events ? `<div style="margin-top: 15px; padding: 12px; background: #fff3cd; border-radius: 6px; border-left: 4px solid #ffc107;"><strong>Programs:</strong> ${venue.programs_and_events}</div>` : ''}
+        ${venue.educational_offerings ? `<div style="margin-top: 10px; padding: 12px; background: #d4edda; border-radius: 6px; border-left: 4px solid #28a745;"><strong>Education:</strong> ${venue.educational_offerings}</div>` : ''}
+        ${venue.cultural_significance ? `<div style="margin-top: 10px; padding: 12px; background: #e8f5e8; border-radius: 6px;"><strong>Cultural Significance:</strong> ${venue.cultural_significance}</div>` : ''}
+        ${venue.visitor_experience_score ? `<div style="margin-top: 10px; padding: 12px; background: #f8f9fa; border-radius: 6px;"><strong>Visitor Experience:</strong> ${venue.visitor_experience_score}/10</div>` : ''}
+        ${venue.curatorial_quality_score ? `<div style="margin-top: 10px; padding: 12px; background: #e8f5e8; border-radius: 6px;"><strong>Curatorial Quality:</strong> ${venue.curatorial_quality_score}/10</div>` : ''}
+        ${venue.accessibility_and_facilities_score ? `<div style="margin-top: 10px; padding: 12px; background: #f8f9fa; border-radius: 6px;"><strong>Accessibility:</strong> ${venue.accessibility_and_facilities_score}/10</div>` : ''}
+        ${venue.photography_policy ? `<div style="margin-top: 10px; padding: 12px; background: #e8f5e8; border-radius: 6px;"><strong>Photography Policy:</strong> ${venue.photography_policy}</div>` : ''}
       </div>`;
       break;
   }
@@ -784,17 +817,62 @@ function generateCategorySpecificContent(venue, category) {
 }
 
 /**
- * Generate timing intelligence section
+ * Generate category-specific timing intelligence section
  */
-function generateTimingIntelligence(venue) {
-  const timingFields = [
-    'best_time_for_date_night', 'best_time_for_family', 'best_time_for_business_meetings',
-    'best_time_for_study', 'best_time_for_competitive_play', 'best_time_for_casual_play',
-    'best_time_for_training_sessions', 'best_time_for_corporate_events', 'best_time_for_families_with_kids',
-    'best_time_for_groups', 'best_time_for_special_events', 'best_time_for_family_shopping',
-    'best_time_for_couples', 'best_time_for_solo_shopping', 'least_crowded_hours',
-    'peak_hours', 'weekend_vs_weekday'
-  ];
+function generateTimingIntelligence(venue, category) {
+  let timingFields = [];
+
+  // Category-specific timing fields
+  switch (category) {
+    case 'restaurant':
+      timingFields = [
+        'best_time_for_date_night', 'best_time_for_family', 'best_time_for_business_meetings',
+        'least_crowded_hours', 'peak_hours', 'weekend_vs_weekday'
+      ];
+      break;
+    case 'cafe':
+      timingFields = [
+        'best_time_for_date_night', 'best_time_for_family', 'best_time_for_business_meetings',
+        'best_time_for_study', 'least_crowded_hours', 'peak_hours', 'weekend_vs_weekday'
+      ];
+      break;
+    case 'shopping':
+      timingFields = [
+        'best_time_for_family_shopping', 'best_time_for_couples', 'best_time_for_solo_shopping',
+        'least_crowded_hours', 'peak_hours', 'weekend_vs_weekday'
+      ];
+      break;
+    case 'sports-fitness':
+      timingFields = [
+        'best_time_for_competitive_play', 'best_time_for_casual_play', 'best_time_for_training_sessions',
+        'best_time_for_corporate_events', 'least_crowded_hours', 'peak_hours', 'weekend_vs_weekday'
+      ];
+      break;
+    case 'health-wellness':
+      timingFields = [
+        'best_time_for_beginners', 'best_time_for_weight_training', 'best_time_for_cardio',
+        'best_time_for_classes', 'best_time_for_women', 'least_crowded_hours', 'peak_hours', 'weekend_vs_weekday'
+      ];
+      break;
+    case 'entertainment':
+      timingFields = [
+        'best_time_for_families_with_kids', 'best_time_for_date_night', 'best_time_for_groups',
+        'best_time_for_special_events', 'least_crowded_hours', 'peak_hours', 'weekend_vs_weekday',
+        'holiday_considerations'
+      ];
+      break;
+    case 'arts-culture':
+      timingFields = [
+        'best_time_for_art_enthusiasts', 'best_time_for_dates', 'best_time_for_families',
+        'best_time_for_photography', 'best_time_for_events', 'least_crowded_hours', 'peak_hours', 'weekend_vs_weekday'
+      ];
+      break;
+    default:
+      timingFields = [
+        'best_time_for_date_night', 'best_time_for_family', 'best_time_for_business_meetings',
+        'least_crowded_hours', 'peak_hours', 'weekend_vs_weekday'
+      ];
+  }
 
   const availableTiming = timingFields.filter(field => venue[field]);
   
@@ -819,16 +897,65 @@ function generateTimingIntelligence(venue) {
 }
 
 /**
- * Generate scoring system section
+ * Generate category-specific scoring system section
  */
 function generateScoringSystem(venue, category) {
-  const scoreFields = [
-    'total_score', 'food_and_menu_score', 'service_score', 'ambiance_score', 'value_score',
-    'location_and_accessibility_score', 'cleanliness_score', 'staff_friendliness_score',
-    'coffee_and_beverages_score', 'wifi_and_study_environment_score', 'coffee_quality_score',
-    'retail_variety_and_store_quality_score', 'entertainment_value_score', 'court_field_quality_score',
-    'equipment_and_facilities_score', 'booking_system_and_accessibility_score'
-  ];
+  let scoreFields = [];
+
+  // Category-specific scoring fields
+  switch (category) {
+    case 'restaurant':
+      scoreFields = [
+        'total_score', 'food_and_menu_score', 'service_score', 'ambiance_score', 'value_score',
+        'location_and_accessibility_score', 'cleanliness_score', 'staff_friendliness_score',
+        'food_authenticity_score', 'portion_size_score', 'presentation_score'
+      ];
+      break;
+    case 'cafe':
+      scoreFields = [
+        'total_score', 'coffee_and_beverages_score', 'ambiance_and_comfort_score', 'wifi_and_study_environment_score',
+        'service_score', 'value_score', 'location_and_accessibility_score', 'cleanliness_score',
+        'staff_friendliness_score', 'coffee_quality_score', 'food_options_score', 'seating_comfort_score'
+      ];
+      break;
+    case 'shopping':
+      scoreFields = [
+        'total_score', 'retail_variety_and_store_quality_score', 'dining_and_food_court_score',
+        'entertainment_and_recreation_score', 'facilities_and_amenities_score', 'accessibility_and_location_score',
+        'value_and_pricing_score', 'customer_service_score', 'safety_and_security_score'
+      ];
+      break;
+    case 'sports-fitness':
+      scoreFields = [
+        'total_score', 'court_field_quality_score', 'equipment_and_facilities_score',
+        'booking_system_and_accessibility_score', 'coaching_and_instruction_score', 'value_for_money_score',
+        'customer_service_score', 'safety_and_maintenance_score', 'ambiance_and_community_score'
+      ];
+      break;
+    case 'health-wellness':
+      scoreFields = [
+        'total_score', 'equipment_quality_and_variety_score', 'trainer_and_staff_expertise_score',
+        'hygiene_and_cleanliness_score', 'membership_and_pricing_score', 'accessibility_and_location_score',
+        'customer_service_score', 'safety_and_security_score', 'ambiance_and_community_score'
+      ];
+      break;
+    case 'entertainment':
+      scoreFields = [
+        'total_score', 'entertainment_value_score', 'comfort_and_facilities_score', 'value_for_money_score',
+        'accessibility_and_location_score', 'customer_service_score', 'safety_and_cleanliness_score',
+        'variety_and_quality_score', 'booking_and_convenience_score'
+      ];
+      break;
+    case 'arts-culture':
+      scoreFields = [
+        'total_score', 'visitor_experience_score', 'curatorial_quality_score', 'accessibility_and_facilities_score',
+        'educational_value_score', 'cultural_significance_score', 'customer_service_score',
+        'safety_and_cleanliness_score', 'value_for_money_score'
+      ];
+      break;
+    default:
+      scoreFields = ['total_score'];
+  }
 
   const availableScores = scoreFields.filter(field => venue[field] && venue[field] > 0);
   
