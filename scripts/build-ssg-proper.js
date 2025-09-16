@@ -283,31 +283,16 @@ function generateVenueHTML(route, baseTemplate, venueData) {
     pageTitle = `${venueName} - ${venueLocation} | KLIspots`;
     pageDescription = `${venueDescription} | Located in ${venueLocation}. Find more details, reviews, and contact information on KLIspots.`;
     
-    // Generate rich content for better SEO
+    // Generate comprehensive venue content with all available data
+    const venueContent = generateComprehensiveVenueContent(venue, venueName, venueLocation, venueDescription, category);
+    
     pageContent = `
       <noscript>
-        <div style="padding: 20px; max-width: 800px; margin: 0 auto;">
-          <h1>${venueName}</h1>
-          <p><strong>Location:</strong> ${venueLocation}</p>
-          <p><strong>Description:</strong> ${venueDescription}</p>
-          <p>Visit ${venueName} in ${venueLocation} for an amazing experience. Find more details, reviews, and contact information on KLIspots.</p>
-          <p><a href="/">← Back to KLIspots</a></p>
+        <div style="padding: 20px; max-width: 1000px; margin: 0 auto; font-family: Arial, sans-serif;">
+          ${venueContent}
         </div>
       </noscript>
-      <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "${venueName}",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "${venueLocation}",
-          "addressCountry": "Pakistan"
-        },
-        "description": "${venueDescription}",
-        "url": "https://klispots.com${route}"
-      }
-      </script>`;
+      <script type="application/ld+json">${JSON.stringify(generateStructuredData(venue, venueName, venueLocation, venueDescription, category, route))}</script>`;
     
     if (category !== 'restaurant') {
       console.log(`📝 Generated title: ${pageTitle}`);
@@ -621,6 +606,424 @@ ${otherScripts}
   }
   
   return html;
+}
+
+/**
+ * Generate comprehensive venue content with all available data
+ */
+function generateComprehensiveVenueContent(venue, venueName, venueLocation, venueDescription, category) {
+  let content = `
+    <h1 style="color: #059669; margin-bottom: 20px;">${venueName}</h1>
+    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+      <p style="margin: 0; font-size: 16px; line-height: 1.6;"><strong>📍 Location:</strong> ${venueLocation}</p>
+      ${venue.full_address ? `<p style="margin: 5px 0 0 0;"><strong>Address:</strong> ${venue.full_address}</p>` : ''}
+      ${venue.neighborhood ? `<p style="margin: 5px 0 0 0;"><strong>Neighborhood:</strong> ${venue.neighborhood}</p>` : ''}
+    </div>
+    
+    <div style="margin-bottom: 25px;">
+      <h2 style="color: #333; border-bottom: 2px solid #059669; padding-bottom: 5px;">About ${venueName}</h2>
+      <p style="line-height: 1.7; font-size: 15px;">${venueDescription}</p>
+    </div>`;
+
+  // Contact Information
+  if (venue.phone_number || venue.website_url) {
+    content += `
+    <div style="background: #e8f5e8; padding: 15px; border-radius: 8px; margin-bottom: 25px;">
+      <h3 style="color: #059669; margin-top: 0;">Contact Information</h3>
+      ${venue.phone_number ? `<p style="margin: 5px 0;"><strong>📞 Phone:</strong> <a href="tel:${venue.phone_number}">${venue.phone_number}</a></p>` : ''}
+      ${venue.website_url ? `<p style="margin: 5px 0;"><strong>🌐 Website:</strong> <a href="${venue.website_url}" target="_blank" rel="noopener">Visit Website</a></p>` : ''}
+      ${venue.google_maps_link ? `<p style="margin: 5px 0;"><strong>🗺️ Maps:</strong> <a href="${venue.google_maps_link}" target="_blank" rel="noopener">View on Google Maps</a></p>` : ''}
+    </div>`;
+  }
+
+  // Operating Hours
+  if (venue.operating_hours) {
+    content += `
+    <div style="margin-bottom: 25px;">
+      <h3 style="color: #333;">🕒 Operating Hours</h3>
+      <p style="background: #fff3cd; padding: 10px; border-radius: 5px; border-left: 4px solid #ffc107;">${venue.operating_hours}</p>
+    </div>`;
+  }
+
+  // Category-specific content
+  content += generateCategorySpecificContent(venue, category);
+
+  // Timing Intelligence
+  content += generateTimingIntelligence(venue);
+
+  // Scoring System
+  content += generateScoringSystem(venue, category);
+
+  // Amenities and Features
+  content += generateAmenitiesContent(venue, category);
+
+  // Reviews and Insights
+  content += generateReviewsContent(venue);
+
+  // FAQ Section
+  content += generateFAQContent(venue);
+
+  // Back to Home
+  content += `
+    <div style="text-align: center; margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+      <p><a href="/" style="color: #059669; text-decoration: none; font-weight: bold;">← Back to KLIspots Homepage</a></p>
+      <p style="font-size: 14px; color: #666; margin-top: 10px;">This page requires JavaScript to load the full interactive experience. Please enable JavaScript to view the complete venue details, reviews, and more.</p>
+    </div>`;
+
+  return content;
+}
+
+/**
+ * Generate category-specific content
+ */
+function generateCategorySpecificContent(venue, category) {
+  let content = '';
+
+  switch (category) {
+    case 'restaurant':
+      content += `
+      <div style="margin-bottom: 25px;">
+        <h3 style="color: #333;">🍽️ Restaurant Details</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+          ${venue.restaurant_category ? `<div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #ddd;"><strong>Category:</strong> ${venue.restaurant_category}</div>` : ''}
+          ${venue.cuisine ? `<div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #ddd;"><strong>Cuisine:</strong> ${venue.cuisine}</div>` : ''}
+          ${venue.specialty ? `<div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #ddd;"><strong>Specialty:</strong> ${venue.specialty}</div>` : ''}
+          ${venue.menu_price_range ? `<div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #ddd;"><strong>Price Range:</strong> ${venue.menu_price_range}</div>` : ''}
+        </div>
+        ${venue.signature_dishes ? `<div style="margin-top: 15px;"><strong>Signature Dishes:</strong> ${venue.signature_dishes}</div>` : ''}
+        ${venue.vegetarian_options ? `<div style="margin-top: 10px;"><strong>Vegetarian Options:</strong> ${venue.vegetarian_options}</div>` : ''}
+      </div>`;
+      break;
+
+    case 'cafe':
+      content += `
+      <div style="margin-bottom: 25px;">
+        <h3 style="color: #333;">☕ Cafe Details</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+          ${venue.cafe_category ? `<div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #ddd;"><strong>Category:</strong> ${venue.cafe_category}</div>` : ''}
+          ${venue.specialty ? `<div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #ddd;"><strong>Specialty:</strong> ${venue.specialty}</div>` : ''}
+          ${venue.menu_price_range ? `<div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #ddd;"><strong>Price Range:</strong> ${venue.menu_price_range}</div>` : ''}
+        </div>
+        ${venue.signature_items ? `<div style="margin-top: 15px;"><strong>Signature Items:</strong> ${venue.signature_items}</div>` : ''}
+        ${venue.coffee_types ? `<div style="margin-top: 10px;"><strong>Coffee Types:</strong> ${venue.coffee_types}</div>` : ''}
+      </div>`;
+      break;
+
+    case 'shopping':
+      content += `
+      <div style="margin-bottom: 25px;">
+        <h3 style="color: #333;">🛍️ Shopping Details</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+          ${venue.venue_type ? `<div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #ddd;"><strong>Type:</strong> ${venue.venue_type}</div>` : ''}
+          ${venue.brands_and_stores ? `<div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #ddd;"><strong>Brands & Stores:</strong> ${venue.brands_and_stores}</div>` : ''}
+          ${venue.mall_theme ? `<div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #ddd;"><strong>Theme:</strong> ${venue.mall_theme}</div>` : ''}
+        </div>
+        ${venue.dining_options ? `<div style="margin-top: 15px;"><strong>Dining Options:</strong> ${venue.dining_options}</div>` : ''}
+        ${venue.entertainment_and_recreation ? `<div style="margin-top: 10px;"><strong>Entertainment:</strong> ${venue.entertainment_and_recreation}</div>` : ''}
+      </div>`;
+      break;
+
+    case 'sports-fitness':
+      content += `
+      <div style="margin-bottom: 25px;">
+        <h3 style="color: #333;">🏃 Sports & Fitness Details</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+          ${venue.facility_type ? `<div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #ddd;"><strong>Facility Type:</strong> ${venue.facility_type}</div>` : ''}
+          ${venue.sports_offered ? `<div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #ddd;"><strong>Sports Offered:</strong> ${venue.sports_offered}</div>` : ''}
+          ${venue.membership_options ? `<div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #ddd;"><strong>Membership:</strong> ${venue.membership_options}</div>` : ''}
+        </div>
+        ${venue.equipment_provided ? `<div style="margin-top: 15px;"><strong>Equipment:</strong> ${venue.equipment_provided}</div>` : ''}
+        ${venue.coaching_available ? `<div style="margin-top: 10px;"><strong>Coaching:</strong> ${venue.coaching_available}</div>` : ''}
+      </div>`;
+      break;
+
+    case 'health-wellness':
+      content += `
+      <div style="margin-bottom: 25px;">
+        <h3 style="color: #333;">🏥 Health & Wellness Details</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+          ${venue.venue_type ? `<div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #ddd;"><strong>Type:</strong> ${venue.venue_type}</div>` : ''}
+          ${venue.services_offered ? `<div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #ddd;"><strong>Services:</strong> ${venue.services_offered}</div>` : ''}
+          ${venue.specializations ? `<div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #ddd;"><strong>Specializations:</strong> ${venue.specializations}</div>` : ''}
+        </div>
+        ${venue.treatment_options ? `<div style="margin-top: 15px;"><strong>Treatments:</strong> ${venue.treatment_options}</div>` : ''}
+        ${venue.amenities ? `<div style="margin-top: 10px;"><strong>Amenities:</strong> ${venue.amenities}</div>` : ''}
+      </div>`;
+      break;
+
+    case 'entertainment':
+      content += `
+      <div style="margin-bottom: 25px;">
+        <h3 style="color: #333;">🎬 Entertainment Details</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+          ${venue.venue_type ? `<div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #ddd;"><strong>Type:</strong> ${venue.venue_type}</div>` : ''}
+          ${venue.entertainment_options ? `<div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #ddd;"><strong>Options:</strong> ${venue.entertainment_options}</div>` : ''}
+          ${venue.ticket_pricing ? `<div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #ddd;"><strong>Pricing:</strong> ${venue.ticket_pricing}</div>` : ''}
+        </div>
+        ${venue.facilities_available ? `<div style="margin-top: 15px;"><strong>Facilities:</strong> ${venue.facilities_available}</div>` : ''}
+        ${venue.age_restrictions ? `<div style="margin-top: 10px;"><strong>Age Restrictions:</strong> ${venue.age_restrictions}</div>` : ''}
+      </div>`;
+      break;
+
+    case 'arts-culture':
+      content += `
+      <div style="margin-bottom: 25px;">
+        <h3 style="color: #333;">🎨 Arts & Culture Details</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+          ${venue.venue_type ? `<div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #ddd;"><strong>Type:</strong> ${venue.venue_type}</div>` : ''}
+          ${venue.exhibitions_and_collections ? `<div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #ddd;"><strong>Exhibitions:</strong> ${venue.exhibitions_and_collections}</div>` : ''}
+          ${venue.artistic_focus ? `<div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #ddd;"><strong>Focus:</strong> ${venue.artistic_focus}</div>` : ''}
+        </div>
+        ${venue.programs_and_events ? `<div style="margin-top: 15px;"><strong>Programs:</strong> ${venue.programs_and_events}</div>` : ''}
+        ${venue.educational_offerings ? `<div style="margin-top: 10px;"><strong>Education:</strong> ${venue.educational_offerings}</div>` : ''}
+      </div>`;
+      break;
+  }
+
+  return content;
+}
+
+/**
+ * Generate timing intelligence section
+ */
+function generateTimingIntelligence(venue) {
+  const timingFields = [
+    'best_time_for_date_night', 'best_time_for_family', 'best_time_for_business_meetings',
+    'best_time_for_study', 'best_time_for_competitive_play', 'best_time_for_casual_play',
+    'best_time_for_training_sessions', 'best_time_for_corporate_events', 'best_time_for_families_with_kids',
+    'best_time_for_groups', 'best_time_for_special_events', 'best_time_for_family_shopping',
+    'best_time_for_couples', 'best_time_for_solo_shopping', 'least_crowded_hours',
+    'peak_hours', 'weekend_vs_weekday'
+  ];
+
+  const availableTiming = timingFields.filter(field => venue[field]);
+  
+  if (availableTiming.length === 0) return '';
+
+  let content = `
+    <div style="margin-bottom: 25px;">
+      <h3 style="color: #333;">⏰ Best Times to Visit</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px;">`;
+
+  availableTiming.forEach(field => {
+    const label = field.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    content += `
+      <div style="background: #f8f9fa; padding: 12px; border-radius: 6px; border-left: 4px solid #059669;">
+        <strong>${label}:</strong><br>
+        <span style="color: #555;">${venue[field]}</span>
+      </div>`;
+  });
+
+  content += `</div></div>`;
+  return content;
+}
+
+/**
+ * Generate scoring system section
+ */
+function generateScoringSystem(venue, category) {
+  const scoreFields = [
+    'total_score', 'food_and_menu_score', 'service_score', 'ambiance_score', 'value_score',
+    'location_and_accessibility_score', 'cleanliness_score', 'staff_friendliness_score',
+    'coffee_and_beverages_score', 'wifi_and_study_environment_score', 'coffee_quality_score',
+    'retail_variety_and_store_quality_score', 'entertainment_value_score', 'court_field_quality_score',
+    'equipment_and_facilities_score', 'booking_system_and_accessibility_score'
+  ];
+
+  const availableScores = scoreFields.filter(field => venue[field] && venue[field] > 0);
+  
+  if (availableScores.length === 0) return '';
+
+  let content = `
+    <div style="margin-bottom: 25px;">
+      <h3 style="color: #333;">⭐ Ratings & Scores</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">`;
+
+  availableScores.forEach(field => {
+    const score = venue[field];
+    const label = field.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    const color = score >= 8 ? '#28a745' : score >= 6 ? '#ffc107' : '#dc3545';
+    
+    content += `
+      <div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #ddd; text-align: center;">
+        <div style="font-size: 24px; font-weight: bold; color: ${color};">${score}/10</div>
+        <div style="font-size: 12px; color: #666; margin-top: 4px;">${label}</div>
+      </div>`;
+  });
+
+  content += `</div></div>`;
+  return content;
+}
+
+/**
+ * Generate amenities and features section
+ */
+function generateAmenitiesContent(venue, category) {
+  const amenityFields = [
+    'parking_situation', 'accessibility_features', 'public_transport', 'kid_friendly',
+    'group_bookings', 'wifi_and_study_environment_score', 'seating_capacity', 'seating_areas',
+    'decor_style', 'noise_level', 'instagram_worthy', 'vibes', 'changing_facilities',
+    'family_facilities', 'payment_options', 'special_services'
+  ];
+
+  const availableAmenities = amenityFields.filter(field => venue[field]);
+  
+  if (availableAmenities.length === 0) return '';
+
+  let content = `
+    <div style="margin-bottom: 25px;">
+      <h3 style="color: #333;">🏢 Amenities & Features</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px;">`;
+
+  availableAmenities.forEach(field => {
+    const label = field.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    content += `
+      <div style="background: #e8f5e8; padding: 12px; border-radius: 6px;">
+        <strong>${label}:</strong><br>
+        <span style="color: #555;">${venue[field]}</span>
+      </div>`;
+  });
+
+  content += `</div></div>`;
+  return content;
+}
+
+/**
+ * Generate reviews and insights section
+ */
+function generateReviewsContent(venue) {
+  const reviewFields = [
+    'review_summary', 'common_praise', 'improvement_suggestions', 'unique_selling_points',
+    'unique_features', 'value_proposition', 'market_position', 'target_audience'
+  ];
+
+  const availableReviews = reviewFields.filter(field => venue[field]);
+  
+  if (availableReviews.length === 0) return '';
+
+  let content = `
+    <div style="margin-bottom: 25px;">
+      <h3 style="color: #333;">💬 Reviews & Insights</h3>`;
+
+  availableReviews.forEach(field => {
+    const label = field.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    content += `
+      <div style="margin-bottom: 15px; padding: 12px; background: #f8f9fa; border-radius: 6px;">
+        <strong>${label}:</strong><br>
+        <span style="color: #555; line-height: 1.6;">${venue[field]}</span>
+      </div>`;
+  });
+
+  content += `</div>`;
+  return content;
+}
+
+/**
+ * Generate FAQ section
+ */
+function generateFAQContent(venue) {
+  const faqPairs = [];
+  for (let i = 1; i <= 5; i++) {
+    const question = venue[`faq${i}`];
+    const answer = venue[`faqans${i}`];
+    if (question && answer) {
+      faqPairs.push({ question, answer });
+    }
+  }
+
+  if (faqPairs.length === 0) return '';
+
+  let content = `
+    <div style="margin-bottom: 25px;">
+      <h3 style="color: #333;">❓ Frequently Asked Questions</h3>`;
+
+  faqPairs.forEach((faq, index) => {
+    content += `
+      <div style="margin-bottom: 15px; padding: 15px; background: white; border-radius: 6px; border: 1px solid #ddd;">
+        <div style="font-weight: bold; color: #059669; margin-bottom: 8px;">Q${index + 1}: ${faq.question}</div>
+        <div style="color: #555; line-height: 1.6;">${faq.answer}</div>
+      </div>`;
+  });
+
+  content += `</div>`;
+  return content;
+}
+
+/**
+ * Generate enhanced structured data
+ */
+function generateStructuredData(venue, venueName, venueLocation, venueDescription, category, route) {
+  const baseData = {
+    "@context": "https://schema.org",
+    "name": venueName,
+    "description": venueDescription,
+    "url": `https://klispots.com${route}`,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": venueLocation,
+      "addressCountry": "Pakistan"
+    }
+  };
+
+  // Add category-specific schema type
+  switch (category) {
+    case 'restaurant':
+      baseData["@type"] = "Restaurant";
+      if (venue.cuisine) baseData.servesCuisine = venue.cuisine;
+      if (venue.menu_price_range) baseData.priceRange = venue.menu_price_range;
+      break;
+    case 'cafe':
+      baseData["@type"] = "CafeOrCoffeeShop";
+      if (venue.cafe_category) baseData.description += ` | ${venue.cafe_category}`;
+      break;
+    case 'shopping':
+      baseData["@type"] = "ShoppingCenter";
+      if (venue.venue_type) baseData.description += ` | ${venue.venue_type}`;
+      break;
+    case 'sports-fitness':
+      baseData["@type"] = "SportsActivityLocation";
+      if (venue.facility_type) baseData.description += ` | ${venue.facility_type}`;
+      break;
+    case 'health-wellness':
+      baseData["@type"] = "MedicalBusiness";
+      if (venue.venue_type) baseData.description += ` | ${venue.venue_type}`;
+      break;
+    case 'entertainment':
+      baseData["@type"] = "EntertainmentBusiness";
+      if (venue.venue_type) baseData.description += ` | ${venue.venue_type}`;
+      break;
+    case 'arts-culture':
+      baseData["@type"] = "Museum";
+      if (venue.venue_type) baseData.description += ` | ${venue.venue_type}`;
+      break;
+    default:
+      baseData["@type"] = "LocalBusiness";
+  }
+
+  // Add contact information
+  if (venue.phone_number) {
+    baseData.telephone = venue.phone_number;
+  }
+  if (venue.website_url) {
+    baseData.url = venue.website_url;
+  }
+
+  // Add operating hours
+  if (venue.operating_hours) {
+    baseData.openingHours = venue.operating_hours;
+  }
+
+  // Add aggregate rating if total_score exists
+  if (venue.total_score) {
+    baseData.aggregateRating = {
+      "@type": "AggregateRating",
+      "ratingValue": venue.total_score,
+      "bestRating": 10,
+      "worstRating": 0
+    };
+  }
+
+  return baseData;
 }
 
 // Run the build
