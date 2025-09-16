@@ -284,7 +284,12 @@ function generateVenueHTML(route, baseTemplate, venueData) {
     pageDescription = `${venueDescription} | Located in ${venueLocation}. Find more details, reviews, and contact information on KLIspots.`;
     
     // Generate comprehensive venue content with all available data
+    console.log(`🔍 DEBUG: Generating content for ${venueName} (${category})`);
+    console.log(`🔍 DEBUG: Venue has FAQ1: ${venue.faq1 ? 'YES' : 'NO'}`);
+    console.log(`🔍 DEBUG: Venue has scores: ${venue.total_score ? 'YES' : 'NO'}`);
     const venueContent = generateComprehensiveVenueContent(venue, venueName, venueLocation, venueDescription, category);
+    console.log(`🔍 DEBUG: Generated content length: ${venueContent.length} characters`);
+    console.log(`🔍 DEBUG: Content preview: ${venueContent.substring(0, 200)}...`);
     
     pageContent = `
       <noscript>
@@ -588,16 +593,12 @@ function generateVenueHTML(route, baseTemplate, venueData) {
   if (category !== 'restaurant') {
     console.log(`🔧 Injecting pageContent: ${pageContent.substring(0, 100)}...`);
   }
-  const html = `<!DOCTYPE html>
-<html lang="en">
-<head>
-${headContent}
-</head>
-${bodyTag}
-<div id="root">${pageContent}</div>
-${otherScripts}
-</body>
-</html>`;
+  
+  // Simple string replacements for the clean template
+  let html = baseTemplate
+    .replace(/PLACEHOLDER_TITLE/g, pageTitle)
+    .replace(/PLACEHOLDER_DESCRIPTION/g, pageDescription)
+    .replace(/PLACEHOLDER_CONTENT/g, pageContent);
   if (category !== 'restaurant') {
     console.log(`✅ HTML rebuilt with content for route: ${route}`);
     console.log(`🔧 Final HTML length: ${html.length} characters`);
