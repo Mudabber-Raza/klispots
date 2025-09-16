@@ -317,18 +317,7 @@ function generateVenueHTML(route, baseTemplate, venueData) {
       "url": `https://klispots.com${route}`
     };
     
-    pageContent = `
-    <noscript>
-      <div style="padding: 20px; max-width: 800px; margin: 0 auto;">
-        <h1>${venueName}</h1>
-        <p><strong>Location:</strong> ${venueLocation}</p>
-        <p><strong>Description:</strong> ${venueDescription}</p>
-        ${venue.phone ? `<p><strong>Phone:</strong> ${venue.phone}</p>` : ''}
-        ${venue.website ? `<p><strong>Website:</strong> <a href="${venue.website}" target="_blank">${venue.website}</a></p>` : ''}
-        <p><em>This page requires JavaScript to load the full interactive experience. Please enable JavaScript to view the complete venue details, reviews, and more.</em></p>
-      </div>
-    </noscript>
-    <script type="application/ld+json">${JSON.stringify(structuredData)}</script>`;
+    // pageContent already set above with enhanced content
   } else if (category && !id) {
     // Category listing page
     const categoryNames = {
@@ -607,10 +596,23 @@ function generateVenueHTML(route, baseTemplate, venueData) {
   const rootDivStart = html.indexOf('<div id="root">');
   const bodyEnd = html.lastIndexOf('</body>');
   
+  if (category !== 'restaurant') {
+    console.log(`🔧 DEBUG: rootDivStart: ${rootDivStart}, bodyEnd: ${bodyEnd}`);
+    console.log(`🔧 DEBUG: pageContent length: ${pageContent.length}`);
+  }
+  
   if (rootDivStart !== -1 && bodyEnd !== -1) {
     const beforeRoot = html.substring(0, rootDivStart);
     const afterBody = html.substring(bodyEnd);
     html = beforeRoot + `<div id="root">${pageContent}</div>` + afterBody;
+    
+    if (category !== 'restaurant') {
+      console.log(`🔧 DEBUG: HTML after replacement length: ${html.length}`);
+    }
+  } else {
+    if (category !== 'restaurant') {
+      console.log(`❌ DEBUG: Failed to find root div or body end`);
+    }
   }
   if (category !== 'restaurant') {
     console.log(`✅ HTML rebuilt with content for route: ${route}`);
