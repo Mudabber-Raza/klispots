@@ -594,11 +594,24 @@ function generateVenueHTML(route, baseTemplate, venueData) {
     console.log(`🔧 Injecting pageContent: ${pageContent.substring(0, 100)}...`);
   }
   
-  // Simple string replacements for the clean template
+  // Replace meta tags and content in the actual built template
   let html = baseTemplate
-    .replace(/PLACEHOLDER_TITLE/g, pageTitle)
-    .replace(/PLACEHOLDER_DESCRIPTION/g, pageDescription)
-    .replace(/PLACEHOLDER_CONTENT/g, pageContent);
+    .replace(/<title>.*?<\/title>/i, `<title>${pageTitle}</title>`)
+    .replace(/<meta name="description" content=".*?"/i, `<meta name="description" content="${pageDescription}"`)
+    .replace(/<meta property="og:title" content=".*?"/i, `<meta property="og:title" content="${pageTitle}"`)
+    .replace(/<meta property="og:description" content=".*?"/i, `<meta property="og:description" content="${pageDescription}"`)
+    .replace(/<meta name="twitter:title" content=".*?"/i, `<meta name="twitter:title" content="${pageTitle}"`)
+    .replace(/<meta name="twitter:description" content=".*?"/i, `<meta name="twitter:description" content="${pageDescription}"`);
+  
+  // Replace the content inside the root div - find the root div and replace everything until the closing body tag
+  const rootDivStart = html.indexOf('<div id="root">');
+  const bodyEnd = html.lastIndexOf('</body>');
+  
+  if (rootDivStart !== -1 && bodyEnd !== -1) {
+    const beforeRoot = html.substring(0, rootDivStart);
+    const afterBody = html.substring(bodyEnd);
+    html = beforeRoot + `<div id="root">${pageContent}</div>` + afterBody;
+  }
   if (category !== 'restaurant') {
     console.log(`✅ HTML rebuilt with content for route: ${route}`);
     console.log(`🔧 Final HTML length: ${html.length} characters`);
