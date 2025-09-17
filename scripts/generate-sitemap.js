@@ -94,8 +94,8 @@ const generateSitemaps = () => {
   }));
 
   // Cafe pages (top 100 for main sitemap)
-  const cafePages = cafes.slice(0, 100).map(cafe => ({
-    loc: escapeXml(`${baseUrl}/cafe/${cafe.cafe_index}-${createSlug(cafe.place_name)}`),
+  const cafePages = cafes.slice(0, 100).map((cafe, index) => ({
+    loc: escapeXml(`${baseUrl}/cafe/${index + 1}-${createSlug(cafe.place_name)}`),
     lastmod: today,
     changefreq: 'weekly',
     priority: '0.7'
@@ -152,9 +152,9 @@ const generateSitemaps = () => {
     }));
 
   const fullCafePages = cafes
-    .filter(cafe => cafe.cafe_index && cafe.place_name)
-    .map(cafe => ({
-      loc: escapeXml(`${baseUrl}/cafe/${cafe.cafe_index}-${createSlug(cafe.place_name)}`),
+    .filter(cafe => cafe.place_name)
+    .map((cafe, index) => ({
+      loc: escapeXml(`${baseUrl}/cafe/${index + 1}-${createSlug(cafe.place_name)}`),
       lastmod: today,
       changefreq: 'weekly',
       priority: '0.7'
