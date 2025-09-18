@@ -1108,35 +1108,101 @@ function generateStructuredData(venue, venueName, venueLocation, venueDescriptio
     }
   };
 
-  // Add category-specific schema type
+  // Add category-specific schema type with enhanced sub-types
   switch (category) {
     case 'restaurant':
       baseData["@type"] = "Restaurant";
       if (venue.cuisine) baseData.servesCuisine = venue.cuisine;
       if (venue.menu_price_range) baseData.priceRange = venue.menu_price_range;
+      if (venue.restaurant_category) {
+        // Add more specific restaurant types
+        if (venue.restaurant_category.toLowerCase().includes('fast food')) {
+          baseData["@type"] = "FastFoodRestaurant";
+        } else if (venue.restaurant_category.toLowerCase().includes('bakery')) {
+          baseData["@type"] = "Bakery";
+        }
+      }
       break;
     case 'cafe':
       baseData["@type"] = "CafeOrCoffeeShop";
       if (venue.cafe_category) baseData.description += ` | ${venue.cafe_category}`;
+      // Add specific cafe features
+      if (venue.coffee_types) baseData.servesCuisine = venue.coffee_types;
       break;
     case 'shopping':
       baseData["@type"] = "ShoppingCenter";
       if (venue.venue_type) baseData.description += ` | ${venue.venue_type}`;
+      // Add shopping-specific features
+      if (venue.brands_and_stores) baseData.description += ` | Brands: ${venue.brands_and_stores}`;
       break;
     case 'sports-fitness':
-      baseData["@type"] = "SportsActivityLocation";
+      // Use more specific sports schemas
+      if (venue.facility_type) {
+        if (venue.facility_type.toLowerCase().includes('gym') || venue.facility_type.toLowerCase().includes('fitness')) {
+          baseData["@type"] = "Gym";
+        } else if (venue.facility_type.toLowerCase().includes('swimming')) {
+          baseData["@type"] = "SwimmingPool";
+        } else if (venue.facility_type.toLowerCase().includes('tennis')) {
+          baseData["@type"] = "TennisComplex";
+        } else {
+          baseData["@type"] = "SportsActivityLocation";
+        }
+      } else {
+        baseData["@type"] = "SportsActivityLocation";
+      }
       if (venue.facility_type) baseData.description += ` | ${venue.facility_type}`;
       break;
     case 'health-wellness':
-      baseData["@type"] = "MedicalBusiness";
+      // Use more specific health schemas
+      if (venue.venue_type) {
+        if (venue.venue_type.toLowerCase().includes('spa')) {
+          baseData["@type"] = "Spa";
+        } else if (venue.venue_type.toLowerCase().includes('beauty')) {
+          baseData["@type"] = "BeautySalon";
+        } else if (venue.venue_type.toLowerCase().includes('dentist')) {
+          baseData["@type"] = "Dentist";
+        } else if (venue.venue_type.toLowerCase().includes('pharmacy')) {
+          baseData["@type"] = "Pharmacy";
+        } else {
+          baseData["@type"] = "MedicalBusiness";
+        }
+      } else {
+        baseData["@type"] = "MedicalBusiness";
+      }
       if (venue.venue_type) baseData.description += ` | ${venue.venue_type}`;
       break;
     case 'entertainment':
-      baseData["@type"] = "EntertainmentBusiness";
+      // Use more specific entertainment schemas
+      if (venue.venue_type) {
+        if (venue.venue_type.toLowerCase().includes('cinema') || venue.venue_type.toLowerCase().includes('movie')) {
+          baseData["@type"] = "MovieTheater";
+        } else if (venue.venue_type.toLowerCase().includes('theater') || venue.venue_type.toLowerCase().includes('theatre')) {
+          baseData["@type"] = "TheaterGroup";
+        } else if (venue.venue_type.toLowerCase().includes('bowling')) {
+          baseData["@type"] = "BowlingAlley";
+        } else {
+          baseData["@type"] = "EntertainmentBusiness";
+        }
+      } else {
+        baseData["@type"] = "EntertainmentBusiness";
+      }
       if (venue.venue_type) baseData.description += ` | ${venue.venue_type}`;
       break;
     case 'arts-culture':
-      baseData["@type"] = "Museum";
+      // Use more specific arts schemas
+      if (venue.venue_type) {
+        if (venue.venue_type.toLowerCase().includes('gallery') || venue.venue_type.toLowerCase().includes('art')) {
+          baseData["@type"] = "ArtGallery";
+        } else if (venue.venue_type.toLowerCase().includes('library')) {
+          baseData["@type"] = "Library";
+        } else if (venue.venue_type.toLowerCase().includes('tourist') || venue.venue_type.toLowerCase().includes('attraction')) {
+          baseData["@type"] = "TouristAttraction";
+        } else {
+          baseData["@type"] = "Museum";
+        }
+      } else {
+        baseData["@type"] = "Museum";
+      }
       if (venue.venue_type) baseData.description += ` | ${venue.venue_type}`;
       break;
     default:
@@ -1199,6 +1265,43 @@ function generateStructuredData(venue, venueName, venueLocation, venueDescriptio
       }
     };
   }
+
+  // Add category-specific structured data fields
+  switch (category) {
+    case 'restaurant':
+      if (venue.signature_dishes) baseData.specialty = venue.signature_dishes;
+      if (venue.vegetarian_options) baseData.dietaryRestrictions = venue.vegetarian_options;
+      break;
+    case 'cafe':
+      if (venue.coffee_types) baseData.servesCuisine = venue.coffee_types;
+      if (venue.study_environment) baseData.description += ` | Study-friendly environment`;
+      break;
+    case 'shopping':
+      if (venue.brands_and_stores) baseData.description += ` | Featured brands: ${venue.brands_and_stores}`;
+      if (venue.parking_availability) baseData.description += ` | Parking: ${venue.parking_availability}`;
+      break;
+    case 'sports-fitness':
+      if (venue.sports_offered) baseData.sport = venue.sports_offered;
+      if (venue.equipment_provided) baseData.description += ` | Equipment: ${venue.equipment_provided}`;
+      break;
+    case 'health-wellness':
+      if (venue.services_offered) baseData.description += ` | Services: ${venue.services_offered}`;
+      if (venue.specializations) baseData.description += ` | Specializations: ${venue.specializations}`;
+      break;
+    case 'entertainment':
+      if (venue.entertainment_options) baseData.description += ` | Entertainment: ${venue.entertainment_options}`;
+      if (venue.age_restrictions) baseData.description += ` | Age restrictions: ${venue.age_restrictions}`;
+      break;
+    case 'arts-culture':
+      if (venue.exhibitions_and_collections) baseData.description += ` | Exhibitions: ${venue.exhibitions_and_collections}`;
+      if (venue.artistic_focus) baseData.description += ` | Focus: ${venue.artistic_focus}`;
+      break;
+  }
+
+  // Add additional useful fields for all categories
+  if (venue.instagram_worthy) baseData.description += ` | Instagram-worthy location`;
+  if (venue.kid_friendly) baseData.description += ` | Kid-friendly`;
+  if (venue.wifi_and_study_environment_score) baseData.description += ` | WiFi available`;
 
   return baseData;
 }
