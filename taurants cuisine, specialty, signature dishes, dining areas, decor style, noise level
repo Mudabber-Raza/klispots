@@ -1,0 +1,5 @@
+[33m831f9f5[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m Enhance SSG HTML generation with comprehensive venue data
+[33mbf85631[m Fix Vercel schema validation error
+[33m26c0af0[m CRITICAL FIX: Remove Vite framework specification causing SPA behavior
+[33m21417c8[m Fix browser caching issues causing blank pages
+[33m15d69d8[m CRITICAL FIX: Remove catch-all rewrite rule that was redirecting all pages to index.html

@@ -142,7 +142,13 @@ function getMainRoutes() {
     '/entertainment',
     '/arts-culture',
     '/sports-fitness',
-    '/health-wellness'
+    '/health-wellness',
+    '/about',
+    '/cities',
+    '/cities/karachi',
+    '/cities/lahore',
+    '/cities/islamabad',
+    '/cities/rawalpindi'
   ];
 }
 
