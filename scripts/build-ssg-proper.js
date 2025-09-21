@@ -281,7 +281,35 @@ function generateVenueHTML(route, baseTemplate, venueData) {
       const venueDescription = venue.description || venue.about || venue.summary || `Visit ${venueName} in ${venueLocation}`;
     
     pageTitle = `${venueName} - ${venueLocation} | KLIspots`;
-    pageDescription = `${venueDescription} | Located in ${venueLocation}. Find more details, reviews, and contact information on KLIspots.`;
+    
+    // Generate more compelling meta description with specific details
+    let compellingDescription = `${venueName} in ${venueLocation}`;
+    
+    // Add category-specific compelling details
+    if (category === 'restaurant' && venue.cuisine) {
+      compellingDescription += ` - ${venue.cuisine} restaurant`;
+    } else if (category === 'cafe' && venue.specialty) {
+      compellingDescription += ` - ${venue.specialty} cafe`;
+    } else if (category === 'shopping' && venue.venue_type) {
+      compellingDescription += ` - ${venue.venue_type}`;
+    }
+    
+    // Add rating if available
+    if (venue.total_score) {
+      compellingDescription += ` | ⭐ ${venue.total_score}/10 rating`;
+    }
+    
+    // Add key features
+    if (venue.phone_number) {
+      compellingDescription += ` | 📞 Contact info`;
+    }
+    if (venue.full_address) {
+      compellingDescription += ` | 📍 Address & directions`;
+    }
+    
+    compellingDescription += ` | Reviews, photos, hours & more on KLIspots`;
+    
+    pageDescription = compellingDescription;
     
     // Generate comprehensive venue content with all available data
     console.log(`🔍 DEBUG: Generating content for ${venueName} (${category})`);
