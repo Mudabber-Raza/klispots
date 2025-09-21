@@ -28,7 +28,7 @@ const TrendingPlaces = () => {
       city: 'karachi',
       rating: 8.2,
       priceRange: 'Rs 500-1,000 per person',
-      imageUrl: '/placeholder.svg',
+      imageUrl: '/lovable-uploads/cafe-placeholder.jpg',
       isOpen: true,
       features: ['WiFi', 'Study Friendly', 'Outdoor Seating'],
       neighborhood: 'DHA'
@@ -41,7 +41,7 @@ const TrendingPlaces = () => {
       city: 'islamabad',
       rating: 8.0,
       priceRange: 'Budget to Premium',
-      imageUrl: '/placeholder.svg',
+      imageUrl: '/lovable-uploads/cafe-placeholder.jpg',
       isOpen: true,
       features: ['Parking', 'Food Court', 'Cinema'],
       neighborhood: 'F-8'
@@ -54,7 +54,7 @@ const TrendingPlaces = () => {
       city: 'lahore',
       rating: 7.8,
       priceRange: 'Rs 8,000-15,000/month',
-      imageUrl: '/placeholder.svg',
+      imageUrl: '/lovable-uploads/cafe-placeholder.jpg',
       isOpen: true,
       features: ['Swimming Pool', 'Personal Training', 'Sauna'],
       neighborhood: 'Gulberg'

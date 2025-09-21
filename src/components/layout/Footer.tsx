@@ -97,6 +97,7 @@ const Footer = () => {
             © 2024 KLIspots. All rights reserved. Discover Pakistan's best lifestyle experiences.
           </div>
           <div className="flex space-x-6 mt-4 md:mt-0">
+            <Link to="/help" className="text-gray-400 hover:text-emerald-400 text-sm transition-all duration-300 hover:scale-105 transform">Help Center</Link>
             <Link to="/privacy-policy" className="text-gray-400 hover:text-emerald-400 text-sm transition-all duration-300 hover:scale-105 transform">Privacy Policy</Link>
             <Link to="/terms-of-service" className="text-gray-400 hover:text-emerald-400 text-sm transition-all duration-300 hover:scale-105 transform">Terms of Service</Link>
             <Link to="/privacy-policy" className="text-gray-400 hover:text-emerald-400 text-sm transition-all duration-300 hover:scale-105 transform">Cookie Policy</Link>

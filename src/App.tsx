@@ -35,6 +35,7 @@ const CityDetail = lazy(() => import("./pages/CityDetail"));
 const SearchResults = lazy(() => import("./pages/SearchResults"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const TermsOfService = lazy(() => import("./pages/TermsOfService"));
+const HelpCenter = lazy(() => import("./pages/HelpCenter"));
 import './App.css';
 
 // Create QueryClient with proper configuration
@@ -83,6 +84,11 @@ const App = () => (
           <Route path="/terms-of-service" element={
             <Suspense fallback={<LoadingSpinner />}>
               <TermsOfService />
+            </Suspense>
+          } />
+          <Route path="/help" element={
+            <Suspense fallback={<LoadingSpinner />}>
+              <HelpCenter />
             </Suspense>
           } />
           <Route path="/cities" element={
