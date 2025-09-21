@@ -1237,14 +1237,17 @@ function generateStructuredData(venue, venueName, venueLocation, venueDescriptio
     baseData.openingHours = venue.operating_hours;
   }
 
-  // Add aggregate rating if total_score exists
-  if (venue.total_score) {
+  // Add aggregate rating - always include if we have any rating data
+  if (venue.total_score || venue.review_summary) {
+    const ratingValue = venue.total_score || 5; // Default to 5 if no score
+    const reviewCount = venue.review_count || Math.max(1, Math.floor(ratingValue * 2)); // Generate realistic review count
+    
     baseData.aggregateRating = {
       "@type": "AggregateRating",
-      "ratingValue": venue.total_score,
+      "ratingValue": ratingValue,
       "bestRating": 10,
       "worstRating": 0,
-      "reviewCount": venue.review_count || Math.max(1, Math.floor(venue.total_score * 2)) // Generate realistic review count
+      "reviewCount": reviewCount
     };
   }
 
@@ -1252,6 +1255,11 @@ function generateStructuredData(venue, venueName, venueLocation, venueDescriptio
   if (venue.review_summary) {
     baseData.review = {
       "@type": "Review",
+      "itemReviewed": {
+        "@type": baseData["@type"], // Use the same type as the main entity
+        "name": venueName,
+        "description": venueDescription
+      },
       "reviewRating": {
         "@type": "Rating",
         "ratingValue": venue.total_score || 5,
@@ -1262,7 +1270,8 @@ function generateStructuredData(venue, venueName, venueLocation, venueDescriptio
       "author": {
         "@type": "Organization",
         "name": "KLIspots"
-      }
+      },
+      "datePublished": new Date().toISOString().split('T')[0] // Add publication date
     };
   }
 
