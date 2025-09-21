@@ -133,24 +133,26 @@ function generateVenueRoutes() {
 /**
  * Get main category routes (for initial testing)
  */
-function getMainRoutes() {
-  return [
-    '/',
-    '/restaurants',
-    '/cafes',
-    '/shopping',
-    '/entertainment',
-    '/arts-culture',
-    '/sports-fitness',
-    '/health-wellness',
-    '/about',
-    '/cities',
-    '/cities/karachi',
-    '/cities/lahore',
-    '/cities/islamabad',
-    '/cities/rawalpindi'
-  ];
-}
+  function getMainRoutes() {
+    return [
+      '/',
+      '/restaurants',
+      '/cafes',
+      '/shopping',
+      '/entertainment',
+      '/arts-culture',
+      '/sports-fitness',
+      '/health-wellness',
+      '/about',
+      '/privacy-policy',
+      '/terms-of-service',
+      '/cities',
+      '/cities/karachi',
+      '/cities/lahore',
+      '/cities/islamabad',
+      '/cities/rawalpindi'
+    ];
+  }
 
 /**
  * Export routes based on environment

@@ -33,6 +33,8 @@ const About = lazy(() => import("./pages/About"));
 const Cities = lazy(() => import("./pages/Cities"));
 const CityDetail = lazy(() => import("./pages/CityDetail"));
 const SearchResults = lazy(() => import("./pages/SearchResults"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
+const TermsOfService = lazy(() => import("./pages/TermsOfService"));
 import './App.css';
 
 // Create QueryClient with proper configuration
@@ -71,6 +73,16 @@ const App = () => (
           <Route path="/about" element={
             <Suspense fallback={<LoadingSpinner />}>
               <About />
+            </Suspense>
+          } />
+          <Route path="/privacy-policy" element={
+            <Suspense fallback={<LoadingSpinner />}>
+              <PrivacyPolicy />
+            </Suspense>
+          } />
+          <Route path="/terms-of-service" element={
+            <Suspense fallback={<LoadingSpinner />}>
+              <TermsOfService />
             </Suspense>
           } />
           <Route path="/cities" element={
