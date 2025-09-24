@@ -63,7 +63,7 @@ const processedVenues: SportsFitnessVenue[] = (sportsFitnessData as any[]).map((
   ...venue,
   place_name: venue.facility_name || venue.place_name,
   facility_type: venue.facility_category || venue.facility_type || 'Sports & Fitness',
-  venue_index: venue.cafe_index || (index + 1), // Use stable cafe_index if available, fallback to array position
+  venue_index: venue.venue_index || venue.id || venue.place_id || (index + 1), // Use original venue_index, id, or place_id if available, fallback to array position
 }));
 
 export const sportsFitnessVenues: SportsFitnessVenue[] = processedVenues;

@@ -1,0 +1,10 @@
+[33m770e60b[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m Fix Rollup NAPI error - downgrade Vite and simplify build
+[33m44e7afb[m RESTORE: Fix build by restoring original working configuration
+[33m4eb93bd[m Fix Rollup dependency issue - restore original working build
+[33m74bd10a[m Fix Vercel build error - Rollup bundler issue
+[33mdb3df87[m Fix Google Search Console structured data errors
+[33m4fedb0f[m Fix frontend URL generation for sports-fitness and health-wellness categories
+[33m9eca958[m Enhance AdSense compliance and user experience
+[33mcb75940[m Add critical Privacy Policy and Terms of Service pages
+[33mb6d1d0a[m Enhance meta descriptions for better click-through rates
+[33m748429b[m Fix critical Google Search Console structured data errors
