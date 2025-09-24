@@ -64,6 +64,14 @@ const processedVenues: HealthWellnessVenue[] = (healthWellnessData as any[]).map
   venue_index: venue.cafe_index || venue.venue_index || venue.id || venue.place_id || (index + 1), // Use cafe_index first (as SSG expects), then fallback to other IDs
 }));
 
+// Debug: Log the first few venues to verify ID mapping
+console.log('Health & Wellness venue_index mapping:', processedVenues.slice(0, 5).map(v => ({
+  name: v.place_name,
+  cafe_index: (healthWellnessData as any[])[processedVenues.indexOf(v)]?.cafe_index,
+  venue_index: v.venue_index,
+  array_index: processedVenues.indexOf(v)
+})));
+
 export const healthWellnessVenues: HealthWellnessVenue[] = processedVenues;
 
 // Helper functions for filtering
