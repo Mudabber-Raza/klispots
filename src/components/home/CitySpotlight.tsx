@@ -126,8 +126,8 @@ const CitySpotlight = () => {
           category: 'Sports & Fitness', 
           score: 8.2, 
           status: 'Open',
-          id: '130',
-          route: createVenueUrl('sports-fitness', '130', 'Padel Park Lahore'),
+          id: '89',
+          route: createVenueUrl('sports-fitness', '89', 'Padel Park Lahore'),
           s3Category: 'sports-fitness'
         }
       ],
@@ -188,8 +188,8 @@ const CitySpotlight = () => {
           category: 'Sports & Fitness', 
           score: 8.0, 
           status: 'Open',
-          id: '288',
-          route: createVenueUrl('sports-fitness', '288', 'Court Cricket (Rooftop)'),
+          id: '186',
+          route: createVenueUrl('sports-fitness', '186', 'Court Cricket (Rooftop)'),
           s3Category: 'sports-fitness'
         }
       ],
