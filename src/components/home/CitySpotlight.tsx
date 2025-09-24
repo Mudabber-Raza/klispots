@@ -108,8 +108,8 @@ const CitySpotlight = () => {
           category: 'Health & Wellness', 
           score: 8.5, 
           status: 'Open',
-          id: '369',
-          route: createVenueUrl('health-wellness', '369', 'EVOKE FITNESS ARENA - GYM'),
+          id: '4',
+          route: createVenueUrl('health-wellness', '4', 'EVOKE FITNESS ARENA - GYM'),
           s3Category: 'health-wellness'
         },
         { 
@@ -179,8 +179,8 @@ const CitySpotlight = () => {
           category: 'Health & Wellness', 
           score: 9.27, 
           status: 'Open',
-          id: '295',
-          route: createVenueUrl('health-wellness', '295', 'Vostro World G-13'),
+          id: '2',
+          route: createVenueUrl('health-wellness', '2', 'Vostro World G-13'),
           s3Category: 'health-wellness'
         },
         { 
