@@ -61,7 +61,8 @@ export interface HealthWellnessVenue {
 const processedVenues: HealthWellnessVenue[] = (healthWellnessData as any[]).map((venue, index) => ({
   ...venue,
   facility_type: venue.facility_category || venue.facility_type || 'Health & Wellness',
-  venue_index: venue.cafe_index || venue.venue_index || venue.id || venue.place_id || (index + 1), // Use cafe_index first (as SSG expects), then fallback to other IDs
+  // Force sequential IDs for consistency across frontend/SSG/sitemap (1-based)
+  venue_index: index + 1,
 }));
 
 export const healthWellnessVenues: HealthWellnessVenue[] = processedVenues;

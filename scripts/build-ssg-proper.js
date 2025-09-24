@@ -255,19 +255,18 @@ function generateVenueHTML(route, baseTemplate, venueData) {
         console.log(`🔍 Total health venues loaded: ${venueData.healthWellness.length}`);
         console.log(`🔍 First 3 health venues:`, venueData.healthWellness.slice(0, 3).map(h => ({ cafe_index: h.cafe_index, venue_index: h.venue_index, place_name: h.place_name })));
         venue = venueData.healthWellness.find((h, index) => 
-          (h.cafe_index && h.cafe_index.toString() === id) ||
+          // Prefer sequential index+1 for consistency across app
+          ((index + 1).toString() === id) ||
           (h.venue_index && h.venue_index.toString() === id) ||
+          (h.cafe_index && h.cafe_index.toString() === id) ||
           (h.id && h.id.toString() === id) ||
-          (h.place_id && h.place_id.toString() === id) ||
-          ((index + 1).toString() === id)
+          (h.place_id && h.place_id.toString() === id)
         );
         if (venue) {
           console.log(`✅ Found health venue: ${venue.place_name || venue.name || 'Unknown'}`);
-          console.log(`✅ Health cafe_index: ${venue.cafe_index}, venue_index: ${venue.venue_index}, matched ID: ${id}`);
+          console.log(`✅ Health resolved ID matched: ${id}`);
         } else {
           console.log(`❌ No health venue found with ID: ${id}`);
-          console.log(`❌ Available cafe_index values:`, venueData.healthWellness.slice(0, 5).map(h => h.cafe_index));
-          console.log(`❌ Available venue_index values:`, venueData.healthWellness.slice(0, 5).map(h => h.venue_index));
         }
         break;
     }

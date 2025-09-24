@@ -135,7 +135,7 @@ const generateSitemaps = () => {
 
   // Health & Wellness pages (top 50 for main sitemap)
   const healthWellnessPages = healthWellness.slice(0, 50).map((venue, index) => ({
-    loc: escapeXml(`${baseUrl}/health-wellness/${venue.cafe_index || venue.venue_index || venue.id || venue.place_id || (index + 1)}-${createSlug(venue.place_name)}`),
+    loc: escapeXml(`${baseUrl}/health-wellness/${index + 1}-${createSlug(venue.place_name)}`),
     lastmod: today,
     changefreq: 'weekly',
     priority: '0.6'
@@ -199,7 +199,7 @@ const generateSitemaps = () => {
   const fullHealthWellnessPages = healthWellness
     .filter(venue => venue.place_name)
     .map((venue, index) => ({
-      loc: escapeXml(`${baseUrl}/health-wellness/${venue.cafe_index || venue.venue_index || venue.id || venue.place_id || (index + 1)}-${createSlug(venue.place_name)}`),
+      loc: escapeXml(`${baseUrl}/health-wellness/${index + 1}-${createSlug(venue.place_name)}`),
       lastmod: today,
       changefreq: 'weekly',
       priority: '0.6'
