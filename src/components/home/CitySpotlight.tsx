@@ -188,8 +188,8 @@ const CitySpotlight = () => {
           category: 'Sports & Fitness', 
           score: 8.0, 
           status: 'Open',
-          id: '288',
-          route: createVenueUrl('sports-fitness', '288', 'Court Cricket (Rooftop)'),
+          id: '186',
+          route: createVenueUrl('sports-fitness', '186', 'Court Cricket (Rooftop)'),
           s3Category: 'sports-fitness'
         }
       ],
