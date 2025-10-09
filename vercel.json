@@ -1,5 +1,5 @@
 {
-  "buildCommand": "npm install --omit=optional --force && (npm run generate-sitemap || echo 'Sitemap generation failed, continuing build') && FULL_SSG=true NODE_ENV=production npm run build && echo 'Build completed successfully'",
+  "buildCommand": "npm install --omit=optional && (npm run generate-sitemap || echo 'Sitemap generation failed, continuing build') && FULL_SSG=true NODE_ENV=production npm run build && echo 'Build completed successfully'",
   "outputDirectory": "dist", 
   "trailingSlash": false,
   "env": {
