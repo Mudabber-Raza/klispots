@@ -4,7 +4,6 @@ import { Badge } from '@/components/ui/badge';
 import { Star, MapPin, Phone, Clock, Wifi, Car, Users, Shield, ChefHat } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { createVenueUrl } from '@/utils/urlSlugs';
-import ComprehensiveVenueImage from '@/components/shared/ComprehensiveVenueImage';
 
 const FeaturedPlaces = () => {
   const featuredPlace = {
@@ -18,7 +17,7 @@ const FeaturedPlaces = () => {
     priceRange: 'Rs 1500 - Rs 3500',
     status: 'Open',
     verified: true,
-    imageCategory: 'restaurants',
+    imageUrl: '/lovable-uploads/The_Basil_Leaf_ChIJl3IsuNQFGTkR4EhEnVaxMv0_3.jpg',
     scores: {
       food: 9.5,
       service: 9.4,
@@ -44,7 +43,7 @@ const FeaturedPlaces = () => {
       priceRange: 'Rs 800-1,500',
       status: 'Open',
       cuisine: 'Coffee & Beverages',
-      imageCategory: 'cafes'
+      imageUrl: '/lovable-uploads/Corti_Cafe_ChIJN3eKLwA_sz4R-rP79g-_PcY_1.jpg'
     },
     {
       id: '556',
@@ -56,7 +55,7 @@ const FeaturedPlaces = () => {
       priceRange: 'Rs 3,500-5,000',
       status: 'Open',
       cuisine: 'International',
-      imageCategory: 'restaurants'
+      imageUrl: '/lovable-uploads/Havana_Terraces_ChIJiScdKsG93zgRibz8gP_ohZM_2.jpg'
     },
     {
       id: '1321',
@@ -68,7 +67,7 @@ const FeaturedPlaces = () => {
       priceRange: 'Rs 2,500-4,000',
       status: 'Open',
       cuisine: 'International',
-      imageCategory: 'restaurants'
+      imageUrl: '/lovable-uploads/Tapestry7_ChIJT3R7JpAFGTkRLLFSKfeqbf0_1.jpg'
     },
 
   ];
@@ -93,7 +92,7 @@ const FeaturedPlaces = () => {
             Best Places This Week
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            High-scoring restaurants and cafes from Karachi, Lahore, and Islamabad
+            Handpicked experiences with detailed AI-powered analysis and local expert verification
           </p>
         </div>
 
@@ -104,9 +103,8 @@ const FeaturedPlaces = () => {
               <Card className="overflow-hidden shadow-xl border-0 bg-gradient-to-br from-white to-gray-50 hover:shadow-2xl transition-shadow cursor-pointer">
                 <div className="relative h-80">
                   {/* Hero Image */}
-                  <ComprehensiveVenueImage
-                    category={featuredPlace.imageCategory}
-                    placeName={featuredPlace.name}
+                  <img
+                    src={featuredPlace.imageUrl}
                     alt={featuredPlace.name}
                     className="w-full h-full object-cover"
                   />
@@ -226,14 +224,15 @@ const FeaturedPlaces = () => {
               <Link key={place.id} to={place.category === 'Cafe' ? createVenueUrl('cafe', place.id, place.name) : createVenueUrl('restaurant', place.id, place.name)}>
                 <Card className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
                   {/* Image Section */}
-                  <div className="h-32 w-full overflow-hidden">
-                    <ComprehensiveVenueImage
-                      category={place.imageCategory}
-                      placeName={place.name}
-                      alt={place.name}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
+                  {place.imageUrl && (
+                    <div className="h-32 w-full overflow-hidden">
+                      <img
+                        src={place.imageUrl}
+                        alt={place.name}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                  )}
                   
                   <div className="p-6">
                     <div className="flex justify-between items-start mb-3">
