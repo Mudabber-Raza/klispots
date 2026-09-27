@@ -1,7 +1,8 @@
 
-import { MapPin, Phone, Mail } from 'lucide-react';
+import { MapPin, Mail } from 'lucide-react';
 import { categories } from '@/data/categories';
 import { Link } from 'react-router-dom';
+import { SITE } from '@/lib/site';
 
 const Footer = () => {
   const popularCategories = categories; // Include all categories including Sports & Fitness
@@ -20,7 +21,7 @@ const Footer = () => {
               shopping, entertainment, and services across Karachi, Lahore, and Islamabad.
             </p>
             <div className="flex items-center text-emerald-400">
-              <span className="text-sm">5500+ verified places • 25K+ happy users</span>
+              <span className="text-sm">{SITE.venueCountLabel} places across Karachi, Lahore, and Islamabad</span>
             </div>
           </div>
 
@@ -57,9 +58,9 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold text-lg mb-4">For Business</h3>
             <ul className="space-y-2">
-              <li><Link to="/about" className="text-gray-400 hover:text-emerald-400 transition-all duration-300 hover:scale-105 transform">List Your Business</Link></li>
-              <li><Link to="/about#advertise" className="text-gray-400 hover:text-emerald-400 transition-all duration-300 hover:scale-105 transform">Advertise With Us</Link></li>
-              <li><Link to="/about" className="text-gray-400 hover:text-emerald-400 transition-all duration-300 hover:scale-105 transform">Support</Link></li>
+              <li><Link to="/list" className="text-gray-400 hover:text-emerald-400 transition-all duration-300 hover:scale-105 transform">List Your Business</Link></li>
+              <li><Link to="/advertise" className="text-gray-400 hover:text-emerald-400 transition-all duration-300 hover:scale-105 transform">Advertise With Us</Link></li>
+              <li><Link to="/help" className="text-gray-400 hover:text-emerald-400 transition-all duration-300 hover:scale-105 transform">Support</Link></li>
             </ul>
           </div>
         </div>
@@ -75,17 +76,17 @@ const Footer = () => {
               </div>
             </div>
             <div className="flex items-center">
-              <Phone className="w-5 h-5 text-emerald-400 mr-3" />
+              <Mail className="w-5 h-5 text-emerald-400 mr-3" />
               <div>
-                <div className="font-medium">Customer Support</div>
-                <div className="text-gray-400 text-sm">+92-XXX-XXXXXXX</div>
+                <div className="font-medium">Email Us</div>
+                <a href={`mailto:${SITE.email}`} className="text-gray-400 text-sm hover:text-emerald-400">{SITE.email}</a>
               </div>
             </div>
             <div className="flex items-center">
               <Mail className="w-5 h-5 text-emerald-400 mr-3" />
               <div>
-                <div className="font-medium">Email Us</div>
-                <div className="text-gray-400 text-sm">hello@klispots.com</div>
+                <div className="font-medium">List or advertise</div>
+                <Link to="/list" className="text-gray-400 text-sm hover:text-emerald-400">/list and /advertise</Link>
               </div>
             </div>
           </div>

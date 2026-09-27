@@ -1,6 +1,6 @@
 
 import { Card, CardContent } from '@/components/ui/card';
-import { Shield, Brain, Users, MapPin, Star, Target } from 'lucide-react';
+import { Shield, Brain, Users, MapPin, Target } from 'lucide-react';
 
 const WhyKLIspots = () => {
   const features = [
@@ -20,7 +20,7 @@ const WhyKLIspots = () => {
       icon: <Target className="w-8 h-8 text-emerald-600" />,
       title: 'Comprehensive Data',
       description: 'Detailed information including cultural significance, halal status, family-friendliness, and local insights.',
-      stats: '2,300+ Places'
+      stats: '5,200+ Places'
     },
     {
       icon: <MapPin className="w-8 h-8 text-emerald-600" />,
@@ -30,9 +30,9 @@ const WhyKLIspots = () => {
     },
     {
       icon: <Users className="w-8 h-8 text-emerald-600" />,
-      title: 'Community Driven',
-      description: 'Real reviews from verified users who share your cultural background and dining preferences.',
-      stats: '25K+ Happy Users'
+      title: 'Built for Pakistan',
+      description: 'Neighborhoods, price ranges, and cultural context written for Karachi, Lahore, and Islamabad.',
+      stats: '3 Major Cities'
     },
     {
       icon: <Star className="w-8 h-8 text-emerald-600" />,
@@ -48,7 +48,7 @@ const WhyKLIspots = () => {
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-800 px-4 py-2 rounded-full mb-6">
             <Shield className="w-4 h-4" />
-            <span className="font-semibold">5500+ Verified Places • 25K+ Happy Users</span>
+            <span className="font-semibold">5,200+ places • Karachi, Lahore, Islamabad</span>
           </div>
           
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
@@ -88,25 +88,20 @@ const WhyKLIspots = () => {
         <div className="mt-16 bg-white rounded-2xl p-8 shadow-lg">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-3xl font-bold text-emerald-700 mb-2">4.8/5</div>
-              <div className="text-gray-600">User Rating</div>
-              <div className="flex justify-center mt-2">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 text-yellow-500 fill-current" />
-                ))}
-              </div>
+              <div className="text-3xl font-bold text-emerald-700 mb-2">5,200+</div>
+              <div className="text-gray-600">Listed places</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-emerald-700 mb-2">98%</div>
-              <div className="text-gray-600">Accuracy Rate</div>
+              <div className="text-3xl font-bold text-emerald-700 mb-2">7</div>
+              <div className="text-gray-600">Categories</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-emerald-700 mb-2">24/7</div>
-              <div className="text-gray-600">Data Updates</div>
+              <div className="text-3xl font-bold text-emerald-700 mb-2">3</div>
+              <div className="text-gray-600">Cities</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-emerald-700 mb-2">100%</div>
-              <div className="text-gray-600">Verified Places</div>
+              <div className="text-3xl font-bold text-emerald-700 mb-2">Free</div>
+              <div className="text-gray-600">To browse</div>
             </div>
           </div>
         </div>

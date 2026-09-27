@@ -77,7 +77,7 @@ const CityDetail = () => {
         rating: Number(v.total_score || 0),
         description: v.about,
         phone: v.phone_number,
-        placeId: v.cafe_index?.toString() || v.place_name,
+        placeId: (v as any).original_place_id || v.place_name,
         originalData: v
       }));
 
@@ -459,7 +459,7 @@ const CityDetail = () => {
                       <Card className="group cursor-pointer overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                         <div className="listing-card-container">
                           <ComprehensiveVenueImage
-                            category={venue.category.toLowerCase().replace(/\s+/g, '-')}
+                            category={venue.category}
                             placeId={venue.placeId || venue.name}
                             placeName={venue.name}
                             alt={venue.name}

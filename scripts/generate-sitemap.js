@@ -82,6 +82,14 @@ const generateSitemaps = () => {
     { loc: `${baseUrl}/health-wellness`, lastmod: today, changefreq: 'daily', priority: '0.8' },
     { loc: `${baseUrl}/cities`, lastmod: today, changefreq: 'weekly', priority: '0.7' },
     { loc: `${baseUrl}/about`, lastmod: today, changefreq: 'monthly', priority: '0.6' },
+    { loc: `${baseUrl}/list`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
+    { loc: `${baseUrl}/advertise`, lastmod: today, changefreq: 'monthly', priority: '0.8' },
+    { loc: `${baseUrl}/help`, lastmod: today, changefreq: 'monthly', priority: '0.4' },
+    { loc: `${baseUrl}/privacy-policy`, lastmod: today, changefreq: 'yearly', priority: '0.3' },
+    { loc: `${baseUrl}/terms-of-service`, lastmod: today, changefreq: 'yearly', priority: '0.3' },
+    { loc: `${baseUrl}/cities/karachi`, lastmod: today, changefreq: 'weekly', priority: '0.7' },
+    { loc: `${baseUrl}/cities/lahore`, lastmod: today, changefreq: 'weekly', priority: '0.7' },
+    { loc: `${baseUrl}/cities/islamabad`, lastmod: today, changefreq: 'weekly', priority: '0.7' },
     { loc: `${baseUrl}/search`, lastmod: today, changefreq: 'daily', priority: '0.5' }
   ];
 
@@ -264,9 +272,12 @@ const generateSitemaps = () => {
     allSitemaps.push(...sitemapList);
   });
 
-  // Generate sitemap index (simplified - only main sitemap)
   const sitemapIndex = generateSitemapIndex([
-    { loc: `${baseUrl}/sitemap.xml`, lastmod: today }
+    { loc: `${baseUrl}/sitemap.xml`, lastmod: today },
+    ...allSitemaps.map((sitemap) => ({
+      loc: `${baseUrl}/sitemap-${sitemap.name}.xml`,
+      lastmod: today,
+    })),
   ]);
 
   fs.writeFileSync(path.join(__dirname, '../public/sitemap-index.xml'), sitemapIndex);

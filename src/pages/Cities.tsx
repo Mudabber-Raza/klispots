@@ -25,15 +25,15 @@ const Cities = () => {
     const cityDescriptions = {
       'Karachi': {
         description: "Pakistan's bustling economic hub and largest city, known for its vibrant food scene, historic landmarks, and coastal charm along the Arabian Sea. Experience the diverse culture, endless entertainment options, and world-class dining that makes Karachi the country's commercial heart.",
-        imageUrl: "/lovable-uploads/Karachi.jpg"
+        imageUrl: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=1400&q=80"
       },
       'Lahore': {
         description: "The cultural heart of Pakistan, famous for its rich Mughal heritage, exquisite cuisine, and beautiful gardens that blend history with modernity. Discover centuries-old architecture, traditional crafts, and the warmest hospitality in this magnificent city of gardens.",
-        imageUrl: "/lovable-uploads/Lahore.jpg"
+        imageUrl: "https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=1400&q=80"
       },
       'Islamabad': {
         description: "Pakistan's capital city, known for its modern architecture, well-planned layout, and scenic beauty nestled against the Margalla Hills. Enjoy clean air, organized infrastructure, and stunning natural landscapes in this peaceful metropolitan center.",
-        imageUrl: "/lovable-uploads/Islamabad.webp"
+        imageUrl: "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?auto=format&fit=crop&w=1400&q=80"
       }
     };
 
@@ -99,7 +99,7 @@ const Cities = () => {
               <div className="flex items-center justify-center space-x-8 text-sm text-gray-500">
                 <div className="flex items-center">
                   <Building2 className="w-5 h-5 mr-2 text-emerald-600" />
-                  5500+ Verified Places
+                  5,200+ Places
                 </div>
                 <div className="flex items-center">
                   <MapPin className="w-5 h-5 mr-2 text-emerald-600" />

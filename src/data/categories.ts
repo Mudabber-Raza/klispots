@@ -8,7 +8,7 @@ export const categories: Category[] = [
     icon: '🍽️',
     description: 'Fine dining, casual dining, traditional Pakistani cuisine',
     slug: 'restaurants',
-    count: 500
+    count: 2509
   },
   {
     id: '2',
@@ -16,7 +16,7 @@ export const categories: Category[] = [
     icon: '☕',
     description: 'Coffee houses, tea lounges, study-friendly spots',
     slug: 'cafes',
-    count: 250
+    count: 1198
   },
   {
     id: '3',
@@ -24,7 +24,7 @@ export const categories: Category[] = [
     icon: '🛍️',
     description: 'Malls, bazaars, brand outlets, traditional markets',
     slug: 'shopping',
-    count: 300
+    count: 449
   },
   {
     id: '4',
@@ -32,7 +32,7 @@ export const categories: Category[] = [
     icon: '🎭',
     description: 'Cinemas, theaters, gaming zones, family entertainment',
     slug: 'entertainment',
-    count: 180
+    count: 119
   },
   {
     id: '5',
@@ -40,7 +40,7 @@ export const categories: Category[] = [
     icon: '💪',
     description: 'Gyms, spas, fitness centers, beauty salons',
     slug: 'health-wellness',
-    count: 200
+    count: 348
   },
   {
     id: '6',
@@ -48,7 +48,7 @@ export const categories: Category[] = [
     icon: '🎨',
     description: 'Museums, galleries, cultural centers, music venues',
     slug: 'arts-culture',
-    count: 60
+    count: 466
   },
   {
     id: '7',
@@ -56,6 +56,6 @@ export const categories: Category[] = [
     icon: '⚽',
     description: 'Sports facilities, courts, fitness centers, training grounds',
     slug: 'sports-fitness',
-    count: 150
+    count: 200
   }
 ];

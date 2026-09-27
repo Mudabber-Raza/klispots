@@ -24,10 +24,6 @@ const SearchHero = () => {
     { id: 'karachi', name: 'Karachi' },
     { id: 'lahore', name: 'Lahore' },
     { id: 'islamabad', name: 'Islamabad' },
-    { id: 'rawalpindi', name: 'Rawalpindi' },
-    { id: 'faisalabad', name: 'Faisalabad' },
-    { id: 'multan', name: 'Multan' },
-    { id: 'peshawar', name: 'Peshawar' }
   ];
 
   const popularSearches = [
@@ -159,7 +155,7 @@ const SearchHero = () => {
     <>
       <PageSEO
         title="KLIspots - Discover Pakistan's Premium Lifestyle"
-        description="AI-powered insights, local expert verification, and comprehensive data to find your perfect dining and lifestyle experiences in Pakistan. Discover 5500+ verified places across 7 categories."
+        description="Find restaurants, cafes, shopping, and lifestyle spots in Karachi, Lahore, and Islamabad. 5,200+ places across 7 categories."
         keywords="Pakistan restaurants, cafes, shopping, entertainment, fitness, wellness, arts, culture, dining, lifestyle, verified places"
         type="website"
       />
@@ -196,13 +192,13 @@ const SearchHero = () => {
           <div className="flex flex-wrap justify-center items-center gap-8 mb-12 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
             <div className="flex items-center gap-2 text-gray-600 hover:scale-105 transition-transform duration-300">
               <Star className="w-5 h-5 text-yellow-500 fill-current animate-pulse" />
-              <span className="font-semibold">5500+</span>
-              <span>Verified Places</span>
+              <span className="font-semibold">5,200+</span>
+              <span>Places</span>
             </div>
             <div className="flex items-center gap-2 text-gray-600 hover:scale-105 transition-transform duration-300">
               <Users className="w-5 h-5 text-emerald-600 animate-pulse" style={{ animationDelay: '0.5s' }} />
-              <span className="font-semibold">25K+</span>
-              <span>Happy Users</span>
+              <span className="font-semibold">3</span>
+              <span>Cities</span>
             </div>
             <div className="flex items-center gap-2 text-gray-600 hover:scale-105 transition-transform duration-300">
               <Shield className="w-5 h-5 text-emerald-600 animate-pulse" style={{ animationDelay: '1s' }} />
@@ -313,8 +309,8 @@ const SearchHero = () => {
         {/* Enhanced Quick Stats with animations */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-4xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.7s' }}>
           <div className="text-center group hover:scale-105 transition-transform duration-300">
-            <div className="text-4xl font-bold text-emerald-700 mb-2 group-hover:text-emerald-800 transition-colors duration-300">5500+</div>
-            <div className="text-gray-600 font-medium">Verified Places</div>
+            <div className="text-4xl font-bold text-emerald-700 mb-2 group-hover:text-emerald-800 transition-colors duration-300">5,200+</div>
+            <div className="text-gray-600 font-medium">Places</div>
           </div>
           <div className="text-center group hover:scale-105 transition-transform duration-300">
             <div className="text-4xl font-bold text-emerald-700 mb-2 group-hover:text-emerald-800 transition-colors duration-300">7</div>
@@ -325,8 +321,8 @@ const SearchHero = () => {
             <div className="text-gray-600 font-medium">Major Cities</div>
           </div>
           <div className="text-center group hover:scale-105 transition-transform duration-300">
-            <div className="text-4xl font-bold text-emerald-700 mb-2 group-hover:text-emerald-800 transition-colors duration-300">25K+</div>
-            <div className="text-gray-600 font-medium">Happy Users</div>
+            <div className="text-4xl font-bold text-emerald-700 mb-2 group-hover:text-emerald-800 transition-colors duration-300">Free</div>
+            <div className="text-gray-600 font-medium">To browse</div>
           </div>
         </div>
       </div>

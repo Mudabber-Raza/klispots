@@ -86,14 +86,7 @@ const Header = () => {
   }, [searchQuery, navigate]);
 
   const handleListBusiness = useCallback(() => {
-    navigate('/about');
-    // Scroll to advertise section after navigation
-    setTimeout(() => {
-      const advertiseSection = document.getElementById('advertise');
-      if (advertiseSection) {
-        advertiseSection.scrollIntoView({ behavior: 'smooth' });
-      }
-    }, 100);
+    navigate('/list');
   }, [navigate]);
 
   const isActiveRoute = useCallback((path: string) => {

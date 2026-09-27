@@ -3,3 +3,4 @@ Allow: /
 
 # Sitemap
 Sitemap: https://klispots.com/sitemap.xml
+Sitemap: https://klispots.com/sitemap-index.xml

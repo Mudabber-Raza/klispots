@@ -36,6 +36,8 @@ const SearchResults = lazy(() => import("./pages/SearchResults"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const TermsOfService = lazy(() => import("./pages/TermsOfService"));
 const HelpCenter = lazy(() => import("./pages/HelpCenter"));
+const ListYourBusiness = lazy(() => import("./pages/ListYourBusiness"));
+const Advertise = lazy(() => import("./pages/Advertise"));
 import './App.css';
 
 // Create QueryClient with proper configuration
@@ -43,7 +45,7 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       staleTime: 5 * 60 * 1000, // 5 minutes
-      cacheTime: 10 * 60 * 1000, // 10 minutes
+      gcTime: 10 * 60 * 1000, // 10 minutes
       retry: 1,
       refetchOnWindowFocus: false,
     },
@@ -104,6 +106,16 @@ const App = () => (
           <Route path="/search" element={
             <Suspense fallback={<LoadingSpinner />}>
               <SearchResults />
+            </Suspense>
+          } />
+          <Route path="/list" element={
+            <Suspense fallback={<LoadingSpinner />}>
+              <ListYourBusiness />
+            </Suspense>
+          } />
+          <Route path="/advertise" element={
+            <Suspense fallback={<LoadingSpinner />}>
+              <Advertise />
             </Suspense>
           } />
 
